@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+.client-name-container {
+    overflow-x: hidden;
+    position: relative;
+    animation: move 30s linear infinite;
+  }
+  
+  .client-name-container:hover {
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
