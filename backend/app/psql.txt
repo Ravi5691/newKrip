@@ -1,0 +1,21 @@
+# Switch to PostgreSQL user
+sudo -i -u postgres
+
+# Open PostgreSQL shell
+psql
+
+# Create a new database
+CREATE DATABASE freelance_marketplace;
+
+# Create a new user
+CREATE USER myuser WITH PASSWORD 'mypassword';
+
+# Grant privileges
+GRANT ALL PRIVILEGES ON DATABASE freelance_marketplace TO myuser;
+
+# Do this too
+ALTER ROLE myuser WITH SUPERUSER;
+
+
+# Exit psql
+\q
