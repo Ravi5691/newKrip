@@ -1,48 +1,58 @@
 import React from "react";
 import GetServiceCard from "./getServiceCard";
 import StatCard from "./stat_card";
-import  { AppleCardsCarousel } from "./featureSection";
+import { HeroScroll } from "./HeroScroll";
+import Faq from "./faq";
+import Footer from "./footer";
 
 const Header = () => {
   return (
-    <div>
+    <div className="bg-[#060E0E] text-white">
       <nav>
-        <div className="flex justify-between items-center px-30 h-20 border-b-2">
-          <button>Logo</button>
-          <span class="flex justify-around">
-            <button class="px-6">Home</button>
-            <button class="px-6">About Us</button>
-            <button class="px-6">Contact Us</button>
-            <button class="pl-6">Login</button>
+        <div className="flex flex-col md:flex-row justify-between items-center px-4 md:pr-18 md:px-24 h-20">
+          <button className="cursor-pointer">
+            <img src="logo.png" alt="" className="h-8 w-auto" />
+          </button>
+          <span className="flex flex-col md:flex-row justify-around w-full md:w-auto gap-3">
+            <button className="mx-2 md:mx-6 hidden md:block">Home</button>
+            <button className="mx-2 md:mx-6 hidden md:block">About Us</button>
+            <button className="mx-2 md:mx-6 hidden md:block">Contact Us</button>
+            <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block">
+              Login
+            </button>
           </span>
         </div>
-        <div class=" flex justify-around h-15 border-b-2 ">
-          <span class="self-center">Programming & Tech</span>
-          <span class="self-center">Graphic design</span>
-          <span class="self-center">AI Service</span>
-          <span class="self-center">Video & Animation</span>
-          <span class="self-center">Indemand</span>
+        <div className="flex flex-col md:flex-row justify-around gap-2 h-12 border-b-1 border-t-1 text-sm border-[#13e78820]">
+          <span className="self-center">Programming & Tech</span>
+          <span className="self-center">Graphic design</span>
+          <span className="self-center">AI Service</span>
+          <span className="self-center">Video & Animation</span>
+          <span className="self-center">Indemand</span>
         </div>
       </nav>
 
       <main>
-        <div class="flex flex-col justify-center my-15 mb-8">
-          <span class=" text-4xl text-center leading-15 p-10">
+        <div className="flex flex-col justify-center my-15 mb-8 text-center">
+          <span className="text-5xl font-semibold leading-15 p-10 ">
             "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
             Best Talent"
           </span>
-          <span class="text-center leading-7">
+          <span className="leading-7 text-lg tracking-wider">
             Our Ai will help you generate a detailed Spec-sheet and find
-            freelancer who meet your needs with live <br/> project tracking throught
-            the process Get a Service Get a Freelancer
+            freelancer who meet your needs with live <br /> project tracking
+            through the process
           </span>
-          <div class="flex flex-row p-16 justify-center gap-16">
-            <button>Get a Service</button>
-            <button>Get a Freelancer</button>
+          <div className="flex flex-col md:flex-row p-16 justify-center gap-5  text-sm  font-medium">
+            <button className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-7 py-3 rounded-lg">
+              Get a Service
+            </button>
+            <button className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-4 py-3 rounded-lg">
+              Get a Freelancer
+            </button>
           </div>
         </div>
-        <GetServiceCard/>
-        <div class="flex justify-between client-name-container my-10">
+        <GetServiceCard />
+        {/* <div class="flex justify-between client-name-container my-10">
           <a href="#">client name</a>
           <a href="#">client name</a>
           <a href="#">client name</a>
@@ -50,11 +60,12 @@ const Header = () => {
           <a href="#">client name</a>
           <a href="#">client name</a>
           <a href="#">client name</a>
-        </div>
-        <StatCard/>
-        <AppleCardsCarousel/>
-        
+        </div> */}
+        <StatCard />
+        <HeroScroll />
       </main>
+      <Faq />
+      <Footer />
     </div>
   );
 };
