@@ -22,7 +22,7 @@ const Faq = () => {
             }}
           />
         </div>
-        <div className=" lg:h-[50%] absolute h-30 w:30  lg:w-[30%] lg:top-90 top-90 lg:-right-40 -right-60 z-10">
+        <div className=" lg:h-[50%] absolute h-20 w:20  lg:w-[30%] lg:top-90 top-90 lg:-right-60 -right-60 z-10">
           <div
             className="absolute w-100 h-100 bg-[#83FF9780] bg-blend-lighten top-60 opacity-25 -right-30 rounded-full pointer-events-none"
             style={{
@@ -37,7 +37,7 @@ const Faq = () => {
             <h2 className="text-base font-bold leading-tight text-green sm:text-xs lg:text-lg pb-3">
               FAQ
             </h2>
-            <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-bold leading-tight text-[#37f9a2] sm:text-4xl lg:text-5xl">
               Frequently Asked Questions
             </h2>
             <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-slate-300">
@@ -254,7 +254,7 @@ const Faq = () => {
             <a
               href="#"
               title=""
-              className="font-medium text-green transition-all duration-200 hover:underline"
+              className="font-medium text-green transition-all text-[#37f9a2] duration-200 hover:underline"
             >
               Contact our support
             </a>
