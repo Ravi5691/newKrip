@@ -5,6 +5,7 @@ import { HeroScroll } from "./HeroScroll";
 import Faq from "./faq";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
+import BentoGrid from "./bentobox";
 
 const Header = () => {
   return (
@@ -69,6 +70,7 @@ const Header = () => {
       </main>
       <Faq />
       <Footer />
+      {/* <BentoGrid/> */}
     </div>
   );
 };
