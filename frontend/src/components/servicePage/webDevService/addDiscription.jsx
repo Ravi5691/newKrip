@@ -13,7 +13,7 @@ const AboutProject = () => {
     if (title) {
       setTemplateTitle(title); // Set the title to state
     }
-  }, []); 
+  }, []);
 
   const handleNext = () => {
     // Store the description in localStorage
@@ -48,22 +48,36 @@ const AboutProject = () => {
       />
 
       <main className="lg:mt-15 mt-5 lg:px-0 px-5 text-center flex flex-col justify-center w-screen">
-        <h2 className="lg:text-4xl text-2xl font-semibold text-green-300">About Project</h2>
-        <p className="mt-2 lg:text-lg text-sm text-gray-300">Provide a brief description of your project and suited tags</p>
+        <h2 className="lg:text-4xl text-2xl font-semibold text-green-300">
+          About Project
+        </h2>
+        <p className="mt-2 lg:text-lg text-sm text-gray-300">
+          Provide a brief description of your project and suited tags
+        </p>
 
         <div className="mt-15 flex lg:justify-around justify-between lg:px-0 px-3">
           <div>
-            <h3 className="lg:text-xl text-base text-green-300 text-left">Service</h3>
-            <p className="text-gray-300 pt-2 lg:text-base text-sm">Web Development</p>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Service
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              Web Development
+            </p>
           </div>
           <div>
-            <h3 className="lg:text-xl text-base text-green-300 text-left">Template</h3>
-            <p className="text-gray-300 pt-2 lg:text-base text-sm">{templateTitle}</p>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Template
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              {templateTitle}
+            </p>
           </div>
         </div>
 
         <div className="mt-10 text-left w-full flex flex-col justify-center lg:place-items-center lg:px-0 px-3">
-          <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-2 lg:w-[58%] w-full text-left">Description of Project</h3>
+          <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-2 lg:w-[58%] w-full text-left">
+            Description of Project
+          </h3>
           <div className="bg-white text-black p-2 w-[58%] rounded-xl shadow-2xl">
             <textarea
               value={description}
@@ -76,10 +90,16 @@ const AboutProject = () => {
       </main>
 
       <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-15 pb-10 lg:px-0 px-5">
-        <button onClick={() => navigate(-1)} className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg">
+        <button
+          onClick={() => navigate(-1)}
+          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
+        >
           Go Back
         </button>
-        <button onClick={handleNext} className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg">
+        <button
+          onClick={handleNext}
+          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
+        >
           Next
         </button>
       </div>
