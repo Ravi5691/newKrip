@@ -1,17 +1,25 @@
-import { useState } from 'react'
-// import { HeroScroll } from './components/HeroScroll'
-// import { AppleCardsCarousel } from './components/AppleCardCarousel'
-import Header from './components/header'
-import Home from './components/servicePage/selectService'
+
+import ConfirmationPage from './components/servicePage/ConfirmationPage';
+import SelectService from './components/servicePage/selectService';
+import AboutProject from './components/servicePage/webDevService/addDiscription';
+import AddTags from './components/servicePage/webDevService/chooseTag';
+import WebTemplate from './components/servicePage/webDevService/chooseTemplate'; // Adjust the import based on your file structure
+import { BrowserRouter , Routes , Route } from 'react-router-dom';
 
 function App() {
-
   return (
-   <div>
-    {/* <Header/> */}
-    <Home/>
-   </div>
-  )
+    <BrowserRouter>
+    <Routes>
+      {/* <Route path="/" element={<Home />} />
+      <Route path="/service/:id" element={<ServiceDetail />} /> {/* Example route for service details */}
+      <Route path ="/" element={<SelectService/>}/>
+      <Route path="/web-template" element={<WebTemplate/>}/>
+      <Route path="/adddescription" element={<AboutProject/>}/>
+      <Route path="/addTags" element={<AddTags/>}/>
+      <Route path="/confirmationPage" element={<ConfirmationPage/>}/>
+    </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
