@@ -1,17 +1,21 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom"
 
 const services = [
-  { id: 1, title: "Video Editing", img: "/krip png/1.png" },
-  { id: 2, title: "Graphic Design", img: "/krip png/2.png" },
-  { id: 3, title: "Web Development", img: "/krip png/3.png" },
-  { id: 4, title: "AI Automation", img: "/krip png/4.png" },
-  { id: 5, title: "Content Creation", img: "/krip png/5.png" },
-  { id: 6, title: "S/W Maintenance", img: "/krip png/6.png" },
+  { id: 1, title: "Video Editing", img: "/krip png/1.png", link: "/video-editing" },
+  { id: 2, title: "Graphic Design", img: "/krip png/2.png", link: "/graphic-design" },
+  { id: 3, title: "Web Development", img: "/krip png/3.png", link: "/web-template",},
+  { id: 4, title: "AI Automation", img: "/krip png/4.png", link: "/ai-automation" },
+  { id: 5, title: "Content Creation", img: "/krip png/5.png", link: "/content-creation" },
+  { id: 6, title: "S/W Maintenance", img: "/krip png/6.png", link: "/s-w-maintenance" },
 ];
 
-export default function Home() {
-  const [selected, setSelected] = useState(null);
 
+export default function SelectService() {
+  const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen bg-[#060E0E]  text-white relative">
       <nav>
@@ -47,20 +51,20 @@ export default function Home() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10 px-20 mx-60 z-20 relative ">
         {services.map((service) => (
-          <div
-            key={service.id}
-            className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all"
-            onClick={() => setSelected(service)}
-          >
-            <img src={service.img} alt={service.title} className="w-full h-40 object-contain shadow-xl rounded-lg"/>
-            <h3 className="text-center mt-2">{service.title}</h3>
-          </div>
+          <Link to={service.link} key={service.id}>
+            <div
+              className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all"
+            >
+              <img src={service.img} alt={service.title} className="w-full h-40 object-contain shadow-xl rounded-lg"/>
+              <h3 className="text-center mt-2">{service.title}</h3>
+            </div>
+          </Link>
         ))}
       </div>
 
-      {selected && (
+      {/* {selected && (
         <div
-          className="fixed inset-0 bg-[#00000077] flex justify-center items-center z-20"
+          className="absolute bg-[#00000077] flex justify-center items-center z-20"
           onClick={() => setSelected(null)}
         >
           <div className="p-4 bg-white rounded-lg max-w-lg">
@@ -68,7 +72,7 @@ export default function Home() {
             <h2 className="text-center text-xl font-bold mt-2">{selected.title}</h2>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
