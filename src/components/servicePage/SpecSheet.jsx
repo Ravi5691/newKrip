@@ -57,66 +57,73 @@ const SpecSheet = () => {
               <h1 className="lg:text-xl text-lg pb-2">Order Date : </h1>
               <h1 className="lg:text-xl text-lg pb-2">Invoice Details : </h1>
               <div className="my-7 border-1 border-[#83ff9884] p-5 rounded-2xl">
-              <h2 className="text-xl font-serif text-center font-semibold mb-4">Checklist</h2>
-              <div className="space-y-2">
-                {[
-                  { label: "Trimming/Sequencing", value: "100%" },
-                  { label: "Green screen", value: "50%" },
-                  { label: "VFX", value: "0%" },
-                  { label: "Color Grading", value: "0%" },
-                  { label: "Sound Editing", value: "0%" },
-                  { label: "Subtitles", value: "0%" },
-                ].map((item, index) => (
-                  <div key={index} className="flex justify-between">
-                    <span>{item.label}</span>
-                    <span>{item.value}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 border-t border-gray-600 pt-2 flex justify-between font-semibold">
-                <span>Total</span>
-                <span>25%</span>
-              </div>
+                <h2 className="text-xl font-serif text-center font-semibold mb-4">
+                  Checklist
+                </h2>
+                <div className="space-y-2">
+                  {[
+                    { label: "Trimming/Sequencing", value: "100%" },
+                    { label: "Green screen", value: "50%" },
+                    { label: "VFX", value: "0%" },
+                    { label: "Color Grading", value: "0%" },
+                    { label: "Sound Editing", value: "0%" },
+                    { label: "Subtitles", value: "0%" },
+                  ].map((item, index) => (
+                    <div key={index} className="flex justify-between">
+                      <span>{item.label}</span>
+                      <span>{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 border-t border-gray-600 pt-2 flex justify-between font-semibold">
+                  <span>Total</span>
+                  <span>25%</span>
+                </div>
               </div>
             </div>
 
             {/* Spec Sheet Section */}
             <div className="bg-[#102525] p-10 rounded-lg shadow-lg text-white">
-              <h2 className="text-xl text-center font-serif tracking-widest font-semibold mb-4">SPECSHEET</h2>
-              <p className="text-sm text-center mb-7">This sheet has all the scope of work listed below based on <br /> the questions you answered previously. </p>
+              <h2 className="text-xl text-center font-serif tracking-widest font-semibold mb-4">
+                SPECSHEET
+              </h2>
+              <p className="text-sm text-center mb-7">
+                This sheet has all the scope of work listed below based on{" "}
+                <br /> the questions you answered previously.{" "}
+              </p>
               <div className="text-sm mb-7">
-                <h3 className="text-lg font-serif font-medium mb-2">Scope of Work</h3>
+                <h3 className="text-lg font-serif font-medium mb-2">
+                  Scope of Work
+                </h3>
                 {/* <p>Prompt: Video editor for Instagram</p>
                 <p>Type of video: Infotainment reel</p>
                 <p>Subtype of video: Velocity edit</p>
                 <p>Frequency of video: Recurring videos</p>
                 <p>Length of video: 30-60 seconds</p> */}
-                <p className="text-sm"> Template : { templateTitle }</p>
+                <p className="text-sm"> Template : {templateTitle}</p>
               </div>
 
               <div className="mt-4 text-sm mb-7">
                 <h3 className="font-medium mb-2">Descriptive</h3>
-                <p>
-                  {description}
-                </p>
+                <p>{description}</p>
               </div>
 
               <div className="mb-7">
                 <h3 className="font-medium mb-2">Tags</h3>
                 <div className="text-black p-2 w-full sm:w-[80%] md:w-[70%] lg:w-[58%] rounded-xl shadow-2xl flex flex-wrap">
-              {tags.length > 0 ? (
-                tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="text-sm bg-gray-700 text-white px-2 py-1 rounded-lg mr-2 mb-2"
-                  >
-                    {tag}
-                  </span>
-                ))
-              ) : (
-                <p className="text-gray-500">No tags added yet.</p>
-              )}
-            </div>
+                  {tags.length > 0 ? (
+                    tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="text-sm bg-gray-700 text-white px-2 py-1 rounded-lg mr-2 mb-2"
+                      >
+                        {tag}
+                      </span>
+                    ))
+                  ) : (
+                    <p className="text-gray-500">No tags added yet.</p>
+                  )}
+                </div>
               </div>
 
               <div className="mt-4 text-sm">

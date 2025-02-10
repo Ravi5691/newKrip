@@ -22,11 +22,11 @@ const ConfirmationPage = () => {
     setTags(savedTags);
   }, []);
 
-    const handleNext = () => {
-      // Store the tags in localStorage
-      localStorage.setItem("projectTags", JSON.stringify(tags));
-      navigate("/specsheet");
-    };
+  const handleNext = () => {
+    // Store the tags in localStorage
+    localStorage.setItem("projectTags", JSON.stringify(tags));
+    navigate("/specsheet");
+  };
 
   const handleBack = () => {
     navigate(-1);
