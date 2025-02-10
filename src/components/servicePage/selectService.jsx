@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom"
 
 const services = [
-  { id: 1, title: "Video Editing", img: "/krip png/1.png", link: "/video-editing" },
-  { id: 2, title: "Graphic Design", img: "/krip png/2.png", link: "/graphic-design" },
+  { id: 1, title: "Video Editing", img: "/krip png/1.png", link: "/adddescription" },
+  { id: 2, title: "Graphic Design", img: "/krip png/2.png", link: "/adddescription" },
   { id: 3, title: "Web Development", img: "/krip png/3.png", link: "/web-template",},
-  { id: 4, title: "AI Automation", img: "/krip png/4.png", link: "/ai-automation" },
-  { id: 5, title: "Content Creation", img: "/krip png/5.png", link: "/content-creation" },
-  { id: 6, title: "S/W Maintenance", img: "/krip png/6.png", link: "/s-w-maintenance" },
+  { id: 4, title: "AI Automation", img: "/krip png/4.png", link: "/adddescription" },
+  { id: 5, title: "Content Creation", img: "/krip png/5.png", link: "/adddescription" },
+  { id: 6, title: "S/W Maintenance", img: "/krip png/6.png", link: "/adddescription" },
 ];
 
 
