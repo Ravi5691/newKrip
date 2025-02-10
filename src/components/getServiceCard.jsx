@@ -1,19 +1,47 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const services = [
+  {
+    id: 1,
+    title: "Video Editing",
+    img: "/krip png/1.png",
+    link: "/adddescription",
+  },
+  {
+    id: 2,
+    title: "Graphic Design",
+    img: "/krip png/2.png",
+    link: "/adddescription",
+  },
+  {
+    id: 3,
+    title: "Web Development",
+    img: "/krip png/3.png",
+    link: "/web-template",
+  },
+  {
+    id: 4,
+    title: "AI Automation",
+    img: "/krip png/4.png",
+    link: "/adddescription",
+  },
+  {
+    id: 5,
+    title: "Content Creation",
+    img: "/krip png/5.png",
+    link: "/adddescription",
+  },
+  {
+    id: 6,
+    title: "S/W Maintenance",
+    img: "/krip png/6.png",
+    link: "/adddescription",
+  },
+];
 
 const GetServiceCard = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState("");
-
-  const openModal = (content) => {
-    setModalContent(content);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalContent("");
-  };
-
   return (
     <div className="flex items-center w-screen justify-center mt-20 mb-40 relative">
       <div
@@ -32,16 +60,29 @@ const GetServiceCard = () => {
         <div className="flex-1 bg-[#8de29c1e] border-2 border-r-1 border-[#37f9a270] py-13 px-20 rounded-xl flex flex-col z-60">
           <h2 className="text-3xl font-bold mb-2 text-center">Get A Service</h2>
           <p className="text-sm text-gray-200 mb-6 text-center">Subtext</p>
-          <div className="grid grid-cols-3 gap-5">
+          {/* <div className="grid grid-cols-3 gap-5">
             {Array.from({ length: 6 }).map((_, index) => (
               <div
                 key={index}
-                className="bg-white h-40 rounded-lg flex items-center justify-center cursor-pointer"
-                onClick={() => openModal(`Service ${index + 1} details`)}
+                className="bg-white h-40 rounded-lg flex items-center justify-center cursor-pointer hover:scale-105"
               >
                 {/* Add Service Icon or Text */}
-                <span className="text-[#08482bf9]">Service {index + 1}</span>
+          {/* <span className="text-[#08482bf9]">Service {index + 1}</span>
               </div>
+            ))}
+          </div> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10 z-20 relative ">
+            {services.map((service) => (
+              <Link to={service.link} key={service.id}>
+                <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
+                  <img
+                    src={service.img}
+                    alt={service.title}
+                    className="w-full h-20 object-contain shadow-xl rounded-lg"
+                  />
+                  <h3 className="text-center mt-2">{service.title}</h3>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -57,22 +98,6 @@ const GetServiceCard = () => {
             />
           </div>
         </div>
-
-        {/* Modal */}
-        {isModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center  bg-[#000000a4] backdrop-blur-[5px] z-70">
-            <div className="bg-white p-5 rounded-lg shadow-lg">
-              <h2 className="text-xl font-bold mb-2">Service Details</h2>
-              <p>{modalContent}</p>
-              <button
-                onClick={closeModal}
-                className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

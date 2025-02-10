@@ -1,25 +1,54 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const services = [
-  { id: 1, title: "Video Editing", img: "/krip png/1.png", link: "/adddescription" },
-  { id: 2, title: "Graphic Design", img: "/krip png/2.png", link: "/adddescription" },
-  { id: 3, title: "Web Development", img: "/krip png/3.png", link: "/web-template",},
-  { id: 4, title: "AI Automation", img: "/krip png/4.png", link: "/adddescription" },
-  { id: 5, title: "Content Creation", img: "/krip png/5.png", link: "/adddescription" },
-  { id: 6, title: "S/W Maintenance", img: "/krip png/6.png", link: "/adddescription" },
+  {
+    id: 1,
+    title: "Video Editing",
+    img: "/krip png/1.png",
+    link: "/adddescription",
+  },
+  {
+    id: 2,
+    title: "Graphic Design",
+    img: "/krip png/2.png",
+    link: "/adddescription",
+  },
+  {
+    id: 3,
+    title: "Web Development",
+    img: "/krip png/3.png",
+    link: "/web-template",
+  },
+  {
+    id: 4,
+    title: "AI Automation",
+    img: "/krip png/4.png",
+    link: "/adddescription",
+  },
+  {
+    id: 5,
+    title: "Content Creation",
+    img: "/krip png/5.png",
+    link: "/adddescription",
+  },
+  {
+    id: 6,
+    title: "S/W Maintenance",
+    img: "/krip png/6.png",
+    link: "/adddescription",
+  },
 ];
-
 
 export default function SelectService() {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
-  
+
   return (
     <div className="min-h-screen bg-[#060E0E]  text-white relative">
       <nav>
-      <div className="flex flex-col md:flex-row justify-between items-center px-4 md:pr-18 md:px-24 h-20">
+        <div className="flex flex-col md:flex-row justify-between items-center px-4 md:pr-18 md:px-24 h-20">
           <button className="cursor-pointer">
             <img src="logo.png" alt="" className="h-8 w-auto" />
           </button>
@@ -43,19 +72,24 @@ export default function SelectService() {
       />
 
       <div className="text-center mt-15">
-        <h2 className="text-4xl font-semibold  text-green-300 mb-4">Select a Service</h2>
+        <h2 className="text-4xl font-semibold  text-green-300 mb-4">
+          Select a Service
+        </h2>
         <p className="text-gray-400 mt-2">
-        Choose the service that best fits your needs to get started with  <br/> your project.
+          Choose the service that best fits your needs to get started with{" "}
+          <br /> your project.
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10 px-20 mx-60 z-20 relative ">
         {services.map((service) => (
           <Link to={service.link} key={service.id}>
-            <div
-              className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all"
-            >
-              <img src={service.img} alt={service.title} className="w-full h-40 object-contain shadow-xl rounded-lg"/>
+            <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
+              <img
+                src={service.img}
+                alt={service.title}
+                className="w-full h-40 object-contain shadow-xl rounded-lg"
+              />
               <h3 className="text-center mt-2">{service.title}</h3>
             </div>
           </Link>
