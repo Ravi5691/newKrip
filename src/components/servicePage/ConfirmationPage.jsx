@@ -92,7 +92,7 @@ const ConfirmationPage = () => {
             <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-2 lg:w-[58%] w-full text-left">
               Description of Project
             </h3>
-            <div className=" text-white lg:text-base text-sm p-2 w-[58%] rounded-xl shadow-2xl">
+            <div className="text-white lg:text-base text-sm p-2 text-left lg:w-[58%] text-wrap max-h-[300px] break-words">
               {description}
             </div>
           </div>
@@ -101,7 +101,7 @@ const ConfirmationPage = () => {
             <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-3 w-full sm:w-[80%] md:w-[70%] lg:w-[58%] text-left">
               Tags
             </h3>
-            <div className="text-black p-2 w-full sm:w-[80%] md:w-[70%] lg:w-[58%] rounded-xl shadow-2xl flex flex-wrap">
+            <div className="text-black p-2 w-full sm:w-[80%] md:w-[70%] lg:w-[58%] flex flex-wrap">
               {tags.length > 0 ? (
                 tags.map((tag, index) => (
                   <span
@@ -118,7 +118,7 @@ const ConfirmationPage = () => {
           </div>
         </main>
 
-        <div className="flex flex-col md:flex-row justify-center gap-7  text-sm  font-medium mt-15 pb-10 lg:px-0 px-5">
+        <div className="flex flex-col md:flex-row justify-center gap-7  text-sm  font-medium lg:mt-15 mt-5 pb-10 lg:px-0 px-5">
           <button
             onClick={() => navigate(-1)}
             className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"

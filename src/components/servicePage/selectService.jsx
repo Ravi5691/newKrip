@@ -48,9 +48,9 @@ export default function SelectService() {
   return (
     <div className="min-h-screen bg-[#060E0E]  text-white relative">
       <nav>
-        <div className="flex flex-col md:flex-row justify-between items-center px-4 md:pr-18 md:px-24 h-20">
+        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15">
           <button className="cursor-pointer">
-            <img src="logo.png" alt="" className="h-8 w-auto" />
+            <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
           </button>
           <span className="flex flex-col md:flex-row justify-around w-full md:w-auto gap-3">
             <button className="mx-2 md:mx-6 hidden md:block">Home</button>
@@ -71,26 +71,28 @@ export default function SelectService() {
         }}
       />
 
-      <div className="text-center mt-15">
-        <h2 className="text-4xl font-semibold  text-green-300 mb-4">
+      <div className="text-center lg:mt-15 mt-5">
+        <h2 className="lg:text-4xl text-2xl font-semibold  text-green-300 mb-4">
           Select a Service
         </h2>
-        <p className="text-gray-400 mt-2">
-          Choose the service that best fits your needs to get started with{" "}
-          <br /> your project.
+        <p className="text-gray-400 lg:text-base text-sm mt-2 lg:px-0 px-5">
+          Choose the service that best fits your needs to get started with your
+          project.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10 px-20 mx-60 z-20 relative ">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10 lg:px-20 lg:mx-60 px-5 z-20 relative ">
         {services.map((service) => (
           <Link to={service.link} key={service.id}>
             <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
               <img
                 src={service.img}
                 alt={service.title}
-                className="w-full h-40 object-contain shadow-xl rounded-lg"
+                className="w-full lg:h-40 h-20 object-contain shadow-xl rounded-lg"
               />
-              <h3 className="text-center mt-2">{service.title}</h3>
+              <h3 className="text-center mt-2 lg:text-base text-sm">
+                {service.title}
+              </h3>
             </div>
           </Link>
         ))}
