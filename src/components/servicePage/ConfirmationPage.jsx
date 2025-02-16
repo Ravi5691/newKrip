@@ -34,7 +34,7 @@ const ConfirmationPage = () => {
 
   return (
     <div>
-      <div className="lg:min-h-screen  bg-[#060E0E]  text-white relative">
+      <div className="min-h-screen  bg-[#060E0E]  text-white relative">
         <nav>
           <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15">
             <button className="cursor-pointer">

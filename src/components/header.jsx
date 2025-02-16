@@ -6,6 +6,7 @@ import Faq from "./faq";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
 import BentoGrid from "./bentobox";
+import Bentobox from "./portfolioBentoBox";
 
 const Header = () => {
   return (
@@ -69,11 +70,11 @@ const Header = () => {
           <a href="#">client name</a>
         </div> */}
         <StatCard />
-        <HeroScroll />
+        {/* <HeroScroll /> */}
       </main>
+      <Bentobox/>
       <Faq />
       <Footer />
-      {/* <BentoGrid/> */}
     </div>
   );
 };

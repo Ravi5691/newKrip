@@ -24,7 +24,7 @@ const StatCard = () => {
             <span className="lg:text-sm text-[10px]">Views on the Video</span>
           </div>
           <div
-            className="absolute w-100 h-20 bg-[#83ff98a2] opacity-50 bg-blend-saturation top-40 rounded-full pointer-events-none"
+            className="absolute lg:w-100 lg:h-20 w-50 h-10 bg-[#83ff98a2] opacity-80 bg-blend-saturation lg:top-40 top-30 rounded-full pointer-events-none"
             style={{
               transform: "rotate(140deg)",
               filter: "blur(75px) ",
@@ -32,7 +32,7 @@ const StatCard = () => {
             }}
           />
           <div
-            className="absolute w-30 h-5 bg-[#83ff98a2] opacity-90 bg-blend-saturation top-45 left-40 rounded-full pointer-events-none"
+            className="absolute w-30 h-5 bg-[#83ff98a2] opacity-90 bg-blend-saturation lg:top-45 lg:left-40 top-30 left-10 rounded-full pointer-events-none"
             style={{
               transform: "rotate(140deg)",
               filter: "blur(75px) ",
