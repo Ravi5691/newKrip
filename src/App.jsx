@@ -4,7 +4,7 @@ import SelectService from "./components/servicePage/selectService";
 import SpecSheet from "./components/servicePage/SpecSheet";
 import AboutProject from "./components/servicePage/webDevService/addDiscription";
 import AddTags from "./components/servicePage/webDevService/chooseTag";
-import WebTemplate from "./components/servicePage/webDevService/chooseTemplate"; // Adjust the import based on your file structure
+import WebTemplate from "./components/servicePage/webDevService/webTemplate"; // Adjust the import based on your file structure
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
