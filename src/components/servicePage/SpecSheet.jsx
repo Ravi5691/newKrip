@@ -104,7 +104,7 @@ const SpecSheet = () => {
               </div>
 
               <div className="mt-4 text-sm mb-7">
-                <h3 className="font-medium mb-2">Descriptive</h3>
+                <h3 className="font-medium mb-2">Description</h3>
                 <p>{description}</p>
               </div>
 
