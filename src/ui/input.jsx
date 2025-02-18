@@ -1,3 +1,4 @@
+// Input component extends from shadcnui - https://ui.shadcn.com/docs/components/input
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
