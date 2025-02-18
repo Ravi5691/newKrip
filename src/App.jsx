@@ -6,6 +6,7 @@ import AboutProject from "./components/servicePage/webDevService/addDiscription"
 import AddTags from "./components/servicePage/webDevService/chooseTag";
 import WebTemplate from "./components/servicePage/webDevService/webTemplate"; // Adjust the import based on your file structure
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SignupFormDemo } from "./components/signupForm";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/addTags" element={<AddTags />} />
         <Route path="/confirmationPage" element={<ConfirmationPage />} />
         <Route path="/specsheet" element={<SpecSheet />} />
+        <Route path="/signup" element={<SignupFormDemo/>}/>
       </Routes>
     </BrowserRouter>
   );

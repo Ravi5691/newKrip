@@ -5,8 +5,8 @@ import { HeroScroll } from "./HeroScroll";
 import Faq from "./faq";
 import Footer from "./footer";
 import { Link } from "react-router-dom";
-import BentoGrid from "./bentobox";
 import Bentobox from "./portfolioBentoBox";
+import { SignupFormDemo } from "./signupForm";
 
 const Header = () => {
   return (
@@ -20,9 +20,11 @@ const Header = () => {
             <button className="mx-2 md:mx-6 hidden md:block">Home</button>
             <button className="mx-2 md:mx-6 hidden md:block">About Us</button>
             <button className="mx-2 md:mx-6 hidden md:block">Contact Us</button>
-            <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block">
-              Login
-            </button>
+            <Link to="/signup">
+              <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block">
+                Login
+              </button>
+            </Link>
           </span>
         </div>
         <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
@@ -37,11 +39,11 @@ const Header = () => {
       <main>
         <div className="flex flex-col justify-center lg:my-15 my-5 mb-8 text-center">
           <span className="lg:text-5xl text-2xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:block hidden ">
-            "AI That Plans Your Project, Estimates Costs, <br/> and Assigns the
+            "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
             Best Talent"
           </span>
           <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">
-          Find the best talent for your project
+            Find the best talent for your project
           </span>
           <span className="lg:leading-7 lg:text-lg text-sm lg:tracking-wider tracking-wide lg:px-0 px-4">
             Our Ai will help you generate a detailed Spec-sheet and find
@@ -72,7 +74,7 @@ const Header = () => {
         <StatCard />
         {/* <HeroScroll /> */}
       </main>
-      <Bentobox/>
+      <Bentobox />
       <Faq />
       <Footer />
     </div>
