@@ -2,11 +2,21 @@ import React from "react";
 
 const Bentobox = () => {
   return (
-    <div className="w-screen lg:h-screen h-80 flex flex-col lg:justify-center items-center my-30 p-2 lg:p-0 overflow-x-hidden">
-      <h1 className="text-[#37f9a2] text-lg md:text-4xl font-semibold lg:font-bold my-2 lg:my-10">
+    <div className="w-screen lg:h-screen h-80 flex flex-col lg:justify-center items-center my-30 p-2 lg:p-0 overflow-x-hidden relative">
+       <div className=" lg:h-[50%] absolute  z-10 lg:block hidden">
+          <div
+            className="absolute w-120 h-120 bg-[#83FF9780] bg-blend-lighten opacity-30 top-50 rounded-full pointer-events-none "
+            style={{
+              transform: "translate(-50%, -50%)",
+              filter: "blur(100px)",
+              zIndex: 50,
+            }}
+          />
+        </div>
+      <h1 className="text-[#37f9a2] text-lg md:text-4xl font-semibold lg:font-bold my-2 lg:my-10 z-20">
         PORTFOLIO
       </h1>
-      <div className="flex flex-row gap-1 md:gap-4 lg:gap-4 w-full md:w-[85%] lg:w-[68%] h-[90%] md:h-[90%] overflow-x-hidden p-5">
+      <div className="flex flex-row gap-1 md:gap-4 lg:gap-4 w-full md:w-[85%] lg:w-[68%] h-[90%] md:h-[90%] overflow-x-hidden p-5 z-20">
         <div className="w-3/5 md:w-4/6 flex flex-col gap-1 md:gap-4 h-full">
           <div className="w-full h-1/2 flex flex-row gap-1 md:gap-4">
             <div className="w-1/2 h-full rounded-[8px] lg:rounded-2xl overflow-hidden ">
