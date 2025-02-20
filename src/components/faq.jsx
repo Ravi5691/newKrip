@@ -12,9 +12,9 @@ const Faq = () => {
     <div>
       <section className=" w-screen h-screen py-20 relative">
         {/* Blur component */}
-        <div className=" lg:h-[50%] absolute h-30 w:30  lg:w-[30%] lg:top-10 top-90 lg:-left-40 -right-60 z-10">
+        <div className=" lg:h-[50%] absolute h-30 w:30  lg:w-[30%] lg:top-10 top-90 lg:-left-40 -right-60 z-10 lg:block hidden">
           <div
-            className="absolute w-100 h-100 bg-[#83FF9780] bg-blend-lighten top-60 opacity-25 -right-30 rounded-full pointer-events-none"
+            className="absolute w-100 h-100 bg-[#83FF9780] bg-blend-lighten top-60 opacity-25 -right-30 rounded-full pointer-events-none "
             style={{
               transform: "translate(-50%, -50%)",
               filter: "blur(100px)",
@@ -22,7 +22,7 @@ const Faq = () => {
             }}
           />
         </div>
-        <div className=" lg:h-[50%] absolute h-20 w:20  lg:w-[30%] lg:top-90 top-90 lg:-right-60 -right-60 z-10">
+        <div className=" lg:h-[50%] absolute h-20 w:20  lg:w-[30%] lg:top-90 top-90 lg:-right-60 -right-60 z-10 lg:block hidden">
           <div
             className="absolute w-100 h-100 bg-[#83FF9780] bg-blend-lighten top-60 opacity-25 -right-30 rounded-full pointer-events-none"
             style={{
