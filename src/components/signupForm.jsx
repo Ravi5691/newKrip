@@ -15,8 +15,9 @@ export function SignupFormDemo() {
     console.log("Form submitted");
   };
   return (
-    <div className="lg:h-screen p-10 bg-[url('/signup.png')] bg-center">
-      <div className="max-w-md w-full mx-auto rounded-xl md:rounded-2xl p-4 md:p-8 shadow-input backdrop-blur-lg bg-[#000000e9]">
+    <div className="lg:h-screen  bg-[url('/signUp.png')] bg-cover bg-no-repeat bg-top">
+      <div className="bg-[#11272793] h-full lg:p-20 p-5">
+      <div className="max-w-md w-full mx-auto rounded-xl md:rounded-2xl p-4 md:p-8 shadow-input backdrop-blur-lg bg-[#0000007b] border-2 border-[#1a3b3b]">
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
           Welcome to Krip
         </h2>
@@ -94,6 +95,7 @@ export function SignupFormDemo() {
           </button> */}
           </div>
         </form>
+      </div>
       </div>
     </div>
   );

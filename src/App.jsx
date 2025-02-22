@@ -13,12 +13,14 @@ import AssignedProjects from "./components/dashbaord/AssignedProjects";
 import TaskManagement from "./components/dashbaord/TaskManagement";
 import BillingInvoice from "./components/dashbaord/BillingInvoice";
 import Support from "./components/dashbaord/Support";
+import AboutUs from "./components/aboutUs";
+import ContactUs from "./components/contactUs";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Header />} />
+        <Route path="/" element={<Header/>} />
         <Route path="/selectservice" element={<SelectService />} />
         <Route path="/web-template" element={<WebTemplate />} />
         <Route path="/adddescription" element={<AboutProject />} />
@@ -26,6 +28,8 @@ function App() {
         <Route path="/confirmationPage" element={<ConfirmationPage />} />
         <Route path="/specsheet" element={<SpecSheet />} />
         <Route path="/signup" element={<SignupFormDemo />} />
+        <Route path="/aboutus" element={<AboutUs/>}/>
+        <Route path="/contactus" element={<ContactUs/>}/>
 
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Navigate to="profile" replace />} />
