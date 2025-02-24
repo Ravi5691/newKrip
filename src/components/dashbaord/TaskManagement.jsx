@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const TaskManagement = () => {
-  const [tasks, setTasks] = useState({
-    todo: [{ name: "Task 1", deadline: "01 Dec 2024", status: "Pending" }],
-    inProgress: [{ name: "Task 2", deadline: "01 Dec 2024", status: "Ongoing" }],
-    completed: [{ name: "Task 3", deadline: "01 Dec 2024", status: "Done" }],
-  });
-
+  const [tasks, setTasks] = useState({ todo: [], inProgress: [], completed: [] });
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [newTask, setNewTask] = useState({ name: "", deadline: "", status: "Pending" });
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/tasks");
+        setTasks(response.data);
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchTasks();
+  }, []);
 
   const addTask = () => {
     setTasks({ ...tasks, todo: [...tasks.todo, newTask] });
@@ -31,25 +43,41 @@ const TaskManagement = () => {
       <div className="grid grid-cols-3 gap-6">
         {Object.entries(tasks).map(([status, taskList], index) => (
           <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-lg font-semibold mb-4 capitalize">{status.replace("todo", "To Do List").replace("inProgress", "In Progress").replace("completed", "Completed")}</h2>
-            {taskList.slice(0, 1).map((task, i) => (
-              <div key={i} className="p-1">
-                <div className="bg-black text-white px-4 py-1 rounded-3xl text-center mb-3">Project name</div>
-                <p className="mb-2">Task name</p>
-                <hr className="mb-4" />
-                <hr className="mb-2" />
-                <p className="text-sm flex justify-between">
-                  <span>Deadline</span> <span>{task.deadline}</span>
-                </p>
-                <p className="text-sm">Status</p>
-                <div className="w-full bg-gray-200 h-2 rounded overflow-hidden mb-2">
-                  <div className="bg-green-500 h-full" style={{ width: status === "completed" ? "100%" : status === "inProgress" ? "50%" : "10%" }}></div>
-                </div>
-                <p className="text-sm flex justify-between">
-                  <span>Attachments</span> <span className="text-green-500 cursor-pointer">View</span>
-                </p>
+            <h2 className="text-lg font-semibold mb-4 capitalize">
+              {status.replace("todo", "To Do List").replace("inProgress", "In Progress").replace("completed", "Completed")}
+            </h2>
+
+            {loading ? (
+              <div className="animate-pulse">
+                <div className="bg-gray-300 h-6 w-3/4 rounded mb-2"></div>
+                <div className="bg-gray-300 h-4 w-full rounded mb-2"></div>
+                <div className="bg-gray-300 h-4 w-1/2 rounded mb-4"></div>
               </div>
-            ))}
+            ) : (
+              taskList.slice(0, 1).map((task, i) => (
+                <div key={i} className="p-1">
+                  <div className="bg-black text-white px-4 py-1 rounded-3xl text-center mb-3">
+                    {task.name}
+                  </div>
+                  <p className="mb-2">{task.name}</p>
+                  <hr className="mb-4" />
+                  <hr className="mb-2" />
+                  <p className="text-sm flex justify-between">
+                    <span>Deadline</span> <span>{task.deadline}</span>
+                  </p>
+                  <p className="text-sm">Status</p>
+                  <div className="w-full bg-gray-200 h-2 rounded overflow-hidden mb-2">
+                    <div className={`bg-green-500 h-full`} 
+                      style={{ width: status === "completed" ? "100%" : status === "inProgress" ? "50%" : "10%" }}>
+                    </div>
+                  </div>
+                  <p className="text-sm flex justify-between">
+                    <span>Attachments</span> 
+                    <span className="text-green-500 cursor-pointer">View</span>
+                  </p>
+                </div>
+              ))
+            )}
           </div>
         ))}
       </div>
