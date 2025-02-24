@@ -163,7 +163,7 @@ const Header = () => {
             "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
             Best Talent"
           </span> */}
-          <div className="my-10 mb-5">
+          <div className="my-10 mb-5 lg:block hidden">
            <TypewriterEffectSmoothDemo/>
           </div>
           <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">

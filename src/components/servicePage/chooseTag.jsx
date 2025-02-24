@@ -1,7 +1,55 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import TagSelector from "./tag";
+import { useNavigate, Link } from "react-router-dom";
 
-export default function AboutUs() {
+const AddTags = () => {
+  const [templateTitle, setTemplateTitle] = useState("");
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState("");
+  const navigate = useNavigate();
+
+  const suggestedTags = [
+    "UI/UX Design",
+    "React.js",
+    "Responsive Design",
+    "Next.js",
+    "SaaS Development",
+  ];
+
+  useEffect(() => {
+    const title = localStorage.getItem("selectedTemplateTitle");
+    if (title) {
+      setTemplateTitle(title);
+    }
+
+    const savedTags = JSON.parse(localStorage.getItem("projectTags")) || [];
+    setTags(savedTags);
+  }, []);
+
+  const handleAddTag = (tag) => {
+    if (tag && !tags.includes(tag)) {
+      const updatedTags = [...tags, tag];
+      setTags(updatedTags);
+      localStorage.setItem("projectTags", JSON.stringify(updatedTags));
+    }
+    setNewTag("");
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    const updatedTags = tags.filter((tag) => tag !== tagToRemove);
+    setTags(updatedTags);
+    localStorage.setItem("projectTags", JSON.stringify(updatedTags));
+  };
+
+  const handleNext = () => {
+    localStorage.setItem("projectTags", JSON.stringify(tags));
+    navigate("/confirmationPage");
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -11,10 +59,11 @@ export default function AboutUs() {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
+
   return (
-    <div className="min-h-screen bg-[#060E0E]">
+    <div className="min-h-screen bg-[#060E0E] text-white relative">
       <nav>
-        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative text-white">
+        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
           <button className="cursor-pointer">
             <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
           </button>
@@ -138,7 +187,7 @@ export default function AboutUs() {
             </Link>
           </span>
         </div>
-        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820] text-white">
+        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
           <span className="self-center">Programming & Tech</span>
           <span className="self-center">Graphic design</span>
           <span className="self-center">AI Service</span>
@@ -147,47 +196,85 @@ export default function AboutUs() {
         </div>
       </nav>
 
-      <div className="bg-neutral-100 lg:h-120 h-60 lg:px-25 px-4 text-left flex flex-col justify-center lg:gap-5 gap-2">
-        <h1 className="lg:text-5xl text-xl font-bold">About Us</h1>
-        <p className="lg:mt-4 lg:text-2xl text-sm font-semibold text-gray-700">
-          To bridge the gap between businesses and talented professionals by
-          fostering an <br className="lg:block hidden" />
-          efficient and trustworthy platform for project collaboration.
+      <div
+        className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
+        style={{ filter: "blur(100px)", zIndex: 10 }}
+      />
+
+      <main className="lg:mt-15 mt-5 lg:px-0 px-5 text-center flex flex-col justify-center w-screen">
+        <h2 className="lg:text-4xl text-2xl font-semibold text-green-300">
+          About Project
+        </h2>
+        <p className="mt-2 lg:text-lg text-sm text-gray-300">
+          Provide a brief description of your project and suited tags
         </p>
-      </div>
 
-      {/* Vision & Mission */}
-      <div className="bg-gradient-to-t from-[#83ff9815] to-[#060E0E] bg-blend-lighten bottom-0 pointer-events-none text-white py-10 px-5 lg:px-25 grid md:grid-cols-2 gap-8">
-        <div className="lg:mr-20">
-          <h2 className="lg:text-xl text-base font-bold">Vision</h2>
-          <p className="mt-2 lg:text-base text-[12px] text-gray-300">
-            To become the world's leading AI-powered platform, empowering
-            businesses with innovative tools for outsourcing, workflow
-            optimization, and talent sourcing.
-          </p>
+        <div className="mt-15 flex lg:justify-around justify-between lg:px-0 px-3">
+          <div>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Service
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              {localStorage.getItem("serviceName")}
+            </p>
+          </div>
+          <div>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Template
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              {templateTitle}
+            </p>
+          </div>
         </div>
-        <div className="lg:ml-20">
-          <h2 className="lg:text-xl text-base font-bold">Mission</h2>
-          <p className="mt-2 lg:text-base text-[12px] text-gray-300">
-            To deliver exceptional value through cutting-edge AI technology and
-            a controlled freelance environment that ensures timely delivery and
-            quality results for businesses of all sizes.
-          </p>
-        </div>
-        <div className="col-span-2 mt-10 lg:text-base text-[12px] text-gray-400 text-left">
-          At Krip.ai, we believe in harnessing the power of artificial
-          intelligence to transform the way businesses operate. Our platform is
-          designed to provide businesses with access to quality freelancers and
-          cutting-edge project management tools, ensuring seamless execution of
-          tasks. With a focus on innovation, transparency, and efficiency, we
-          are committed to delivering unparalleled results for our clients.
-        </div>
-      </div>
 
-      <div className="text-white flex justify-center ">
-      <span>Features</span>
-      <div></div>
+        <div className="mt-10 text-left w-full flex flex-col justify-center lg:place-items-center lg:px-0 px-3">
+          <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-2 lg:w-[58%] w-full text-left">
+            Select the Tags
+          </h3>
+
+          <div className="p-2 w-[58%]">
+            <TagSelector
+              tags={tags}
+              onAddTag={handleAddTag}
+              onRemoveTag={handleRemoveTag}
+            />
+          </div>
+
+          {/* Suggested Tags Section */}
+          <div className="p-2 w-[58%] mt-4">
+            <h4 className="text-green-300 mb-2">Suggested Tags</h4>
+            <div className="flex flex-wrap gap-2">
+              {suggestedTags.map((tag, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAddTag(tag)}
+                  className="text-sm bg-gray-700 text-white px-3 py-1 rounded-lg cursor-pointer hover:bg-green-500"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-15 pb-10 lg:px-0 px-5">
+        <button
+          onClick={handleBack}
+          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
+        >
+          Go Back
+        </button>
+        <button
+          onClick={handleNext}
+          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
+        >
+          Next
+        </button>
       </div>
     </div>
   );
-}
+};
+
+export default AddTags;

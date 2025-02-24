@@ -1,7 +1,30 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-export default function AboutUs() {
+const services = [
+  { id: 1, title: "Landing Page", img: "/krip png/1.png" },
+  { id: 2, title: "Ecommerce Site", img: "/krip png/2.png" },
+  { id: 3, title: "Portfolio Site", img: "/krip png/3.png" },
+];
+
+export default function SwMaintenanceTemplate() {
+  const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
+  const serviceName = "S/W Maintenance";
+  localStorage.setItem("serviceName", serviceName);
+
+  const handleSelect = (service) => {
+    setSelected(service);
+    localStorage.setItem("selectedTemplateTitle", service.title);
+  };
+
+  const handleNext = () => {
+    if (selected) {
+      localStorage.setItem("selectedTemplateTitle", selected.title);
+      navigate("/adddescription");
+    }
+  };
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -11,10 +34,11 @@ export default function AboutUs() {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
+
   return (
-    <div className="min-h-screen bg-[#060E0E]">
+    <div className="min-h-screen bg-[#060E0E]  text-white relative">
       <nav>
-        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative text-white">
+        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
           <button className="cursor-pointer">
             <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
           </button>
@@ -138,7 +162,7 @@ export default function AboutUs() {
             </Link>
           </span>
         </div>
-        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820] text-white">
+        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
           <span className="self-center">Programming & Tech</span>
           <span className="self-center">Graphic design</span>
           <span className="self-center">AI Service</span>
@@ -147,47 +171,77 @@ export default function AboutUs() {
         </div>
       </nav>
 
-      <div className="bg-neutral-100 lg:h-120 h-60 lg:px-25 px-4 text-left flex flex-col justify-center lg:gap-5 gap-2">
-        <h1 className="lg:text-5xl text-xl font-bold">About Us</h1>
-        <p className="lg:mt-4 lg:text-2xl text-sm font-semibold text-gray-700">
-          To bridge the gap between businesses and talented professionals by
-          fostering an <br className="lg:block hidden" />
-          efficient and trustworthy platform for project collaboration.
+      <div
+        className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
+        style={{
+          filter: "blur(100px)",
+          zIndex: 10,
+        }}
+      />
+
+      <div className="text-center lg:px-0 px-5 lg:mt-15 mt-5">
+        <h2 className="lg:text-4xl text-2xl font-semibold  text-green-300 mb-4">
+          Choose a Template
+        </h2>
+        <p className="lg:text-lg text-sm text-gray-400 mt-2">
+          Select a template that matches your project's requirements to <br />{" "}
+          customize and start building.
         </p>
       </div>
 
-      {/* Vision & Mission */}
-      <div className="bg-gradient-to-t from-[#83ff9815] to-[#060E0E] bg-blend-lighten bottom-0 pointer-events-none text-white py-10 px-5 lg:px-25 grid md:grid-cols-2 gap-8">
-        <div className="lg:mr-20">
-          <h2 className="lg:text-xl text-base font-bold">Vision</h2>
-          <p className="mt-2 lg:text-base text-[12px] text-gray-300">
-            To become the world's leading AI-powered platform, empowering
-            businesses with innovative tools for outsourcing, workflow
-            optimization, and talent sourcing.
-          </p>
-        </div>
-        <div className="lg:ml-20">
-          <h2 className="lg:text-xl text-base font-bold">Mission</h2>
-          <p className="mt-2 lg:text-base text-[12px] text-gray-300">
-            To deliver exceptional value through cutting-edge AI technology and
-            a controlled freelance environment that ensures timely delivery and
-            quality results for businesses of all sizes.
-          </p>
-        </div>
-        <div className="col-span-2 mt-10 lg:text-base text-[12px] text-gray-400 text-left">
-          At Krip.ai, we believe in harnessing the power of artificial
-          intelligence to transform the way businesses operate. Our platform is
-          designed to provide businesses with access to quality freelancers and
-          cutting-edge project management tools, ensuring seamless execution of
-          tasks. With a focus on innovation, transparency, and efficiency, we
-          are committed to delivering unparalleled results for our clients.
-        </div>
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:py-20 py-5 lg:px-20 lg:mx-40 mx-7 z-20 relative">
+        {services.map((service) => (
+          <Link
+            key={service.id}
+            to="/adddescription"
+            onClick={() => handleSelect(service)}
+          >
+            <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
+              <img
+                src={service.img}
+                alt={service.title}
+                className="w-full lg:h-50 h-20 object-contain shadow-xl rounded-lg"
+              />
+              <h3 className="text-center lg:text-base text-sm mt-2">
+                {service.title}
+              </h3>
+            </div>
+          </Link>
+        ))}
       </div>
 
-      <div className="text-white flex justify-center ">
-      <span>Features</span>
-      <div></div>
+      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-5 pb-10 lg:px-0 px-5">
+        <button
+          onClick={() => navigate(-1)}
+          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
+        >
+          Go Back
+        </button>
+        <button
+          onClick={handleNext}
+          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
+        >
+          Next
+        </button>
       </div>
+
+      {/* {selected && (
+        // <div
+        //   className="fixed inset-0 bg-[#00000077] flex justify-center items-center z-20"
+        //   onClick={() => setSelected(null)}
+        // >
+        //   <div className="p-4 bg-white rounded-lg max-w-lg">
+        //     <img
+        //       src={selected.img}
+        //       alt={selected.title}
+        //       className="w-full h-auto"
+        //     />
+        //     <h2 className="text-center text-xl font-bold mt-2">
+        //       {selected.title}
+        //     </h2>
+        //   </div>
+        // </div>
+      )} */}
     </div>
   );
 }
