@@ -78,7 +78,7 @@ const AboutProject = () => {
           <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-2 lg:w-[58%] w-full text-left">
             Description of Project
           </h3>
-          <div className="bg-white text-black p-2 w-[58%] rounded-xl shadow-2xl">
+          <div className="bg-white text-black p-2 lg:w-[58%] w-[100%] rounded-xl shadow-2xl">
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
