@@ -26,9 +26,9 @@ export default function WebTemplate() {
   return (
     <div className="min-h-screen bg-[#060E0E]  text-white relative">
       <nav>
-        <div className="flex flex-col md:flex-row justify-between items-center px-4 md:pr-18 md:px-24 h-20">
+        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15">
           <button className="cursor-pointer">
-            <img src="logo.png" alt="" className="h-8 w-auto" />
+            <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
           </button>
           <span className="flex flex-col md:flex-row justify-around w-full md:w-auto gap-3">
             <button className="mx-2 md:mx-6 hidden md:block">Home</button>
@@ -49,17 +49,17 @@ export default function WebTemplate() {
         }}
       />
 
-      <div className="text-center mt-15">
-        <h2 className="text-4xl font-semibold  text-green-300 mb-4">
+      <div className="text-center lg:px-0 px-5 lg:mt-15 mt-5">
+        <h2 className="lg:text-4xl text-2xl font-semibold  text-green-300 mb-4">
           Choose a Template
         </h2>
-        <p className="text-gray-400 mt-2">
+        <p className="lg:text-lg text-sm text-gray-400 mt-2">
           Select a template that matches your project's requirements to <br />{" "}
           customize and start building.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 py-20 px-20 mx-40 z-20 relative">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:py-20 py-5 lg:px-20 lg:mx-40 mx-7 z-20 relative">
         {services.map((service) => (
           <Link
             key={service.id}
@@ -70,15 +70,15 @@ export default function WebTemplate() {
               <img
                 src={service.img}
                 alt={service.title}
-                className="w-full h-50 object-contain shadow-xl rounded-lg"
+                className="w-full lg:h-50 h-20 object-contain shadow-xl rounded-lg"
               />
-              <h3 className="text-center mt-2">{service.title}</h3>
+              <h3 className="text-center lg:text-base text-sm mt-2">{service.title}</h3>
             </div>
           </Link>
         ))}
       </div>
 
-      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium">
+      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-5 pb-10 lg:px-0 px-5">
         <button
           onClick={() => navigate(-1)}
           className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
