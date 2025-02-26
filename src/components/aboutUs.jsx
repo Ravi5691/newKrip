@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import GetServiceCard from "./getServiceCard";
-import StatCard from "./stat_card";
-import { HeroScroll } from "./HeroScroll";
-import Faq from "./faq";
-import Footer from "./footer";
 import { Link } from "react-router-dom";
-import Bentobox from "./portfolioBentoBox";
-import { SignupFormDemo } from "./signupForm";
-import BarAnimation from "./customBar";
-import { TypewriterEffectSmoothDemo } from "./typeWrittingDemo";
 
-const Header = () => {
+export default function AboutUs() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -20,11 +11,10 @@ const Header = () => {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
-
   return (
-    <div className="bg-[#060E0E] text-white">
+    <div className="min-h-screen bg-[#060E0E]">
       <nav>
-        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
+        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative text-white">
           <button className="cursor-pointer">
             <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
           </button>
@@ -148,7 +138,7 @@ const Header = () => {
             </Link>
           </span>
         </div>
-        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
+        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820] text-white">
           <span className="self-center">Programming & Tech</span>
           <span className="self-center">Graphic design</span>
           <span className="self-center">AI Service</span>
@@ -157,45 +147,42 @@ const Header = () => {
         </div>
       </nav>
 
-      <main>
-        <div className="flex flex-col justify-center lg:my-15 my-5 mb-8 text-center">
-          {/* <span className="lg:text-5xl text-2xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:block hidden ">
-            "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
-            Best Talent"
-          </span> */}
-          <div className="my-10 mb-5">
-           <TypewriterEffectSmoothDemo/>
-          </div>
-          <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">
-            Find the best talent for your project
-          </span>
-          <span className="lg:leading-7 lg:text-lg text-sm lg:tracking-wider tracking-wide lg:px-0 px-4">
-            Our Ai will help you generate a detailed Spec-sheet and find
-            freelancer who meet your needs with live <br /> project tracking
-            through the process
-          </span>
-          {/* <div className="flex flex-col md:flex-row p-16 justify-center gap-5  text-sm  font-medium">
-            <Link to="/selectservice">
-              <button className="lg:mx-2 mx-1 text-black cursor-pointer bg-[#37f9a2] lg:px-7 px-6 py-3 rounded-lg">
-                Get a Service
-              </button>
-            </Link>
-            <button className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-4 py-3 rounded-lg">
-              Get a Pro
-            </button>
-          </div>  */}
+      <div className="bg-neutral-100 h-120 px-25 text-left flex flex-col justify-center gap-5">
+        <h1 className="text-5xl font-bold">About Us</h1>
+        <p className="mt-4 text-2xl font-semibold text-gray-700">
+          To bridge the gap between businesses and talented professionals by
+          fostering an <br />
+          efficient and trustworthy platform for project collaboration.
+        </p>
+      </div>
+
+      {/* Vision & Mission */}
+      <div className="bg-gradient-to-t from-[#83ff9815] to-[#060E0E] bg-blend-lighten bottom-0 pointer-events-none text-white p-10 px-25 grid md:grid-cols-2 gap-8">
+        <div className="lg:mr-20">
+          <h2 className="text-xl font-bold">Vision</h2>
+          <p className="mt-2 text-gray-300">
+            To become the world's leading AI-powered platform, empowering
+            businesses with innovative tools for outsourcing, workflow
+            optimization, and talent sourcing.
+          </p>
         </div>
-        <GetServiceCard />
-        {/* <BarAnimation/> */}
-        <StatCard />
-        {/* <HeroScroll /> */}
-      </main>
-      <Bentobox />
-      <Faq />
-      <Footer />
-     
+        <div className="lg:ml-20">
+          <h2 className="text-xl font-bold">Mission</h2>
+          <p className="mt-2 text-gray-300">
+            To deliver exceptional value through cutting-edge AI technology and
+            a controlled freelance environment that ensures timely delivery and
+            quality results for businesses of all sizes.
+          </p>
+        </div>
+        <div className="col-span-2 mt-10  text-gray-400 text-left">
+          At Krip.ai, we believe in harnessing the power of artificial
+          intelligence to transform the way businesses operate. Our platform is
+          designed to provide businesses with access to quality freelancers and
+          cutting-edge project management tools, ensuring seamless execution of
+          tasks. With a focus on innovation, transparency, and efficiency, we
+          are committed to delivering unparalleled results for our clients.
+        </div>
+      </div>
     </div>
   );
-};
-
-export default Header;
+}
