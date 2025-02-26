@@ -16,7 +16,7 @@ const Footer = () => {
                 Get a Service
               </button>
               <button className="text-white lg:text-base text-[12px] border-1 cursor-pointer border-[#37f9a270] lg:px-7 px-7 lg:py-3 py-2 rounded-lg font-semibold">
-                Get a Guy
+                Get a Pro
               </button>
             </div>
           </div>

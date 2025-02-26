@@ -78,7 +78,7 @@ const GetServiceCard = () => {
 
         {/* Get A Guy Section */}
         <div className="flex bg-[#8de29c1e] border-2 border-r-1 border-[#37f9a270] lg:w-[40%] lg:py-13 py-8 lg:px-20 px-5 rounded-xl z-60 flex-col">
-          <h2 className="lg:text-3xl text-lg font-bold lg:mb-8 mb-2 text-center">Get A Guy</h2>
+          <h2 className="lg:text-3xl text-lg font-bold lg:mb-8 mb-2 text-center">Get A Pro</h2>
           <div className="flex flex-col gap-4 mt-4">
             <input
               type="text"
