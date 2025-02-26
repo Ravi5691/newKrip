@@ -1,17 +1,55 @@
-import React, { useState } from "react";
-import GetServiceCard from "./getServiceCard";
-import StatCard from "./stat_card";
-import { HeroScroll } from "./HeroScroll";
-import Faq from "./faq";
-import Footer from "./footer";
-import { Link } from "react-router-dom";
-import Bentobox from "./portfolioBentoBox";
-import { SignupFormDemo } from "./signupForm";
-import BarAnimation from "./customBar";
-import { TypewriterEffectSmoothDemo } from "./typeWrittingDemo";
-import FeatureCard from "./featureCard";
+import React, { useEffect, useState } from "react";
+import TagSelector from "./tag";
+import { useNavigate, Link } from "react-router-dom";
 
-const Header = () => {
+const AddTags = () => {
+  const [templateTitle, setTemplateTitle] = useState("");
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState("");
+  const navigate = useNavigate();
+
+  const suggestedTags = [
+    "UI/UX Design",
+    "React.js",
+    "Responsive Design",
+    "Next.js",
+    "SaaS Development",
+  ];
+
+  useEffect(() => {
+    const title = localStorage.getItem("selectedTemplateTitle");
+    if (title) {
+      setTemplateTitle(title);
+    }
+
+    const savedTags = JSON.parse(localStorage.getItem("projectTags")) || [];
+    setTags(savedTags);
+  }, []);
+
+  const handleAddTag = (tag) => {
+    if (tag && !tags.includes(tag)) {
+      const updatedTags = [...tags, tag];
+      setTags(updatedTags);
+      localStorage.setItem("projectTags", JSON.stringify(updatedTags));
+    }
+    setNewTag("");
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    const updatedTags = tags.filter((tag) => tag !== tagToRemove);
+    setTags(updatedTags);
+    localStorage.setItem("projectTags", JSON.stringify(updatedTags));
+  };
+
+  const handleNext = () => {
+    localStorage.setItem("projectTags", JSON.stringify(tags));
+    navigate("/confirmationPage");
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -23,7 +61,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-[#060E0E] text-white">
+    <div className="min-h-screen bg-[#060E0E] text-white relative">
       <nav>
         <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
           <button className="cursor-pointer">
@@ -158,45 +196,85 @@ const Header = () => {
         </div>
       </nav>
 
-      <main>
-        <div className="flex flex-col justify-center lg:my-15 my-5 mb-8 text-center">
-          {/* <span className="lg:text-5xl text-2xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:block hidden ">
-            "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
-            Best Talent"
-          </span> */}
-          <div className="my-10 mb-5 lg:block hidden">
-           <TypewriterEffectSmoothDemo/>
+      <div
+        className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
+        style={{ filter: "blur(100px)", zIndex: 10 }}
+      />
+
+      <main className="lg:mt-15 mt-5 lg:px-0 px-5 text-center flex flex-col justify-center w-screen">
+        <h2 className="lg:text-4xl text-2xl font-semibold text-green-300">
+          About Project
+        </h2>
+        <p className="mt-2 lg:text-lg text-sm text-gray-300">
+          Provide a brief description of your project and suited tags
+        </p>
+
+        <div className="mt-15 flex lg:justify-around justify-between lg:px-0 px-3">
+          <div>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Service
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              {localStorage.getItem("serviceName")}
+            </p>
           </div>
-          <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">
-            Find the best talent for your project
-          </span>
-          <span className="lg:leading-7 lg:text-lg text-sm lg:tracking-wider tracking-wide lg:px-0 px-4">
-            Our AI will help you generate a detailed Spec-sheet and find
-            freelancer who meet your needs with live <br /> project tracking
-            through the process
-          </span>
-          {/* <div className="flex flex-col md:flex-row p-16 justify-center gap-5  text-sm  font-medium">
-            <Link to="/selectservice">
-              <button className="lg:mx-2 mx-1 text-black cursor-pointer bg-[#37f9a2] lg:px-7 px-6 py-3 rounded-lg">
-                Get a Service
-              </button>
-            </Link>
-            <button className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-4 py-3 rounded-lg">
-              Get a Pro
-            </button>
-          </div>  */}
+          <div>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Template
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              {templateTitle}
+            </p>
+          </div>
         </div>
-        <GetServiceCard />
-        {/* <BarAnimation/> */}
-        <StatCard />
-        <FeatureCard/>
+
+        <div className="mt-10 text-left w-full flex flex-col justify-center lg:place-items-center lg:px-0 px-3">
+          <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-2 lg:w-[58%] w-full text-left">
+            Select the Tags
+          </h3>
+
+          <div className="p-2 w-[58%]">
+            <TagSelector
+              tags={tags}
+              onAddTag={handleAddTag}
+              onRemoveTag={handleRemoveTag}
+            />
+          </div>
+
+          {/* Suggested Tags Section */}
+          <div className="p-2 w-[58%] mt-4">
+            <h4 className="text-green-300 mb-2">Suggested Tags</h4>
+            <div className="flex flex-wrap gap-2">
+              {suggestedTags.map((tag, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAddTag(tag)}
+                  className="text-sm bg-gray-700 text-white px-3 py-1 rounded-lg cursor-pointer hover:bg-green-500"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </main>
-      <Bentobox />
-      <Faq />
-      <Footer />
-     
+
+      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-15 pb-10 lg:px-0 px-5">
+        <button
+          onClick={handleBack}
+          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
+        >
+          Go Back
+        </button>
+        <button
+          onClick={handleNext}
+          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
 
-export default Header;
+export default AddTags;
