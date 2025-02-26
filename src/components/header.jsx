@@ -9,6 +9,7 @@ import Bentobox from "./portfolioBentoBox";
 import { SignupFormDemo } from "./signupForm";
 import BarAnimation from "./customBar";
 import { TypewriterEffectSmoothDemo } from "./typeWrittingDemo";
+import FeatureCard from "./featureCard";
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -188,7 +189,7 @@ const Header = () => {
         <GetServiceCard />
         {/* <BarAnimation/> */}
         <StatCard />
-        {/* <HeroScroll /> */}
+        <FeatureCard/>
       </main>
       <Bentobox />
       <Faq />
