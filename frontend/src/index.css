@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
-.client-name-container {
-    overflow-x: hidden;
-    position: relative;
-    animation: move 30s linear infinite;
-  }
-  
-  .client-name-container:hover {
-  }
-  
-  @keyframes move {
-    0% {
-      transform: translateX(100%);
+ @layer components {
+    .animate{
+      display: flex;
+      animation: scroll 170s linear infinite;
     }
-    100% {
-      transform: translateX(-100%);
+    .animate-reversed{
+      display: flex;
+      animation: scroll 120s linear infinite;
+      animation-direction: reverse;
     }
-  }
+  
+    @keyframes scroll {
+      0%{
+  
+        transform: translateX(0);
+      }
+      100%{
+  
+        transform: translate(-100%);
+      }
+    }
+  
+  } 
