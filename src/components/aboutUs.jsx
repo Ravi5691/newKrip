@@ -1,5 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const cards = [
+  { id: 1, text: "Card 1",},
+  { id: 2, text: "Card 2",},
+  { id: 3, text: "Card 3",},
+  { id: 4, text: "Card 4",},
+  { id: 5, text: "Card 5",},
+];
 
 export default function AboutUs() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -11,6 +20,19 @@ export default function AboutUs() {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
+
+  // feature toogle card
+  const [index, setIndex] = useState(0);
+  const containerRef = useRef(null);
+
+  const nextCard = () => {
+    if (index < cards.length - 2) setIndex(index + 1);
+  };
+
+  const prevCard = () => {
+    if (index > 0) setIndex(index - 1);
+  };
+
   return (
     <div className="min-h-screen bg-[#060E0E]">
       <nav>
@@ -146,41 +168,97 @@ export default function AboutUs() {
           <span className="self-center lg:block hidden">Indemand</span>
         </div>
       </nav>
-
-      <div className="bg-neutral-100 h-120 px-25 text-left flex flex-col justify-center gap-5">
-        <h1 className="text-5xl font-bold">About Us</h1>
-        <p className="mt-4 text-2xl font-semibold text-gray-700">
-          To bridge the gap between businesses and talented professionals by
-          fostering an <br />
-          efficient and trustworthy platform for project collaboration.
-        </p>
+      <div className="relative group h-60 lg:h-120 lg:px-25 px-4 flex flex-col justify-center text-left overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/signUp.png')] bg-cover bg-center transition-all duration-300 lg:group-hover:blur-lg blur-[5px] lg:blur-none"></div>
+        <div className="relative opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
+          <h1 className="lg:text-5xl text-xl font-bold text-white">About Us</h1>
+          <p className="lg:mt-4 lg:text-2xl text-sm font-semibold text-gray-200">
+            To bridge the gap between businesses and talented professionals by
+            fostering an <br className="lg:block hidden" />
+            efficient and trustworthy platform for project collaboration.
+          </p>
+        </div>
       </div>
-
       {/* Vision & Mission */}
-      <div className="bg-gradient-to-t from-[#83ff9815] to-[#060E0E] bg-blend-lighten bottom-0 pointer-events-none text-white p-10 px-25 grid md:grid-cols-2 gap-8">
+      <div className="bg-gradient-to-t from-[#83ff9815] to-[#060E0E] bg-blend-lighten bottom-0 pointer-events-none text-white py-10 px-5 lg:px-25 grid md:grid-cols-2 gap-8">
         <div className="lg:mr-20">
-          <h2 className="text-xl font-bold">Vision</h2>
-          <p className="mt-2 text-gray-300">
+          <h2 className="lg:text-xl text-base font-bold">Vision</h2>
+          <p className="mt-2 lg:text-base text-[12px] text-gray-300">
             To become the world's leading AI-powered platform, empowering
             businesses with innovative tools for outsourcing, workflow
             optimization, and talent sourcing.
           </p>
         </div>
         <div className="lg:ml-20">
-          <h2 className="text-xl font-bold">Mission</h2>
-          <p className="mt-2 text-gray-300">
+          <h2 className="lg:text-xl text-base font-bold">Mission</h2>
+          <p className="mt-2 lg:text-base text-[12px] text-gray-300">
             To deliver exceptional value through cutting-edge AI technology and
             a controlled freelance environment that ensures timely delivery and
             quality results for businesses of all sizes.
           </p>
         </div>
-        <div className="col-span-2 mt-10  text-gray-400 text-left">
+        <div className="col-span-2 mt-10 lg:text-base text-[12px] text-gray-400 text-left">
           At Krip.ai, we believe in harnessing the power of artificial
           intelligence to transform the way businesses operate. Our platform is
           designed to provide businesses with access to quality freelancers and
           cutting-edge project management tools, ensuring seamless execution of
           tasks. With a focus on innovation, transparency, and efficiency, we
           are committed to delivering unparalleled results for our clients.
+        </div>
+      </div>
+
+      <div className="text-white flex flex-col gap-20 py-20 min-h-screen ">
+       <div className="flex flex-col gap-3">
+         <h1 className="text-center text-4xl font-semibold rounded-3xl">Features</h1>
+        <p className="text-sm text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet consequuntur sint vitae cumque</p>
+       </div>
+        <div className="flex flex-col items-center justify-center text-white relative">
+          {/* Card Container */}
+          <div
+            className="relative w-full max-w-6xl overflow-hidden"
+            ref={containerRef}
+          >
+            <motion.div
+              className="flex gap-4 cursor-grab active:cursor-grabbing"
+              drag="x"
+              dragConstraints={{
+                left: -(
+                  (cards.length - 2.5) *
+                    (containerRef.current?.offsetWidth / 3) || 0
+                ),
+                right: 0,
+              }}
+              animate={{ x: `-${index * (100 / 3)}%` }}
+              transition={{ duration: 0.5 }}
+              dragElastic={0.5}
+              dragTransition={{ bounceStiffness: 200, bounceDamping: 10 }} // ✅ Replaces dragSnapToOrigin
+            >
+              {cards.map((card) => (
+                <div
+                  key={card.id}
+                  className={`w-1/3 min-w-[33.33%] h-100 bg-[#66bb853f] flex items-center justify-center text-2xl font-bold rounded-lg shadow-lg ${card.color}`}
+                >
+                  {card.text}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Buttons */}
+          <div className="mt-6 flex gap-4 absolute -bottom-20 right-45">
+            <button
+              onClick={prevCard}
+              className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition"
+            >
+              Prev
+            </button>
+            <button
+              onClick={nextCard}
+              className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition"
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>

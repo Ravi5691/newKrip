@@ -1,17 +1,31 @@
-import React, { useState } from "react";
-import GetServiceCard from "./getServiceCard";
-import StatCard from "./stat_card";
-import { HeroScroll } from "./HeroScroll";
-import Faq from "./faq";
-import Footer from "./footer";
-import { Link } from "react-router-dom";
-import Bentobox from "./portfolioBentoBox";
-import { SignupFormDemo } from "./signupForm";
-import BarAnimation from "./customBar";
-import { TypewriterEffectSmoothDemo } from "./typeWrittingDemo";
-import FeatureCard from "./featureCard";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
-const Header = () => {
+const services = [
+  { id: 1, title: "Instagram Reel", img: "/krip png/1.png" },
+  { id: 2, title: "Youtube Video", img: "/krip png/2.png" },
+  { id: 3, title: "Personal Video", img: "/krip png/3.png" },
+];
+
+export default function VideoEditingTemplate() {
+  const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
+
+  const serviceName = "Video Editing";
+  localStorage.setItem("serviceName", serviceName);
+
+  const handleSelect = (service) => {
+    setSelected(service);
+    localStorage.setItem("selectedTemplateTitle", service.title);
+  };
+
+  const handleNext = () => {
+    if (selected) {
+      localStorage.setItem("selectedTemplateTitle", selected.title);
+      navigate("/adddescription");
+    }
+  };
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -23,7 +37,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-[#060E0E] text-white">
+    <div className="min-h-screen bg-[#060E0E]  text-white relative">
       <nav>
         <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
           <button className="cursor-pointer">
@@ -158,45 +172,77 @@ const Header = () => {
         </div>
       </nav>
 
-      <main>
-        <div className="flex flex-col justify-center lg:my-15 my-5 mb-8 text-center">
-          {/* <span className="lg:text-5xl text-2xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:block hidden ">
-            "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
-            Best Talent"
-          </span> */}
-          <div className="my-10 mb-5 lg:block hidden">
-           <TypewriterEffectSmoothDemo/>
-          </div>
-          <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">
-            Find the best talent for your project
-          </span>
-          <span className="lg:leading-7 lg:text-lg text-sm lg:tracking-wider tracking-wide lg:px-0 px-4">
-            Our Ai will help you generate a detailed Spec-sheet and find
-            freelancer who meet your needs with live <br /> project tracking
-            through the process
-          </span>
-          <div className="flex flex-row lg:p-16 p-6 justify-center lg:gap-5 gap-2  lg:text-sm text-[10px]  font-medium">
-            <Link to="/selectservice">
-              <button className="lg:mx-2 mx-1 text-black cursor-pointer bg-[#37f9a2] lg:px-7 px-6 py-3 rounded-lg">
-                Get a Service
-              </button>
-            </Link>
-            <button className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-4 py-3 rounded-lg">
-              Get a Freelancer
-            </button>
-          </div>
-        </div>
-        <GetServiceCard />
-        {/* <BarAnimation/> */}
-        <StatCard />
-        <FeatureCard/>
-      </main>
-      <Bentobox />
-      <Faq />
-      <Footer />
-     
+      <div
+        className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
+        style={{
+          filter: "blur(100px)",
+          zIndex: 10,
+        }}
+      />
+
+      <div className="text-center lg:px-0 px-5 lg:mt-15 mt-5">
+        <h2 className="lg:text-4xl text-2xl font-semibold  text-green-300 mb-4">
+          Choose a Template
+        </h2>
+        <p className="lg:text-lg text-sm text-gray-400 mt-2">
+          Select a template that matches your project's requirements to <br />{" "}
+          customize and start building.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:py-20 py-5 lg:px-20 lg:mx-40 mx-7 z-20 relative">
+        {services.map((service) => (
+          <Link
+            key={service.id}
+            to="/adddescription"
+            onClick={() => handleSelect(service)}
+          >
+            <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
+              <img
+                src={service.img}
+                alt={service.title}
+                className="w-full lg:h-50 h-20 object-contain shadow-xl rounded-lg"
+              />
+              <h3 className="text-center lg:text-base text-sm mt-2">
+                {service.title}
+              </h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-5 pb-10 lg:px-0 px-5">
+        <button
+          onClick={() => navigate(-1)}
+          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
+        >
+          Go Back
+        </button>
+        <button
+          onClick={handleNext}
+          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
+        >
+          Next
+        </button>
+      </div>
+
+      {/* {selected && (
+        // <div
+        //   className="fixed inset-0 bg-[#00000077] flex justify-center items-center z-20"
+        //   onClick={() => setSelected(null)}
+        // >
+        //   <div className="p-4 bg-white rounded-lg max-w-lg">
+        //     <img
+        //       src={selected.img}
+        //       alt={selected.title}
+        //       className="w-full h-auto"
+        //     />
+        //     <h2 className="text-center text-xl font-bold mt-2">
+        //       {selected.title}
+        //     </h2>
+        //   </div>
+        // </div>
+      )} */}
     </div>
   );
-};
-
-export default Header;
+}
