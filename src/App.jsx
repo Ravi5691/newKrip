@@ -24,6 +24,7 @@ import GraphicDesignTemplate from "./components/servicePage/graphicDesign/graphi
 import SwMaintenanceTemplate from "./components/servicePage/swMaintenance/swMaintenanceTemplate";
 import AiTemplate from "./components/servicePage/aiAutomation/aiTemplate";
 import ContentCreationTemplate from "./components/servicePage/contentCreation/contentCreation";
+import MultiStepForm from "./components/servicePage/lastpage";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/signup" element={<SignupFormDemo />} />
         <Route path="/aboutus" element={<AboutUs/>}/>
         <Route path="/contactus" element={<ContactUs/>}/>
+        <Route path="/form" element={<MultiStepForm/>}/>
 
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Navigate to="profile" replace />} />
