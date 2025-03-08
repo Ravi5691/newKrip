@@ -13,10 +13,9 @@ let accessToken = process.env.ACCESS_TOKEN;
 const refreshToken = process.env.REFRESH_TOKEN;
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
-const ZOHO_API_URL = process.env.ZOHO_API_URL;
+const USER_URL = process.env.ZOHO_USERS_URL;
 const ZOHO_OAUTH_URL = process.env.ZOHO_OAUTH_URL;
 const ZOHO_TASK_URL = process.env.ZOHO_TASK_URL;
-
 
 const refreshAccessToken = async () => {
   try {
@@ -37,7 +36,7 @@ const refreshAccessToken = async () => {
 
 app.get("/api/profile", async (req, res) => {
   try {
-    const response = await axios.get(ZOHO_API_URL, {
+    const response = await axios.get(USER_URL, {
       headers: { Authorization: `Zoho-oauthtoken ${accessToken}` },
     });
 
@@ -66,7 +65,7 @@ app.post("/api/update-profile", async (req, res) => {
   const { id, email, bio, profileImage } = req.body;
 
   try {
-    await axios.put(ZOHO_API_URL, { 
+    await axios.put(USER_URL, { 
       data: [{ 
         id, 
         Email: email, 
@@ -88,7 +87,7 @@ app.post("/api/add-skill", async (req, res) => {
   const { id, skill } = req.body;
 
   try {
-    const response = await axios.get(ZOHO_API_URL, {
+    const response = await axios.get(USER_URL, {
       headers: { Authorization: `Zoho-oauthtoken ${accessToken}` },
     });
 
@@ -101,7 +100,7 @@ app.post("/api/add-skill", async (req, res) => {
       existingSkills.push(skill);
     }
 
-    await axios.put(ZOHO_API_URL, { 
+    await axios.put(USER_URL, { 
       data: [{ id, Skills: existingSkills.join(",") }] 
     }, {
       headers: { Authorization: `Zoho-oauthtoken ${accessToken}` },
