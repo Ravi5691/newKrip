@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FaThLarge, FaFileAlt, FaLifeRing } from "react-icons/fa";
+import { FaThLarge, FaClipboardList, FaFileAlt, FaLifeRing } from "react-icons/fa";
 
 const ClientSidebar = () => {
   const location = useLocation(); // Get current route path
@@ -8,7 +8,7 @@ const ClientSidebar = () => {
     <div className="h-screen w-64 bg-gradient-to-b from-black to-[#0f1f0f] text-white p-5 rounded-tr-2xl">
       {/* Logo */}
       <div className="flex items-center space-x-2 mb-10">
-        <img src="/logo.png" alt="Krip Logo" className="w-20" />
+        <img src="/logo.png" alt="Krip Logo" className="w-28" />
       </div>
 
       {/* Menu */}
@@ -36,7 +36,7 @@ const ClientSidebar = () => {
                   : "text-gray-300"
               }`}
             >
-              <FaThLarge size={16} />
+              <FaClipboardList size={16} />
               <span>Project List</span>
             </Link>
           </li>

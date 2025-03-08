@@ -1,49 +1,55 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import TagSelector from "./tag";
+import { useNavigate, Link } from "react-router-dom";
 
-const services = [
-  {
-    id: 1,
-    title: "Video Editing",
-    img: "/krip png/1.png",
-    link: "/video-template",
-  },
-  {
-    id: 2,
-    title: "Graphic Design",
-    img: "/krip png/2.png",
-    link: "/graphic-template",
-  },
-  {
-    id: 3,
-    title: "Web Development",
-    img: "/krip png/3.png",
-    link: "/web-template",
-  },
-  {
-    id: 4,
-    title: "AI Automation",
-    img: "/krip png/4.png",
-    link: "/ai-template",
-  },
-  {
-    id: 5,
-    title: "Content Creation",
-    img: "/krip png/5.png",
-    link: "/contentcreation-template",
-  },
-  {
-    id: 6,
-    title: "S/W Maintenance",
-    img: "/krip png/6.png",
-    link: "/sw-template",
-  },
-];
-
-export default function SelectService() {
-  const [selected, setSelected] = useState(null);
+const AddTags = () => {
+  const [templateTitle, setTemplateTitle] = useState("");
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState("");
   const navigate = useNavigate();
+
+  const suggestedTags = [
+    "UI/UX Design",
+    "React.js",
+    "Responsive Design",
+    "Next.js",
+    "SaaS Development",
+  ];
+
+  useEffect(() => {
+    const title = localStorage.getItem("selectedTemplateTitle");
+    if (title) {
+      setTemplateTitle(title);
+    }
+
+    const savedTags = JSON.parse(localStorage.getItem("projectTags")) || [];
+    setTags(savedTags);
+  }, []);
+
+  const handleAddTag = (tag) => {
+    if (tag && !tags.includes(tag)) {
+      const updatedTags = [...tags, tag];
+      setTags(updatedTags);
+      localStorage.setItem("projectTags", JSON.stringify(updatedTags));
+    }
+    setNewTag("");
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    const updatedTags = tags.filter((tag) => tag !== tagToRemove);
+    setTags(updatedTags);
+    localStorage.setItem("projectTags", JSON.stringify(updatedTags));
+  };
+
+  const handleNext = () => {
+    localStorage.setItem("projectTags", JSON.stringify(tags));
+    navigate("/confirmationPage");
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -55,7 +61,7 @@ export default function SelectService() {
   };
 
   return (
-    <div className="min-h-screen bg-[#060E0E]  text-white relative">
+    <div className="min-h-screen bg-[#060E0E] text-white relative">
       <nav>
         <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
           <button className="cursor-pointer">
@@ -192,50 +198,83 @@ export default function SelectService() {
 
       <div
         className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
-        style={{
-          filter: "blur(100px)",
-          zIndex: 10,
-        }}
+        style={{ filter: "blur(100px)", zIndex: 10 }}
       />
 
-      <div className="text-center lg:mt-15 mt-5">
-        <h2 className="lg:text-4xl text-2xl font-semibold  text-green-300 mb-4">
-          Select a Service
+      <main className="lg:mt-15 mt-5 lg:px-0 px-5 text-center flex flex-col justify-center w-screen">
+        <h2 className="lg:text-4xl text-2xl font-semibold text-green-300">
+          About Project
         </h2>
-        <p className="text-gray-400 lg:text-base text-sm mt-2 lg:px-0 px-5">
-          Choose the service that best fits your needs to get started with your
-          project.
+        <p className="mt-2 lg:text-lg text-sm text-gray-300">
+          Provide a brief description of your project and suited tags
         </p>
-      </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10 lg:px-20 lg:mx-60 px-5 z-20 relative ">
-        {services.map((service) => (
-          <Link to={service.link} key={service.id}>
-            <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
-              <img
-                src={service.img}
-                alt={service.title}
-                className="w-full lg:h-40 h-20 object-contain shadow-xl rounded-lg"
-              />
-              <h3 className="text-center mt-2 lg:text-base text-sm">
-                {service.title}
-              </h3>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {/* {selected && (
-        <div
-          className="absolute bg-[#00000077] flex justify-center items-center z-20"
-          onClick={() => setSelected(null)}
-        >
-          <div className="p-4 bg-white rounded-lg max-w-lg">
-            <img src={selected.img} alt={selected.title} className="w-full h-auto" />
-            <h2 className="text-center text-xl font-bold mt-2">{selected.title}</h2>
+        <div className="mt-15 flex lg:justify-around justify-between lg:px-0 px-3">
+          <div>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Service
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              {localStorage.getItem("serviceName")}
+            </p>
+          </div>
+          <div>
+            <h3 className="lg:text-xl text-base text-green-300 text-left">
+              Template
+            </h3>
+            <p className="text-gray-300 pt-2 lg:text-base text-sm">
+              {templateTitle}
+            </p>
           </div>
         </div>
-      )} */}
+
+        <div className="mt-10 text-left w-full flex flex-col justify-center lg:place-items-center lg:px-0 px-3">
+          <h3 className="lg:text-xl text-base text-green-300 lg:mb-5 mb-2 lg:w-[58%] w-full text-left">
+            Select the Tags
+          </h3>
+
+          <div className="p-2 w-[58%]">
+            <TagSelector
+              tags={tags}
+              onAddTag={handleAddTag}
+              onRemoveTag={handleRemoveTag}
+            />
+          </div>
+
+          {/* Suggested Tags Section */}
+          <div className="p-2 w-[58%] mt-4">
+            <h4 className="text-green-300 mb-2">Suggested Tags</h4>
+            <div className="flex flex-wrap gap-2">
+              {suggestedTags.map((tag, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAddTag(tag)}
+                  className="text-sm bg-gray-700 text-white px-3 py-1 rounded-lg cursor-pointer hover:bg-green-500"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-15 pb-10 lg:px-0 px-5">
+        <button
+          onClick={handleBack}
+          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
+        >
+          Go Back
+        </button>
+        <button
+          onClick={handleNext}
+          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
-}
+};
+
+export default AddTags;

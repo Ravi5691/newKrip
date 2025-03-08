@@ -1,49 +1,29 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const services = [
-  {
-    id: 1,
-    title: "Video Editing",
-    img: "/krip png/1.png",
-    link: "/video-template",
-  },
-  {
-    id: 2,
-    title: "Graphic Design",
-    img: "/krip png/2.png",
-    link: "/graphic-template",
-  },
-  {
-    id: 3,
-    title: "Web Development",
-    img: "/krip png/3.png",
-    link: "/web-template",
-  },
-  {
-    id: 4,
-    title: "AI Automation",
-    img: "/krip png/4.png",
-    link: "/ai-template",
-  },
-  {
-    id: 5,
-    title: "Content Creation",
-    img: "/krip png/5.png",
-    link: "/contentcreation-template",
-  },
-  {
-    id: 6,
-    title: "S/W Maintenance",
-    img: "/krip png/6.png",
-    link: "/sw-template",
-  },
+  { id: 1, title: "Landing Page", img: "/krip png/1.png" },
+  { id: 2, title: "Ecommerce Site", img: "/krip png/2.png" },
+  { id: 3, title: "Portfolio Site", img: "/krip png/3.png" },
 ];
 
-export default function SelectService() {
+export default function GraphicDesignTemplate() {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
+  const serviceName = "Graphic Design";
+  localStorage.setItem("serviceName", serviceName);
+  const handleSelect = (service) => {
+    setSelected(service);
+    localStorage.setItem("selectedTemplateTitle", service.title);
+  };
+
+  const handleNext = () => {
+    if (selected) {
+      localStorage.setItem("selectedTemplateTitle", selected.title);
+      navigate("/adddescription");
+    }
+  };
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -198,26 +178,30 @@ export default function SelectService() {
         }}
       />
 
-      <div className="text-center lg:mt-15 mt-5">
+      <div className="text-center lg:px-0 px-5 lg:mt-15 mt-5">
         <h2 className="lg:text-4xl text-2xl font-semibold  text-green-300 mb-4">
-          Select a Service
+          Choose a Template
         </h2>
-        <p className="text-gray-400 lg:text-base text-sm mt-2 lg:px-0 px-5">
-          Choose the service that best fits your needs to get started with your
-          project.
+        <p className="lg:text-lg text-sm text-gray-400 mt-2">
+          Select a template that matches your project's requirements to <br />{" "}
+          customize and start building.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 py-10 lg:px-20 lg:mx-60 px-5 z-20 relative ">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:py-20 py-5 lg:px-20 lg:mx-40 mx-7 z-20 relative">
         {services.map((service) => (
-          <Link to={service.link} key={service.id}>
+          <Link
+            key={service.id}
+            to="/adddescription"
+            onClick={() => handleSelect(service)}
+          >
             <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
               <img
                 src={service.img}
                 alt={service.title}
-                className="w-full lg:h-40 h-20 object-contain shadow-xl rounded-lg"
+                className="w-full lg:h-50 h-20 object-contain shadow-xl rounded-lg"
               />
-              <h3 className="text-center mt-2 lg:text-base text-sm">
+              <h3 className="text-center lg:text-base text-sm mt-2">
                 {service.title}
               </h3>
             </div>
@@ -225,16 +209,37 @@ export default function SelectService() {
         ))}
       </div>
 
-      {/* {selected && (
-        <div
-          className="absolute bg-[#00000077] flex justify-center items-center z-20"
-          onClick={() => setSelected(null)}
+      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-5 pb-10 lg:px-0 px-5">
+        <button
+          onClick={() => navigate(-1)}
+          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
         >
-          <div className="p-4 bg-white rounded-lg max-w-lg">
-            <img src={selected.img} alt={selected.title} className="w-full h-auto" />
-            <h2 className="text-center text-xl font-bold mt-2">{selected.title}</h2>
-          </div>
-        </div>
+          Go Back
+        </button>
+        <button
+          onClick={handleNext}
+          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
+        >
+          Next
+        </button>
+      </div>
+
+      {/* {selected && (
+        // <div
+        //   className="fixed inset-0 bg-[#00000077] flex justify-center items-center z-20"
+        //   onClick={() => setSelected(null)}
+        // >
+        //   <div className="p-4 bg-white rounded-lg max-w-lg">
+        //     <img
+        //       src={selected.img}
+        //       alt={selected.title}
+        //       className="w-full h-auto"
+        //     />
+        //     <h2 className="text-center text-xl font-bold mt-2">
+        //       {selected.title}
+        //     </h2>
+        //   </div>
+        // </div>
       )} */}
     </div>
   );

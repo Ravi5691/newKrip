@@ -9,6 +9,7 @@ import Bentobox from "./portfolioBentoBox";
 import { SignupFormDemo } from "./signupForm";
 import BarAnimation from "./customBar";
 import { TypewriterEffectSmoothDemo } from "./typeWrittingDemo";
+import FeatureCard from "./featureCard";
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -163,8 +164,8 @@ const Header = () => {
             "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
             Best Talent"
           </span> */}
-          <div className="my-10 mb-5">
-           <TypewriterEffectSmoothDemo/>
+          <div className="my-10 mb-5 lg:block hidden">
+            <TypewriterEffectSmoothDemo />
           </div>
           <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">
             Find the best talent for your project
@@ -185,15 +186,29 @@ const Header = () => {
             </button>
           </div>
         </div>
+
         <GetServiceCard />
+
         {/* <BarAnimation/> */}
+
         <StatCard />
-        {/* <HeroScroll /> */}
+
+        <div className="relative">
+          {/* <div
+            className="absolute w-screen lg:h-70 h-120 bg-[#83ff9883] bg-blend-lighten opacity-25 pointer-events-none top-30"
+            style={{
+              filter: "blur(100px)",
+              zIndex: 50,
+            }}
+          /> */}
+          <div className="relative z-60">
+            <FeatureCard />
+          </div>
+        </div>
       </main>
       <Bentobox />
       <Faq />
       <Footer />
-     
     </div>
   );
 };
