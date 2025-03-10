@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Video, Brush, Code, BrainCircuit, PenTool, Wrench } from "lucide-react"; // Importing icons
 
 const services = [
-  { id: 1, title: "Video Editing", img: "/krip png/1.png" },
-  { id: 2, title: "Graphic Design", img: "/krip png/2.png" },
-  { id: 3, title: "Web & App Development", img: "/krip png/3.png" },
-  { id: 4, title: "AI Automation", img: "/krip png/4.png" },
-  { id: 5, title: "Content Creation", img: "/krip png/5.png" },
-  { id: 6, title: "Software Maintenance", img: "/krip png/6.png" },
+  { id: 1, title: "Video Editing", icon: <Video size={30} /> },
+  { id: 2, title: "Graphic Design", icon: <Brush size={30} /> },
+  { id: 3, title: "Web & App Development", icon: <Code size={30} /> },
+  { id: 4, title: "AI Automation", icon: <BrainCircuit size={30} /> },
+  { id: 5, title: "Content Creation", icon: <PenTool size={30} /> },
+  { id: 6, title: "Software Maintenance", icon: <Wrench size={30} /> },
 ];
 
 const GetServiceCard = () => {
@@ -28,9 +29,9 @@ const GetServiceCard = () => {
           <h2 className="text-2xl font-bold mb-4 text-center">Get A Service</h2>
           <div className="grid grid-cols-3 gap-4 w-full">
             {services.map((service) => (
-              <Link to={service.link} key={service.id} className="text-center">
+              <Link to={service.link || "#"} key={service.id} className="text-center">
                 <div className="bg-[#183024] text-white p-4 rounded-lg cursor-pointer hover:scale-105 transition-all h-36 flex flex-col items-center justify-center mb-2">
-                  <img src={service.img} alt={service.title} className="w-10 h-10 object-contain mb-2" />
+                  <div className="text-green-400 mb-2">{service.icon}</div>
                   <h3 className="text-sm">{service.title}</h3>
                 </div>
               </Link>
@@ -64,7 +65,7 @@ const GetServiceCard = () => {
           <h3 className="text-gray-300 text-sm font-medium mt-12 mb-3">Common Search</h3>
           <div className="w-full flex flex-col gap-2">
             <div className="bg-white text-black p-3 rounded-lg text-sm">
-              I want to make a Ecommerce website
+              I want to make an E-commerce website
             </div>
             <div className="bg-white text-black p-3 rounded-lg text-sm">
               I want to make a Portfolio using Next.js
