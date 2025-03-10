@@ -20,16 +20,11 @@ import GraphicDesignTemplate from "./components/servicePage/graphicDesign/graphi
 import SwMaintenanceTemplate from "./components/servicePage/swMaintenance/swMaintenanceTemplate";
 import AiTemplate from "./components/servicePage/aiAutomation/aiTemplate";
 import ContentCreationTemplate from "./components/servicePage/contentCreation/contentCreation";
-<<<<<<< HEAD
-
-=======
-import MultiStepForm from "./components/servicePage/lastpage";
 import ClientDashboardLayout from "./components/dashbaord/layouts/clientDashboardLayout";
-import Billing from "./components/dashbaord/client/Billing"
-import ProjectList from "./components/dashbaord/client/ProjectList"
-import ProjectManagement from "./components/dashbaord/client/ProjectManagement"
-import SupportCli from "./components/dashbaord/client/Support";
->>>>>>> c9f6476f30ea9271768c61b1d84a5b97ecd1ec1e
+import Billing from "./components/dashbaord/client/Billing";
+import ProjectManagement from "./components/dashbaord/client/ProjectManagement";
+import ProjectList from "./components/dashbaord/client/ProjectList";
+// import SupportCli from "./components/dashbaord/client/SupportCli";
 
 function App() {
   return (
@@ -51,13 +46,7 @@ function App() {
         <Route path="/signup" element={<SignupFormDemo />} />
         <Route path="/aboutus" element={<AboutUs/>}/>
         <Route path="/contactus" element={<ContactUs/>}/>
-<<<<<<< HEAD
         {/* <Route path="/form" element={<WebMultiStepForm/>}/> */}
-=======
-        <Route path="/form" element={<MultiStepForm/>}/>
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/contactus" element={<ContactUs />} />
->>>>>>> c9f6476f30ea9271768c61b1d84a5b97ecd1ec1e
 
         {/* Freelancer Dashboard Routes */}
         <Route path="/dashboard/freelancer" element={<FreelancerDashboardLayout />}>
@@ -75,7 +64,7 @@ function App() {
         <Route path="billing" element={<Billing />} />
         <Route path="projects" element={<ProjectManagement />} />
         <Route path="projects-list" element={<ProjectList />} />
-        <Route path="support" element={<SupportCli />} />
+        {/* <Route path="support" element={<SupportCli />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

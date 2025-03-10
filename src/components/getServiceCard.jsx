@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import WebMultiStepForm from "./servicePage/popUpPages/webPopUp";
 import VideoMultiStepForm from "./servicePage/popUpPages/videoEditPopup";
 import GraphicDesignPopup from "./servicePage/popUpPages/graphicPopUp";
@@ -50,6 +49,8 @@ const services = [
 
 const GetServiceCard = () => {
   const [selectedService, setSelectedService] = useState(null);
+  const [showTemplates, setShowTemplates] = useState(false);
+  const [showFreelancers, setShowFreelancers] = useState(false);
 
   const handleServiceClick = (service) => {
     setSelectedService(service);
@@ -57,59 +58,10 @@ const GetServiceCard = () => {
 
   const closePopup = () => {
     setSelectedService(null);
-=======
-import PopBox from "../components/PopBox";
-
-const templates = [
-  {
-    title: "Minimalist Logo",
-    description: "Clean, modern logo design perfect for tech startups",
-  },
-  {
-    title: "3D Logo",
-    description: "Eye-catching 3D logo design with depth and dimension",
-  },
-  {
-    title: "Mascot Logo",
-    description: "Playful character-based logo design",
-  },
-];
-
-const freelancers = [
-  { name: "John Doe", skill: "Full Stack Developer", img: "/freelancers/john.png" },
-  { name: "Jane Smith", skill: "Graphic Designer", img: "/freelancers/jane.png" },
-  { name: "Alex Brown", skill: "AI Engineer", img: "/freelancers/alex.png" },
-];
-
-const services = [
-  { id: 1, title: "Video Editing", img: "/krip png/1.png" },
-  { id: 2, title: "Graphic Design", img: "/krip png/2.png" },
-  { id: 3, title: "Web Development", img: "/krip png/3.png" },
-  { id: 4, title: "AI Automation", img: "/krip png/4.png" },
-  { id: 5, title: "Content Creation", img: "/krip png/5.png" },
-  { id: 6, title: "S/W Maintenance", img: "/krip png/6.png" },
-];
-
-const GetServiceCard = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [showTemplates, setShowTemplates] = useState(false);
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [showFreelancers, setShowFreelancers] = useState(false);
-
-  const handleTemplateSelection = (template) => {
-    setSelectedTemplate(template);
-    setIsPopupOpen(true);
-  };
-
-  const handleFormCompletion = () => {
-    setIsPopupOpen(false);
-    setShowFreelancers(true);
->>>>>>> c9f6476f30ea9271768c61b1d84a5b97ecd1ec1e
   };
 
   return (
     <div className="flex items-center w-screen justify-center lg:mt-20 mt-5 mb-40 relative">
-<<<<<<< HEAD
       <div
         className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten opacity-25 pointer-events-none"
         style={{ filter: "blur(100px)", zIndex: 50 }}
@@ -124,13 +76,18 @@ const GetServiceCard = () => {
 
         {/* Get A Service Section */}
         <div className="flex-1 bg-[#8de29c1e] border-2 border-r-1 border-[#37f9a270] lg:py-13 py-8 lg:px-20 px-5 rounded-xl flex flex-col z-60">
-          <h2 className="lg:text-3xl text-lg font-bold lg:mb-2 text-center">
+          <h2 className="lg:text-3xl text-lg font-bold lg:mb-8 text-center">
             Get A Service
           </h2>
-          <p className="lg:text-sm text-[10px] text-gray-200 lg:mb-6 mb-2 text-center">
+          {/* <p className="lg:text-sm text-[10px] text-gray-200 lg:mb-6 mb-2 text-center">
             Subtext
-          </p>
-          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:gap-6 gap-2 lg:py-10 py-3 z-20 relative">
+          </p> */}
+          <div className="flex gap-2 justify-between">
+          <input type="text" placeholder="Enter the service" className="bg-white flex-1 px-4 py-2 text-black rounded-lg focus:outline-none" />
+          <button className="bg-green-500 rounded-lg px-6 text-white font-semibold ">Next</button>
+          </div>
+          <div></div>
+          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:gap-6 gap-2 lg:py-10 lg:pb-5 py-3 z-20 relative">
             {services.map((service) => (
               <div
                 key={service.id}
@@ -140,33 +97,19 @@ const GetServiceCard = () => {
                 <img
                   src={service.img}
                   alt={service.title}
-                  className="w-full lg:h-20 h-8 object-contain shadow-xl rounded-lg"
+                  className="w-full lg:h-12 h-8 object-contain"
                 />
                 <h3 className="text-center text-[6px] lg:text-base mt-2">
                   {service.title}
                 </h3>
               </div>
-=======
-      <div className="rounded-2xl flex lg:flex-row flex-col text-white w-full relative lg:mx-40 mx-7">
-        {/* Left Section - Get A Service */}
-        <div className="flex-1 bg-[#8de29c1e] border-2 border-r-1 border-[#37f9a270] lg:py-13 py-8 lg:px-20 px-5 rounded-xl flex flex-col">
-          <h2 className="lg:text-3xl text-lg font-bold lg:mb-2 text-center">Get A Service</h2>
-          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:gap-6 gap-2 lg:py-10 py-3">
-            {services.map((service) => (
-              <Link to={service.link} key={service.id}>
-                <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
-                  <img src={service.img} alt={service.title} className="w-full lg:h-20 h-8 object-contain shadow-xl rounded-lg" />
-                  <h3 className="text-center text-[6px] lg:text-base mt-2">{service.title}</h3>
-                </div>
-              </Link>
->>>>>>> c9f6476f30ea9271768c61b1d84a5b97ecd1ec1e
             ))}
           </div>
         </div>
 
         {/* Right Section - Get A Guy */}
         <div className="flex bg-[#8de29c1e] border-2 border-r-1 border-[#37f9a270] lg:w-[40%] lg:py-13 py-8 lg:px-20 px-5 rounded-xl flex-col">
-          <h2 className="lg:text-3xl text-lg font-bold lg:mb-8 mb-2 text-center">Get A Guy</h2>
+          <h2 className="lg:text-3xl text-lg font-bold lg:mb-8 mb-2 text-center">Get A Pro</h2>
 
           {!showTemplates && !showFreelancers && (
             <div className="flex flex-col gap-4 mt-4">
@@ -230,7 +173,6 @@ const GetServiceCard = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
       {/* Popup for Selected Service */}
       {selectedService && (
         <div className="fixed inset-0 flex items-center justify-center  bg-[#000000b7] bg-opacity-50 z-70 text-white">
@@ -248,9 +190,6 @@ const GetServiceCard = () => {
           </div>
         </div>
       )}
-=======
-      {isPopupOpen && <PopBox template={selectedTemplate} onComplete={handleFormCompletion} />}
->>>>>>> c9f6476f30ea9271768c61b1d84a5b97ecd1ec1e
     </div>
   );
 };

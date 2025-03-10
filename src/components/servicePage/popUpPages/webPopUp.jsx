@@ -433,29 +433,7 @@ export default function WebMultiStepForm({ onBack }) {
         </div>
       )}
 
-      {step === 10 && (
-        <div className="p-4">
-          <h2 className="text-base">Show templates</h2>
-          <div className="flex flex-col mt-2">
-            <p>Here are some templates based on your selections:</p>
-            {/* Add template display logic here */}
-          </div>
-          <div className="mt-4">
-            <button
-              onClick={handleBack}
-              className="m-2 p-2 bg-gray-500 text-white"
-            >
-              Back
-            </button>
-            <button
-              onClick={() => setStep(1)}
-              className="m-2 p-2 bg-red-500 text-white"
-            >
-              Restart
-            </button>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }

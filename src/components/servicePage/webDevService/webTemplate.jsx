@@ -11,18 +11,18 @@ export default function WebTemplate() {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
   
-  const serviceName = "Web Development";
-  localStorage.setItem("serviceName", serviceName);
+  // const serviceName = "Web Development";
+  // localStorage.setItem("serviceName", serviceName);
 
-  const handleSelect = (service) => {
-    setSelected(service);
-    localStorage.setItem("selectedTemplateTitle", service.title);
-  };
+  // const handleSelect = (service) => {
+  //   setSelected(service);
+  //   localStorage.setItem("selectedTemplateTitle", service.title);
+  // };
 
   const handleNext = () => {
     if (selected) {
       localStorage.setItem("selectedTemplateTitle", selected.title);
-      navigate("/adddescription");
+      navigate("/specsheet");
     }
   };
 
