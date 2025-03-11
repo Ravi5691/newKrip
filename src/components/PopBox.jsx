@@ -1,114 +1,154 @@
-import { useState } from "react";
-import { Calendar } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { ChevronRight, ArrowLeft, X } from "lucide-react";
 
-export default function MultiStepForm() {
-  const [step, setStep] = useState(1);
+export default function MultiStepForm({ isOpen, setIsOpen }) {
+  const [currentStep, setCurrentStep] = useState(1);
   const [budget, setBudget] = useState(500);
-  const [deadline, setDeadline] = useState("");
+  const [date, setDate] = useState("");
   const [skillLevel, setSkillLevel] = useState("Intermediate");
-  const [showPopup, setShowPopup] = useState(true); // Control visibility of the popup
 
-  const handleNext = () => {
-    if (step < 3) {
-      setStep(step + 1);
+  const totalSteps = 3;
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
     } else {
-      setShowPopup(false); // Hide popup on completion
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const handleSliderChange = (e) => setBudget(parseInt(e.target.value, 10));
+  const handleDateChange = (e) => setDate(e.target.value);
+  const handleSkillLevelChange = (level) => setSkillLevel(level);
+
+  const handleContinue = () => {
+    if (currentStep === 2 && !date) {
+      alert("Please select a valid date.");
+      return;
+    }
+    if (currentStep < totalSteps) {
+      setCurrentStep((prev) => prev + 1);
+    } else {
+      console.log("Form submitted:", { budget, date, skillLevel });
+      setIsOpen(false);
+      window.location.href = "/get-a-guy/recommended-freelancers";
     }
   };
 
-  return showPopup ? (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }} 
-        animate={{ opacity: 1, scale: 1 }} 
-        transition={{ duration: 0.3 }}
-        className="bg-[#0F1D13] text-white p-6 rounded-lg w-[65%] h-[65%] relative shadow-lg flex flex-col justify-between"
-      >
-        <div className="absolute top-4 right-4 text-gray-400 text-sm">{step} / 3</div>
-        <h2 className="text-sm font-semibold text-gray-300 mb-2 text-center">Customize Your Request</h2>
-        <hr className="border-gray-700 mb-4" />
+  const handleBack = () => {
+    if (currentStep > 1) setCurrentStep((prev) => prev - 1);
+  };
 
-        <div className="flex-grow flex flex-col justify-center items-center">
-          {step === 1 ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="text-center">
-              <p className="text-3xl font-bold flex justify-center items-center gap-2">
-                <span className="text-green-500 text-4xl">$</span> What's your budget?
-              </p>
-              <p className="text-4xl font-bold mt-2">${budget}</p>
-              <div className="mt-6 w-full px-10">
+  return (
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+      <div
+        className="w-full max-w-3xl bg-[#0e2e1e] text-white rounded-lg shadow-lg overflow-hidden relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="absolute top-4 right-4 text-white hover:text-gray-300"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close"
+        >
+          <X size={24} />
+        </button>
+
+        {/* Progress Bar */}
+        <div className="h-1 bg-[#1a3f2d]">
+          <div className="h-full bg-[#2bbb7f]" style={{ width: `${(currentStep / totalSteps) * 100}%` }} />
+        </div>
+
+        <div className="p-8">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-semibold">Customize Your Request</h2>
+            <div className="text-lg">
+              {currentStep} / {totalSteps}
+            </div>
+          </div>
+
+          <div className="min-h-[280px] flex flex-col justify-center">
+            {currentStep === 1 && (
+              <div className="text-center">
+                <h3 className="text-2xl font-medium mb-6">What's your budget?</h3>
+                <div className="text-5xl font-bold text-[#2bbb7f]">${budget.toLocaleString()}</div>
                 <input
                   type="range"
                   min="100"
                   max="10000"
+                  step="100"
                   value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
-                  className="w-full cursor-pointer appearance-none bg-transparent"
-                  style={{
-                    WebkitAppearance: "none",
-                    appearance: "none",
-                    height: "6px",
-                    background: `linear-gradient(to right, #16A34A ${(budget - 100) / 99}%, #374151 ${(budget - 100) / 99}%, #374151 100%)`,
-                    borderRadius: "3px",
-                    outline: "none"
-                  }}
+                  onChange={handleSliderChange}
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer mt-4"
                 />
-                <div className="flex justify-between text-sm text-gray-400 mt-2">
-                  <span>$100</span>
-                  <span>$10,000</span>
+              </div>
+            )}
+
+            {currentStep === 2 && (
+              <div>
+                <h3 className="text-2xl font-medium mb-6">When do you need this completed?</h3>
+                <input
+                  type="date"
+                  value={date}
+                  onChange={handleDateChange}
+                  className="w-full py-3 px-5 bg-[#0e2e1e] border border-[#2bbb7f] rounded-lg text-white text-lg focus:outline-none"
+                />
+              </div>
+            )}
+
+            {currentStep === 3 && (
+              <div>
+                <h3 className="text-2xl font-medium mb-6">What skill level do you require?</h3>
+                <div className="space-y-4">
+                  {["Beginner", "Intermediate", "Expert"].map((level) => (
+                    <button
+                      key={level}
+                      onClick={() => handleSkillLevelChange(level)}
+                      className={`w-full py-3 px-5 bg-[#0e2e1e] border rounded-lg flex items-center justify-between cursor-pointer hover:border-[#2bbb7f] ${
+                        skillLevel === level ? "border-[#2bbb7f]" : "border-[#1a3f2d]"
+                      }`}
+                    >
+                      <span className="text-lg">{level}</span>
+                      {skillLevel === level && <div className="w-4 h-4 bg-[#2bbb7f] rounded-full"></div>}
+                    </button>
+                  ))}
                 </div>
               </div>
-            </motion.div>
-          ) : step === 2 ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="text-center">
-              <p className="text-3xl font-bold flex justify-center items-center gap-2">
-                <Calendar className="w-8 h-8" /> When do you need this completed?
-              </p>
-              <input
-                type="date"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-                className="mt-4 px-4 py-2 rounded-lg text-black text-lg"
-              />
-            </motion.div>
-          ) : (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="text-center">
-              <p className="text-3xl font-bold">What skill level do you require?</p>
-              <div className="mt-6 space-y-4">
-                {["Beginner", "Intermediate", "Expert"].map((level) => (
-                  <div
-                    key={level}
-                    className={`cursor-pointer p-4 border rounded-lg text-lg font-medium flex items-center justify-between ${skillLevel === level ? 'border-green-500' : 'border-gray-600'}`}
-                    onClick={() => setSkillLevel(level)}
-                  >
-                    <span>{level}</span>
-                    {skillLevel === level && <span className="text-green-500">✔</span>}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </div>
+            )}
+          </div>
 
-        <hr className="border-gray-700 mt-4" />
+          {/* Navigation Buttons */}
+          <div className="flex justify-between mt-12">
+            {currentStep > 1 ? (
+              <button
+                onClick={handleBack}
+                className="px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition flex items-center gap-2"
+              >
+                <ArrowLeft size={20} /> Back
+              </button>
+            ) : (
+              <div></div>
+            )}
 
-        <div className="flex justify-between mt-2">
-          {step > 1 && (
             <button
-              onClick={() => setStep(step - 1)}
-              className="bg-gray-600 hover:bg-gray-500 text-white py-3 px-6 rounded-lg transition text-lg font-medium"
+              onClick={handleContinue}
+              className="px-6 py-3 rounded-lg bg-[#1a3f2d] hover:bg-[#2a5f3d] transition flex items-center gap-2"
             >
-              Back
+              {currentStep < totalSteps ? (
+                <>
+                  Continue <ChevronRight size={20} />
+                </>
+              ) : (
+                "Complete"
+              )}
             </button>
-          )}
-          <button
-            onClick={handleNext}
-            className="bg-[#16A34A] hover:bg-[#15803D] text-white py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition text-lg font-medium ml-auto"
-          >
-            {step < 3 ? "Next" : "Complete"} <span className="text-lg">→</span>
-          </button>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
-  ) : null;
+  );
 }
