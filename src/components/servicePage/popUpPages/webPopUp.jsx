@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function WebMultiStepForm({ onBack }) {
   const [step, setStep] = useState(1);
@@ -12,9 +13,8 @@ export default function WebMultiStepForm({ onBack }) {
     option7: "",
     option8: "",
     option9: "",
-    option10: "",
   });
-
+  const navigate = useNavigate();
   const handleSelect = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
@@ -30,15 +30,15 @@ export default function WebMultiStepForm({ onBack }) {
   };
 
   const handleNext = () => {
-    setStep((prevStep) => prevStep + 1);
+    if (step === 9) {
+      navigate("/web-template", { state: { formData } });
+    } else {
+      setStep(step + 1);
+    }
   };
 
   const handleBack = () => {
-    if (step === 1) {
-      onBack();
-    } else {
-      setStep(step > 1 ? step - 1 : step);
-    }
+    if (step > 1) setStep(step - 1);
   };
 
   // Function to render scrollable options
@@ -428,30 +428,6 @@ export default function WebMultiStepForm({ onBack }) {
               className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
-            </button>
-          </div>
-        </div>
-      )}
-
-      {step === 10 && (
-        <div className="p-4">
-          <h2 className="text-base">Show templates</h2>
-          <div className="flex flex-col mt-2">
-            <p>Here are some templates based on your selections:</p>
-            {/* Add template display logic here */}
-          </div>
-          <div className="mt-4">
-            <button
-              onClick={handleBack}
-              className="m-2 p-2 bg-gray-500 text-white"
-            >
-              Back
-            </button>
-            <button
-              onClick={() => setStep(1)}
-              className="m-2 p-2 bg-red-500 text-white"
-            >
-              Restart
             </button>
           </div>
         </div>

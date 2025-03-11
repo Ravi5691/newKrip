@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { cn } from "../../libs/utiles";
+import { Label } from "../../ui/label";
+import { Input } from "../../ui/input";
+import { cn } from "../../../libs/utiles";
 import {
   IconBrandGithub,
   IconBrandGoogle,
   IconBrandOnlyfans,
 } from "@tabler/icons-react";
 
-export function SignupFormDemo() {
+export function ClientLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted");

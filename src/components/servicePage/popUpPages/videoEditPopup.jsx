@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function VideoMultiStepForm({ onBack }) {
   const [step, setStep] = useState(1);
@@ -10,11 +11,8 @@ export default function VideoMultiStepForm({ onBack }) {
     option5: "",
     option6: "",
     option7: "",
-    option8: "",
-    option9: "",
-    option10: "",
   });
-
+  const navigate = useNavigate();
   const handleSelect = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
@@ -30,15 +28,15 @@ export default function VideoMultiStepForm({ onBack }) {
   };
 
   const handleNext = () => {
-    setStep((prevStep) => prevStep + 1);
+    if (step === 7) {
+      navigate("/video-template", { state: { formData } });
+    } else {
+      setStep(step + 1);
+    }
   };
 
   const handleBack = () => {
-    if (step === 1) {
-      onBack();
-    } else {
-      setStep(step > 1 ? step - 1 : step);
-    }
+    if (step > 1) setStep(step - 1);
   };
 
   // Function to render scrollable options
@@ -284,6 +282,39 @@ export default function VideoMultiStepForm({ onBack }) {
             </button>
             <button
               disabled={!formData.option6}
+              onClick={handleNext}
+              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+            >
+              <span className="font-sans text-sm">Next</span> &gt;
+            </button>
+          </div>
+        </div>
+      )}
+
+      {step === 7 && (
+        <div className="p-4">
+          <h2 className="text-base mb-3">
+            Please provide a brief description of your project:
+          </h2>
+          <textarea
+            value={formData.projectDescription}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                projectDescription: e.target.value,
+              }))
+            }
+            className="mt-2 w-full h-24 p-3 border border-gray-300 rounded"
+            placeholder="Describe your project here..."
+          />
+          <div className="mt-4 flex justify-between">
+            <button
+              onClick={handleBack}
+              className="m-2 p-2 text-lg font-mono font-semibold"
+            >
+              &lt; <span className="font-sans text-sm">Back</span>
+            </button>
+            <button
               onClick={handleNext}
               className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >

@@ -1,24 +1,39 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Video, Brush, Code, BrainCircuit, PenTool, Wrench } from "lucide-react"; // Importing icons
+import WebMultiStepForm from "./servicePage/popUpPages/webPopUp";
+import VideoMultiStepForm from "./servicePage/popUpPages/videoEditPopup";
+import GraphicDesignPopup from "./servicePage/popUpPages/graphicPopUp";
+import ContentCreationPopup from "./servicePage/popUpPages/contentCreationPopUp";
+import AiAutomationPopup from "./servicePage/popUpPages/aiPopUp";
+import SoftwareMaintenancePopup from "./servicePage/popUpPages/swPopUp";
 
 const services = [
-  { id: 1, title: "Video Editing", icon: <Video size={30} /> },
-  { id: 2, title: "Graphic Design", icon: <Brush size={30} /> },
-  { id: 3, title: "Web & App Development", icon: <Code size={30} /> },
-  { id: 4, title: "AI Automation", icon: <BrainCircuit size={30} /> },
-  { id: 5, title: "Content Creation", icon: <PenTool size={30} /> },
-  { id: 6, title: "Software Maintenance", icon: <Wrench size={30} /> },
+  { id: 1, title: "Video Editing", icon: <Video size={30} />, form: VideoMultiStepForm },
+  { id: 2, title: "Graphic Design", icon: <Brush size={30} />, form: GraphicDesignPopup },
+  { id: 3, title: "Web & App Development", icon: <Code size={30} />, form: WebMultiStepForm },
+  { id: 4, title: "AI Automation", icon: <BrainCircuit size={30} />, form: AiAutomationPopup },
+  { id: 5, title: "Content Creation", icon: <PenTool size={30} />, form: ContentCreationPopup },
+  { id: 6, title: "Software Maintenance", icon: <Wrench size={30} />, form: SoftwareMaintenancePopup },
 ];
 
 const GetServiceCard = () => {
   const [prompt, setPrompt] = useState("");
+  const [selectedService, setSelectedService] = useState(null);
   const navigate = useNavigate();
 
   const handleRedirect = () => {
     if (prompt.trim() !== "") {
       navigate(`/get-a-guy/templates/${encodeURIComponent(prompt)}`);
     }
+  };
+
+  const handleServiceClick = (service) => {
+    setSelectedService(service);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedService(null);
   };
 
   return (
@@ -29,12 +44,16 @@ const GetServiceCard = () => {
           <h2 className="text-2xl font-bold mb-4 text-center">Get A Service</h2>
           <div className="grid grid-cols-3 gap-4 w-full">
             {services.map((service) => (
-              <Link to={service.link || "#"} key={service.id} className="text-center">
+              <div
+                key={service.id}
+                className="text-center"
+                onClick={() => handleServiceClick(service)}
+              >
                 <div className="bg-[#183024] text-white p-4 rounded-lg cursor-pointer hover:scale-105 transition-all h-36 flex flex-col items-center justify-center mb-2">
                   <div className="text-green-400 mb-2">{service.icon}</div>
                   <h3 className="text-sm">{service.title}</h3>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -73,6 +92,23 @@ const GetServiceCard = () => {
           </div>
         </div>
       </div>
+
+      {/* Popup for Selected Service */}
+      {selectedService && (
+        <div className="fixed inset-0 bg-[#00000095] backdrop-blur-[2px] flex items-center justify-center z-70">
+        <div></div>
+          <div className="bg-[#0c1b14] border-1 border-[#37f9a270] p-8 pb-0 rounded-xl relative">
+            <button
+              onClick={handleClosePopup}
+              className="absolute top-2 right-2 text-white hover:text-gray-300"
+            >
+              &times;
+            </button>
+            <h2 className="text-xl mt-4 font-bold mb-4 text-center text-white">{selectedService.title}</h2>
+            <selectedService.form />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

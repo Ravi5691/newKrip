@@ -1,19 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function GraphicDesignPopup({ onBack }) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    option1: "",
-    option2: "",
-    option3: "",
+    option1: [],
+    option2: [],
+    option3: [],
     option4: "",
-    option5: "",
-    option6: "",
-    option7: "",
-    option8: "",
-    option9: "",
-    option10: "",
+    projectDescription: "",
   });
+
+  const navigate = useNavigate();
 
   const handleSelect = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -30,24 +28,23 @@ export default function GraphicDesignPopup({ onBack }) {
   };
 
   const handleNext = () => {
-    setStep((prevStep) => prevStep + 1);
-  };
-
-  const handleBack = () => {
-    if (step === 1) {
-      onBack();
+    if (step === 5) {
+      navigate("/graphic-template", { state: { formData } });
     } else {
-      setStep(step > 1 ? step - 1 : step);
+      setStep(step + 1);
     }
   };
 
-  // Function to render scrollable options
+  const handleBack = () => {
+    if (step > 1) setStep(step - 1);
+  };
+
   const renderScrollableOptions = (options, key, isMultiSelect = false) => (
     <div className="flex flex-col mt-2 h-48 overflow-y-auto p-2">
-      {options.slice(0, 6).map((option) => (
+      {options.slice(0, 10).map((option) => (
         <label
           key={option}
-          className="flex items-center text-[12px] space-x-2  p-3 hover:bg-[#00000061] hover:border-[1px] rounded"
+          className="flex items-center text-[12px] space-x-2 p-3 hover:bg-[#00000061] hover:border-[1px] rounded"
         >
           <input
             type={isMultiSelect ? "checkbox" : "radio"}
@@ -65,7 +62,6 @@ export default function GraphicDesignPopup({ onBack }) {
             }
             className="accent-black cursor-pointer"
           />
-
           <span>{option}</span>
         </label>
       ))}
@@ -77,9 +73,9 @@ export default function GraphicDesignPopup({ onBack }) {
       {step === 1 && (
         <div className="p-4">
           <h2 className="text-base">
-            {" "}
             What type of design do you need?
             <span className="text-[10px] text-gray-500">
+              {" "}
               (Pick one or more)
             </span>
           </h2>
@@ -94,7 +90,7 @@ export default function GraphicDesignPopup({ onBack }) {
               "Merchandise & Print Design (T-shirts, mugs, stickers, business cards, etc.)",
               "Motion Graphics / Animated Visuals (Logo animation, explainer video, GIFs, etc.)",
               "Custom Illustrations (Hand-drawn, vector, 3D renders, etc.)",
-              "Not sure, need expert suggestion",
+              "Not sure, need expert suggestion",
             ],
             "option1",
             true
@@ -114,8 +110,9 @@ export default function GraphicDesignPopup({ onBack }) {
       {step === 2 && (
         <div className="p-4">
           <h2 className="text-base">
-            What’s the purpose of the design?
+            What's the purpose of the design?
             <span className="text-[10px] text-gray-500">
+              {" "}
               (Helps refine the creative direction)
             </span>
           </h2>
@@ -126,10 +123,10 @@ export default function GraphicDesignPopup({ onBack }) {
               "Social Media Engagement (Consistent visuals, content marketing assets, influencer branding)",
               "Event Promotion (Posters, invitations, banners, standees, etc.)",
               "Presentation or Corporate Use (Investor decks, business reports, company profile, etc.)",
-              "Other (Briefly describe your need)",
+              "Other (Briefly describe your need)",
             ],
             "option2",
-            true // Multi-select
+            true
           )}
           <div className="mt-4 flex justify-between">
             <button
@@ -152,8 +149,9 @@ export default function GraphicDesignPopup({ onBack }) {
       {step === 3 && (
         <div className="p-4">
           <h2 className="text-base">
-            What's the purpose of your project?
+            What's the style or theme you prefer?
             <span className="text-[10px] text-gray-500">
+              {" "}
               (Pick one or more)
             </span>
           </h2>
@@ -165,7 +163,7 @@ export default function GraphicDesignPopup({ onBack }) {
               "Futuristic & Techy (Glitch, cyberpunk, neon, dark mode, etc.)",
               "Classic & Traditional (Hand-drawn, vintage, ornate details, serif fonts, etc.)",
               "Corporate & Professional (Formal, structured, neutral colors, etc.)",
-              "♂ I’m open to suggestions – Impress me",
+              "I'm open to suggestions – Impress me",
             ],
             "option3",
             true
@@ -191,10 +189,8 @@ export default function GraphicDesignPopup({ onBack }) {
       {step === 4 && (
         <div className="p-4">
           <h2 className="text-base">
-            What's the purpose of your project?
-            <span className="text-[10px] text-gray-500">
-              (Pick one or more)
-            </span>
+            Do you have any brand guidelines or references?
+            <span className="text-[10px] text-gray-500"> (Pick one)</span>
           </h2>
           {renderScrollableOptions(
             [
@@ -214,6 +210,39 @@ export default function GraphicDesignPopup({ onBack }) {
             </button>
             <button
               disabled={!formData.option4}
+              onClick={handleNext}
+              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+            >
+              <span className="font-sans text-sm">Next</span> &gt;
+            </button>
+          </div>
+        </div>
+      )}
+
+      {step === 5 && (
+        <div className="p-4">
+          <h2 className="text-base mb-3">
+            Please provide a brief description of your project:
+          </h2>
+          <textarea
+            value={formData.projectDescription}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                projectDescription: e.target.value,
+              }))
+            }
+            className="mt-2 w-full h-24 p-3 border border-gray-300 rounded"
+            placeholder="Describe your project here..."
+          />
+          <div className="mt-4 flex justify-between">
+            <button
+              onClick={handleBack}
+              className="m-2 p-2 text-lg font-mono font-semibold"
+            >
+              &lt; <span className="font-sans text-sm">Back</span>
+            </button>
+            <button
               onClick={handleNext}
               className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >

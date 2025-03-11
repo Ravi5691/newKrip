@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function ContentCreationPopup({ onBack }) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -9,11 +9,9 @@ export default function ContentCreationPopup({ onBack }) {
     option4: "",
     option5: "",
     option6: "",
-    option7: "",
-    option8: "",
-    option9: "",
-    option10: "",
   });
+
+  const navigate = useNavigate();
 
   const handleSelect = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -30,15 +28,14 @@ export default function ContentCreationPopup({ onBack }) {
   };
 
   const handleNext = () => {
-    setStep((prevStep) => prevStep + 1);
-  };
-
-  const handleBack = () => {
-    if (step === 1) {
-      onBack();
+    if (step === 6) {
+      navigate("/contentcreation-template", { state: { formData } });
     } else {
-      setStep(step > 1 ? step - 1 : step);
+      setStep(step + 1);
     }
+  };
+  const handleBack = () => {
+    if (step > 1) setStep(step - 1);
   };
 
   // Function to render scrollable options
