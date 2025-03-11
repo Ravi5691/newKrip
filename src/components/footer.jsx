@@ -7,7 +7,9 @@ const Footer = () => {
         <div className="h-[70%] w-full flex lg:flex-row flex-col justify-around relative">
           <div className="absolute w-full h-150 bg-gradient-to-t from-[#83FF9780] to-[#060E0E] bg-blend-lighten bottom-0 opacity-20 pointer-events-none" />
           <div className="lg:h-full h-70 w-full lg:w-[50%] text-gray-100 lg:px-40 px-5 lg:pl-45 lg:py-40">
-            <h1 className="lg:text-3xl text-lg lg:mb-7 mb-1">Ready to get started?</h1>
+            <h1 className="lg:text-3xl text-lg lg:mb-7 mb-1">
+              Ready to get started?
+            </h1>
             <p className="lg:text-lg text-[10px] lg:mb-10 mb-8">
               Experience Krip’s AI-powered platform today—like no other!
             </p>
@@ -16,7 +18,7 @@ const Footer = () => {
                 Get a Service
               </button>
               <button className="text-white lg:text-base text-[12px] border-1 cursor-pointer border-[#37f9a270] lg:px-7 px-7 lg:py-3 py-2 rounded-lg font-semibold">
-                Get a Pro
+                Get a Guy
               </button>
             </div>
           </div>
@@ -26,7 +28,18 @@ const Footer = () => {
             <div className=" absolute lg:h-[15%] lg:w-[15%] h-[20%] w-[20%]  rounded-2xl lg:top-30 lg:right-55 right-15 top-8 bg-white z-20"></div>
           </div>
         </div>
-        <div className="h-[20%] w-full"></div>
+        <div className=" w-full">
+          <div className="flex">
+            <div></div>
+            <div>
+              <ol>
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Support</li>
+              </ol>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

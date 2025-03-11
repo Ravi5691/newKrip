@@ -1,90 +1,75 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Video, Brush, Code, BrainCircuit, PenTool, Wrench } from "lucide-react"; // Importing icons
 
 const services = [
-  {
-    id: 1,
-    title: "Video Editing",
-    img: "/krip png/1.png",
-    link: "/adddescription",
-  },
-  {
-    id: 2,
-    title: "Graphic Design",
-    img: "/krip png/2.png",
-    link: "/adddescription",
-  },
-  {
-    id: 3,
-    title: "Web Development",
-    img: "/krip png/3.png",
-    link: "/web-template",
-  },
-  {
-    id: 4,
-    title: "AI Automation",
-    img: "/krip png/4.png",
-    link: "/adddescription",
-  },
-  {
-    id: 5,
-    title: "Content Creation",
-    img: "/krip png/5.png",
-    link: "/adddescription",
-  },
-  {
-    id: 6,
-    title: "S/W Maintenance",
-    img: "/krip png/6.png",
-    link: "/adddescription",
-  },
+  { id: 1, title: "Video Editing", icon: <Video size={30} /> },
+  { id: 2, title: "Graphic Design", icon: <Brush size={30} /> },
+  { id: 3, title: "Web & App Development", icon: <Code size={30} /> },
+  { id: 4, title: "AI Automation", icon: <BrainCircuit size={30} /> },
+  { id: 5, title: "Content Creation", icon: <PenTool size={30} /> },
+  { id: 6, title: "Software Maintenance", icon: <Wrench size={30} /> },
 ];
 
 const GetServiceCard = () => {
+  const [prompt, setPrompt] = useState("");
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    if (prompt.trim() !== "") {
+      navigate(`/get-a-guy/templates/${encodeURIComponent(prompt)}`);
+    }
+  };
+
   return (
-    <div className="flex items-center w-screen justify-center lg:mt-20 mt-5 mb-40 relative">
-      <div
-        className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten opacity-25 pointer-events-none"
-        style={{
-          filter: "blur(100px)",
-          zIndex: 50,
-        }}
-      />
-      <div className="rounded-2xl  flex lg:flex-row flex-col text-white w-full relative lg:mx-40 mx-7">
-        {/* OR Separator */}
-        <div className="flex lg:h-20 lg:w-20 h-12 w-12  place-items-center justify-center absolute rounded-full z-70 bg-[#060E0E] lg:right-111 right-35 top-72 lg:top-65  border-[#37f9a270] lg:border-2 border-1">
-          <div className=" lg:text-xl text-sm text-center font-bold text-gray-300">OR</div>
-        </div>
+    <div className="flex items-center justify-center w-screen lg:mt-20 mt-5 mb-28 relative">
+      <div className="flex flex-col lg:flex-row text-white w-full lg:mx-40 mx-7 relative">
         {/* Get A Service Section */}
-        <div className="flex-1 bg-[#8de29c1e] border-2 border-r-1 border-[#37f9a270] lg:py-13 py-8 lg:px-20 px-5 rounded-xl flex flex-col z-60">
-          <h2 className="lg:text-3xl text-lg font-bold lg:mb-2 text-center">Get A Service</h2>
-          <p className="lg:text-sm text-[10px] text-gray-200 lg:mb-6 mb-2 text-center">Subtext</p>
-          <div className="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:gap-6 gap-2 lg:py-10 py-3 z-20 relative ">
+        <div className="flex-[1.3] bg-[#11261D] border-2 border-[#37f9a270] p-8 rounded-xl flex flex-col items-center relative min-h-[400px]">
+          <h2 className="text-2xl font-bold mb-4 text-center">Get A Service</h2>
+          <div className="grid grid-cols-3 gap-4 w-full">
             {services.map((service) => (
-              <Link to={service.link} key={service.id}>
-                <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
-                  <img
-                    src={service.img}
-                    alt={service.title}
-                    className="w-full lg:h-20 h-8 object-contain shadow-xl rounded-lg"
-                  />
-                  <h3 className="text-center text-[6px] lg:text-base mt-2">{service.title}</h3>
+              <Link to={service.link || "#"} key={service.id} className="text-center">
+                <div className="bg-[#183024] text-white p-4 rounded-lg cursor-pointer hover:scale-105 transition-all h-36 flex flex-col items-center justify-center mb-2">
+                  <div className="text-green-400 mb-2">{service.icon}</div>
+                  <h3 className="text-sm">{service.title}</h3>
                 </div>
               </Link>
             ))}
           </div>
         </div>
 
+        {/* OR Button */}
+        <div className="absolute left-[58%] top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black text-white rounded-full w-10 h-10 flex items-center justify-center text-sm font-bold border border-white z-10">
+          OR
+        </div>
+
         {/* Get A Guy Section */}
-        <div className="flex bg-[#8de29c1e] border-2 border-r-1 border-[#37f9a270] lg:w-[40%] lg:py-13 py-8 lg:px-20 px-5 rounded-xl z-60 flex-col">
-          <h2 className="lg:text-3xl text-lg font-bold lg:mb-8 mb-2 text-center">Get A Pro</h2>
-          <div className="flex flex-col gap-4 mt-4">
+        <div className="flex-[0.9] bg-[#11261D] border-2 border-[#37f9a270] p-8 rounded-xl flex flex-col items-center justify-center relative min-h-[400px]">
+          <h2 className="text-2xl font-bold mb-4 text-center">Get A Guy</h2>
+          <div className="relative w-full flex items-center mb-6">
             <input
               type="text"
               placeholder="Enter the Prompt"
-              className="w-full bg-white p-2 rounded-lg placeholder-gray-400 lg:text-sm text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500 text-black"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              className="w-full bg-white p-3 rounded-lg placeholder-gray-500 text-black text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             />
+            <button
+              onClick={handleRedirect}
+              className="absolute right-1 bg-[#37f9a2] text-black p-2 rounded-lg hover:bg-green-400 transition duration-300"
+            >
+              ➜
+            </button>
+          </div>
+          <h3 className="text-gray-300 text-sm font-medium mt-12 mb-3">Common Search</h3>
+          <div className="w-full flex flex-col gap-2">
+            <div className="bg-white text-black p-3 rounded-lg text-sm">
+              I want to make an E-commerce website
+            </div>
+            <div className="bg-white text-black p-3 rounded-lg text-sm">
+              I want to make a Portfolio using Next.js
+            </div>
           </div>
         </div>
       </div>

@@ -56,7 +56,7 @@ const Faq = () => {
                 onClick={() => toggleFaq(0)}
               >
                 <span className="text-sm sm:text-lg font-semibold text-black">
-                  How to create an account?
+                  Are my payment details secure?
                 </span>
                 <svg
                   className={`w-6 h-6 text-gray-400 transform transition-transform duration-300 ${

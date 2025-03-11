@@ -7,7 +7,7 @@ const cards = [
   { id: 2, text: "Card 2",},
   { id: 3, text: "Card 3",},
   { id: 4, text: "Card 4",},
-  // { id: 5, text: "Card 5",},
+  { id: 5, text: "Card 5",},
 ];
 
 export default function AboutUs() {
@@ -169,7 +169,7 @@ export default function AboutUs() {
         </div>
       </nav>
       <div className="relative group h-60 lg:h-120 lg:px-25 px-4 flex flex-col justify-center text-left overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/signUp.png')] bg-cover bg-center transition-all duration-300 lg:group-hover:blur-lg blur-[5px] lg:blur-none"></div>
+        <div className="absolute inset-0 bg-[url('/kripverse.png')] bg-cover bg-center transition-all duration-300 lg:group-hover:blur-lg blur-[5px] lg:blur-none"></div>
         <div className="relative opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
           <h1 className="lg:text-5xl text-xl font-bold text-white">About Us</h1>
           <p className="lg:mt-4 lg:text-2xl text-sm font-semibold text-gray-200">

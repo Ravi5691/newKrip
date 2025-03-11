@@ -2,7 +2,7 @@ import React from "react";
 
 const Bentobox = () => {
   return (
-    <div className="w-screen lg:h-screen h-80 flex flex-col lg:justify-center items-center my-30 p-2 lg:p-0 overflow-x-hidden relative">
+    <div className="w-screen lg:h-screen h-80 flex flex-col lg:justify-center items-center lg:my-30 my-10 p-2 lg:p-0 overflow-x-hidden relative">
        <div className=" lg:h-[50%] absolute  z-10 lg:block hidden">
           <div
             className="absolute w-120 h-120 bg-[#83FF9780] bg-blend-lighten opacity-30 top-50 rounded-full pointer-events-none "

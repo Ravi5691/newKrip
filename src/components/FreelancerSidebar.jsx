@@ -9,7 +9,7 @@ const Sidebar = () => {
       </div>
       <nav className="space-y-4">
         <NavLink
-          to="/dashboard/profile"
+          to="/dashboard/freelancer/profile"
           className={({ isActive }) =>
             `flex items-center gap-3 p-3 rounded-lg text-lg font-medium ${
               isActive ? "text-green-400" : "text-gray-400"
@@ -20,7 +20,7 @@ const Sidebar = () => {
           Profile & Portfolio
         </NavLink>
         <NavLink
-          to="/dashboard/assigned-projects"
+          to="/dashboard/freelancer/assigned-projects"
           className={({ isActive }) =>
             `flex items-center gap-3 p-3 rounded-lg text-lg font-medium ${
               isActive ? "text-green-400" : "text-gray-400"
@@ -31,7 +31,7 @@ const Sidebar = () => {
           Assigned Projects
         </NavLink>
         <NavLink
-          to="/dashboard/task-management"
+          to="/dashboard/freelancer/task-management"
           className={({ isActive }) =>
             `flex items-center gap-3 p-3 rounded-lg text-lg font-medium ${
               isActive ? "text-green-400" : "text-gray-400"
@@ -42,7 +42,7 @@ const Sidebar = () => {
           Task Management
         </NavLink>
         <NavLink
-          to="/dashboard/billing-invoice"
+          to="/dashboard/freelancer/billing-invoice"
           className={({ isActive }) =>
             `flex items-center gap-3 p-3 rounded-lg text-lg font-medium ${
               isActive ? "text-green-400" : "text-gray-400"
@@ -53,7 +53,7 @@ const Sidebar = () => {
           Billing & Invoice
         </NavLink>
         <NavLink
-          to="/dashboard/support"
+          to="/dashboard/freelancer/support"
           className={({ isActive }) =>
             `flex items-center gap-3 p-3 rounded-lg text-lg font-medium ${
               isActive ? "text-green-400" : "text-gray-400"

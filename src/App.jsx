@@ -5,18 +5,14 @@ import SelectService from "./components/servicePage/selectService";
 import SpecSheet from "./components/servicePage/SpecSheet";
 import AboutProject from "./components/servicePage/addDiscription";
 import AddTags from "./components/servicePage/chooseTag";
-// Adjust the import based on your file structure
-// import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
-// import AboutProject from "./components/servicePage/webDevService/addDiscription";
-// import AddTags from "./components/servicePage/webDevService/chooseTag";
 import WebTemplate from "./components/servicePage/webDevService/webTemplate";
 import { SignupFormDemo } from "./components/signupForm";
-import DashboardLayout from "./components/dashbaord/layouts/DashboardLayout";
-import Profile from "./components/dashbaord/Profile";
-import AssignedProjects from "./components/dashbaord/AssignedProjects";
-import TaskManagement from "./components/dashbaord/TaskManagement";
-import BillingInvoice from "./components/dashbaord/BillingInvoice";
-import Support from "./components/dashbaord/Support";
+import FreelancerDashboardLayout from "./components/dashbaord/layouts/freelancerDashboardLayout"
+import Profile from "./components/dashbaord/freelancer/Profile"
+import AssignedProjects from "./components/dashbaord/freelancer/AssignedProjects"
+import TaskManagement from "./components/dashbaord/freelancer/TaskManagement"
+import BillingInvoice from "./components/dashbaord/freelancer/BillingInvoice";
+import Support from "./components/dashbaord/freelancer/Support";
 import AboutUs from "./components/aboutUs";
 import ContactUs from "./components/contactUs";
 import VideoEditingTemplate from "./components/servicePage/videoEditing/videoEditingTemplate";
@@ -24,12 +20,20 @@ import GraphicDesignTemplate from "./components/servicePage/graphicDesign/graphi
 import SwMaintenanceTemplate from "./components/servicePage/swMaintenance/swMaintenanceTemplate";
 import AiTemplate from "./components/servicePage/aiAutomation/aiTemplate";
 import ContentCreationTemplate from "./components/servicePage/contentCreation/contentCreation";
+import ClientDashboardLayout from "./components/dashbaord/layouts/clientDashboardLayout";
+import Billing from "./components/dashbaord/client/Billing"
+import ProjectList from "./components/dashbaord/client/ProjectList"
+import ProjectManagement from "./components/dashbaord/client/ProjectManagement"
+import SupportCli from "./components/dashbaord/client/Support";
+import Templates from "./components/templates"
+import SuggestedFreelancers from "./components/suggestedFreelancers";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Header/>} />
+        {/* Public Routes */}
+        <Route path="/" element={<Header />} />
         <Route path="/selectservice" element={<SelectService />} />
         <Route path="/web-template" element={<WebTemplate />} />
         <Route path="/video-template" element={<VideoEditingTemplate/>}/>
@@ -44,14 +48,28 @@ function App() {
         <Route path="/signup" element={<SignupFormDemo />} />
         <Route path="/aboutus" element={<AboutUs/>}/>
         <Route path="/contactus" element={<ContactUs/>}/>
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/get-a-guy/templates/:prompt" element={<Templates />} />
+        <Route path="/get-a-guy/recommended-freelancers" element={<SuggestedFreelancers />} />
 
-        <Route path="/dashboard" element={<DashboardLayout />}>
+        {/* Freelancer Dashboard Routes */}
+        <Route path="/dashboard/freelancer" element={<FreelancerDashboardLayout />}>
           <Route index element={<Navigate to="profile" replace />} />
           <Route path="profile" element={<Profile />} />
           <Route path="assigned-projects" element={<AssignedProjects />} />
           <Route path="task-management" element={<TaskManagement />} />
           <Route path="billing-invoice" element={<BillingInvoice />} />
           <Route path="support" element={<Support />} />
+        </Route>
+
+        {/* Client dashboard routes*/}
+        <Route path="/dashboard/client" element={<ClientDashboardLayout />}>
+        <Route index element={<Navigate to="projects" replace />} />
+        <Route path="billing" element={<Billing />} />
+        <Route path="projects" element={<ProjectManagement />} />
+        <Route path="projects-list" element={<ProjectList />} />
+        <Route path="support" element={<SupportCli />} />
         </Route>
       </Routes>
     </BrowserRouter>

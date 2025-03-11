@@ -165,36 +165,50 @@ const Header = () => {
             Best Talent"
           </span> */}
           <div className="my-10 mb-5 lg:block hidden">
-           <TypewriterEffectSmoothDemo/>
+            <TypewriterEffectSmoothDemo />
           </div>
           <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">
             Find the best talent for your project
           </span>
           <span className="lg:leading-7 lg:text-lg text-sm lg:tracking-wider tracking-wide lg:px-0 px-4">
-            Our AI will help you generate a detailed Spec-sheet and find
+            Our Ai will help you generate a detailed Spec-sheet and find
             freelancer who meet your needs with live <br /> project tracking
             through the process
           </span>
-          {/* <div className="flex flex-col md:flex-row p-16 justify-center gap-5  text-sm  font-medium">
+          <div className="flex flex-row lg:p-16 p-6 justify-center lg:gap-5 gap-2  lg:text-sm text-[10px]  font-medium">
             <Link to="/selectservice">
               <button className="lg:mx-2 mx-1 text-black cursor-pointer bg-[#37f9a2] lg:px-7 px-6 py-3 rounded-lg">
                 Get a Service
               </button>
             </Link>
             <button className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-4 py-3 rounded-lg">
-              Get a Pro
+              Get a Freelancer
             </button>
-          </div>  */}
+          </div>
         </div>
+
         <GetServiceCard />
+
         {/* <BarAnimation/> */}
+
         <StatCard />
-        <FeatureCard/>
+
+        <div className="relative">
+          {/* <div
+            className="absolute w-screen lg:h-70 h-120 bg-[#83ff9883] bg-blend-lighten opacity-25 pointer-events-none top-30"
+            style={{
+              filter: "blur(100px)",
+              zIndex: 50,
+            }}
+          /> */}
+          <div className="relative z-60">
+            <FeatureCard />
+          </div>
+        </div>
       </main>
       <Bentobox />
       <Faq />
       <Footer />
-     
     </div>
   );
 };

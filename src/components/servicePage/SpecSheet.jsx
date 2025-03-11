@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 
 const SpecSheet = () => {
   const [templateTitle, setTemplateTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,6 +22,8 @@ const SpecSheet = () => {
     setTags(savedTags);
   }, []);
 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -30,143 +31,142 @@ const SpecSheet = () => {
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
-
   return (
     <div className="">
-      <div className="min-h-screen bg-[#060E0E] text-white relative">
-        <nav>
-          <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
-            <button className="cursor-pointer">
-              <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
-            </button>
-            <button
-              className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
-              onClick={toggleDrawer}
+      <div className="min-h-screen bg-[#060E0E]  text-white relative">
+      <nav>
+        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
+          <button className="cursor-pointer">
+            <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
+          </button>
+          <button
+            className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
+            onClick={toggleDrawer}
+          >
+            {/* Hamburger Icon */}
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Hamburger Icon */}
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+
+          {/* Drawer */}
+          {isDrawerOpen && (
+            <div className="fixed inset-0 z-80 flex" onClick={closeDrawer}>
+              {/* Overlay */}
+              <div className="fixed inset-0 bg-black opacity-50"></div>
+
+              {/* Drawer Content */}
+              <div
+                className="relative bg-[#060e0ec4] w-64 h-full shadow-lg p-5 backdrop-blur-sm"
+                onClick={(e) => e.stopPropagation()}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
-
-            {/* Drawer */}
-            {isDrawerOpen && (
-              <div className="fixed inset-0 z-80 flex" onClick={closeDrawer}>
-                {/* Overlay */}
-                <div className="fixed inset-0 bg-black opacity-50"></div>
-
-                {/* Drawer Content */}
-                <div
-                  className="relative bg-[#060e0ec4] w-64 h-full shadow-lg p-5 backdrop-blur-sm"
-                  onClick={(e) => e.stopPropagation()}
+                <button
+                  className="absolute top-5 right-4 text-slate-200"
+                  onClick={closeDrawer}
                 >
-                  <button
-                    className="absolute top-5 right-4 text-slate-200"
-                    onClick={closeDrawer}
+                  {/* Close Icon */}
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    {/* Close Icon */}
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      ></path>
-                    </svg>
-                  </button>
-                  <nav className="mt-10">
-                    <ul className="space-y-4">
-                      <li>
-                        <Link
-                          to="/"
-                          className="text-slate-200"
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    ></path>
+                  </svg>
+                </button>
+                <nav className="mt-10">
+                  <ul className="space-y-4">
+                    <li>
+                      <Link
+                        to="/"
+                        className="text-slate-200"
+                        onClick={closeDrawer}
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/aboutus"
+                        className="text-slate-200"
+                        onClick={closeDrawer}
+                      >
+                        About Us
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/contactus"
+                        className="text-slate-200"
+                        onClick={closeDrawer}
+                      >
+                        Contact Us
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/signup">
+                        <button
+                          className="w-full px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center"
                           onClick={closeDrawer}
                         >
-                          Home
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/aboutus"
-                          className="text-slate-200"
-                          onClick={closeDrawer}
-                        >
-                          About Us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/contactus"
-                          className="text-slate-200"
-                          onClick={closeDrawer}
-                        >
-                          Contact Us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/signup">
-                          <button
-                            className="w-full px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center"
-                            onClick={closeDrawer}
-                          >
-                            Login
-                          </button>
-                        </Link>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
+                          Login
+                        </button>
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
               </div>
-            )}
+            </div>
+          )}
 
-            <span className="flex flex-col md:flex-row justify-around place-items-center w-full md:w-auto gap-3">
-              <Link to="/">
-                <button className="mx-2 md:mx-6 hidden md:block cursor-pointer">
-                  Home
-                </button>
-              </Link>
-              <Link to="/aboutus">
-                <button className="mx-2 md:mx-6 hidden md:block cursor-pointer">
-                  About Us
-                </button>
-              </Link>
-              <Link to="/contactus">
-                <button className="mx-2 md:mx-6 hidden md:block cursor-pointer">
-                  Contact Us
-                </button>
-              </Link>
-              <Link to="/signup">
-                <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer">
-                  Login
-                </button>
-              </Link>
-            </span>
-          </div>
-          <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
-            <span className="self-center">Programming & Tech</span>
-            <span className="self-center">Graphic design</span>
-            <span className="self-center">AI Service</span>
-            <span className="self-center">Video & Animation</span>
-            <span className="self-center lg:block hidden">Indemand</span>
-          </div>
-        </nav>
+          <span className="flex flex-col md:flex-row justify-around place-items-center w-full md:w-auto gap-3">
+            <Link to="/">
+              <button className="mx-2 md:mx-6 hidden md:block cursor-pointer">
+                Home
+              </button>
+            </Link>
+            <Link to="/aboutus">
+              <button className="mx-2 md:mx-6 hidden md:block cursor-pointer">
+                About Us
+              </button>
+            </Link>
+            <Link to="/contactus">
+              <button className="mx-2 md:mx-6 hidden md:block cursor-pointer">
+                Contact Us
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer">
+                Login
+              </button>
+            </Link>
+          </span>
+        </div>
+        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
+          <span className="self-center">Programming & Tech</span>
+          <span className="self-center">Graphic design</span>
+          <span className="self-center">AI Service</span>
+          <span className="self-center">Video & Animation</span>
+          <span className="self-center lg:block hidden">Indemand</span>
+        </div>
+      </nav>
 
         <div
           className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
@@ -215,7 +215,7 @@ const SpecSheet = () => {
               </div>
 
               <div className="mt-4 text-sm lg:mb-7 mb-4">
-                <h3 className="font-medium mb-2">Description</h3>
+                <h3 className="font-medium mb-2">Descriptive</h3>
                 <p className="text-white text-sm p-2 text-left w-72 lg:w-full text-wrap max-h-[300px] break-words overflow-hidden">
                   {description}
                 </p>
