@@ -12,6 +12,11 @@ import { Link } from "react-router-dom";
 
 const ContactUs = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isLoginOptionsOpen, setIsLoginOptionsOpen] = useState(false);
+
+  const toggleLoginOptions = () => {
+    setIsLoginOptionsOpen(!isLoginOptionsOpen);
+  };
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -112,10 +117,10 @@ const ContactUs = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link to="/signup">
+                        <Link to="#">
                           <button
                             className="w-full px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center"
-                            onClick={closeDrawer}
+                            onClick={toggleLoginOptions}
                           >
                             Login
                           </button>
@@ -143,11 +148,41 @@ const ContactUs = () => {
                   Contact Us
                 </button>
               </Link>
-              <Link to="/signup">
-                <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer">
-                  Login
-                </button>
-              </Link>
+              <div className="relative">
+                <Link to="#">
+                  <button
+                    className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer"
+                    onClick={toggleLoginOptions}
+                  >
+                    Login
+                  </button>
+                </Link>
+                {/* Dropdown Menu */}
+                {isLoginOptionsOpen && (
+                  <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                    <ul className="py-2">
+                      <li>
+                        <Link
+                          to="/freelancer-signup"
+                          className="block px-4 py-2 border-b-1 border-[#37f9a277]"
+                          onClick={toggleLoginOptions}
+                        >
+                          Login as Freelancer
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/client-signup"
+                          className="block px-4 py-2"
+                          onClick={toggleLoginOptions}
+                        >
+                          Login as Client
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             </span>
           </div>
           <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">

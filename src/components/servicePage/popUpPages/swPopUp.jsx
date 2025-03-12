@@ -28,7 +28,7 @@ export default function SoftwareMaintenancePopup({ onBack }) {
 
   const handleNext = () => {
     if (step === 6) {
-      navigate("/software-template", { state: { formData } });
+      navigate("/specsheet", { state: { formData } });
     } else {
       setStep(step + 1);
     }

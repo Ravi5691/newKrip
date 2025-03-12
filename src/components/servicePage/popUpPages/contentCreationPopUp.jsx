@@ -29,7 +29,7 @@ export default function ContentCreationPopup({ onBack }) {
 
   const handleNext = () => {
     if (step === 6) {
-      navigate("/contentcreation-template", { state: { formData } });
+      navigate("/specsheet", { state: { formData } });
     } else {
       setStep(step + 1);
     }

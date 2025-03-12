@@ -12,6 +12,11 @@ const cards = [
 
 export default function AboutUs() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isLoginOptionsOpen, setIsLoginOptionsOpen] = useState(false);
+
+  const toggleLoginOptions = () => {
+    setIsLoginOptionsOpen(!isLoginOptionsOpen);
+  };
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -34,9 +39,9 @@ export default function AboutUs() {
   };
 
   return (
-    <div className="min-h-screen bg-[#060E0E]">
+    <div className="min-h-screen bg-[#060E0E] text-white">
       <nav>
-        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative text-white">
+        <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
           <button className="cursor-pointer">
             <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
           </button>
@@ -122,10 +127,10 @@ export default function AboutUs() {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/signup">
+                      <Link to="#">
                         <button
                           className="w-full px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center"
-                          onClick={closeDrawer}
+                          onClick={toggleLoginOptions}
                         >
                           Login
                         </button>
@@ -153,14 +158,36 @@ export default function AboutUs() {
                 Contact Us
               </button>
             </Link>
-            <Link to="/signup">
-              <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer">
-                Login
-              </button>
-            </Link>
+            <div className="relative">
+              <Link to="#">
+                <button
+                  className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer"
+                  onClick={toggleLoginOptions}
+                >
+                  Login
+                </button>
+              </Link>
+              {/* Dropdown Menu */}
+              {isLoginOptionsOpen && (
+                <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#112929a3] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                  <ul className="py-2">
+                    <li>
+                      <Link to="/freelancer-signup" className="block px-4 py-2 border-b-1 border-[#37f9a277]" onClick={toggleLoginOptions}>
+                        Login as Freelancer
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/client-signup" className="block px-4 py-2" onClick={toggleLoginOptions}>
+                        Login as Client
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </span>
         </div>
-        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820] text-white">
+        <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
           <span className="self-center">Programming & Tech</span>
           <span className="self-center">Graphic design</span>
           <span className="self-center">AI Service</span>

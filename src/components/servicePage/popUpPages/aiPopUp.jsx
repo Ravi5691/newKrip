@@ -27,7 +27,7 @@ export default function AiAutomationPopup({ onBack }) {
 
   const handleNext = () => {
     if (step === 6) {
-      navigate("/ai-template", { state: { formData } });
+      navigate("/specsheet", { state: { formData } });
     } else {
       setStep(step + 1);
     }

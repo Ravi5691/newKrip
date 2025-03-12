@@ -15,7 +15,7 @@ export default function WebDevTemplateSelection() {
   );
 
   const handleNext = () => {
-    navigate("/graphic-specsheet", {
+    navigate("/specsheet", {
       state: { formData: state.formData, selectedTemplate },
     });
   };

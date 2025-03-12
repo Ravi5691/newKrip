@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/header";
 import ConfirmationPage from "./components/servicePage/ConfirmationPage";
 import SelectService from "./components/servicePage/selectService";
-import SpecSheet from "./components/servicePage/SpecSheet";
+// import SpecSheet from "./components/servicePage/SpecSheet";
 import AboutProject from "./components/servicePage/addDiscription";
 import AddTags from "./components/servicePage/chooseTag";
 import WebTemplate from "./components/servicePage/webDevService/webTemplate";
@@ -25,13 +25,10 @@ import ClientDashboardLayout from "./components/dashbaord/layouts/clientDashboar
 import Billing from "./components/dashbaord/client/Billing";
 import ProjectManagement from "./components/dashbaord/client/ProjectManagement";
 import ProjectList from "./components/dashbaord/client/ProjectList";
-import GraphicSpecsheet from "./components/servicePage/popUpPages/specsheet/GraphicSpecsheet";
+import Specsheet from "./components/servicePage/popUpPages/specsheet/Specsheet";
 import GraphicTemplateSelection from "./components/servicePage/popUpPages/template/GraphicTemplate";
 import WebDevTemplateSelection from "./components/servicePage/popUpPages/template/WebTemplate";
 import VideoTemplateSelection from "./components/servicePage/popUpPages/template/VideoTemplate";
-import AiTemplateSelection from "./components/servicePage/popUpPages/template/AiTemplate";
-import SWTemplateSelection from "./components/servicePage/popUpPages/template/SWTemplate";
-import ContentCreationTemplateSelection from "./components/servicePage/popUpPages/template/CreationTemplate";
 // import SupportCli from "./components/dashbaord/client/SupportCli";
 
 function App() {
@@ -59,15 +56,9 @@ function App() {
           path="/graphic-template"
           element={<GraphicTemplateSelection />}
         />
-        <Route path="/graphic-specsheet" element={<GraphicSpecsheet />} />
+        <Route path="/specsheet" element={<Specsheet />} />
         <Route path="/web-template" element={<WebDevTemplateSelection />} />
         <Route path="/video-template" element={<VideoTemplateSelection />} />
-        <Route path="/ai-template" element={<AiTemplateSelection />} />
-        <Route path="/software-template" element={<SWTemplateSelection />} />
-        <Route
-          path="/contentcreation-template"
-          element={<ContentCreationTemplateSelection />}
-        />
         {/* <Route path="/form" element={<WebMultiStepForm/>}/> */}
 
         {/* Freelancer Dashboard Routes */}

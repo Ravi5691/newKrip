@@ -1,6 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-export default function GraphicSpecsheet() {
+export default function Specsheet() {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { formData, selectedTemplate } = state;
@@ -40,7 +40,7 @@ export default function GraphicSpecsheet() {
       <div className="mt-8 flex justify-between">
         <button
           onClick={() =>
-            navigate("/graphic-template", {
+            navigate(-1 , {
               state: { formData, selectedTemplate },
             })
           }

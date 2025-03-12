@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="w-full bg-[#060E0E] text-white ">
       {/* Hero Section */}
-      <div className="w-full flex flex-col lg:flex-row justify-between lg:mt-10 mt-30 p-5 lg:p-30">
+      <div className="w-full flex flex-col lg:flex-row justify-between lg:mt-10 mt-30 p-5 lg:p-30 bg-gradient-to-b from-[#060E0E] to-[#83ff9812]">
         <div className="lg:w-1/2 mb-10 lg:mb-0">
           <h1 className="text-2xl lg:text-4xl font-bold mb-4">
             Ready to get started?
