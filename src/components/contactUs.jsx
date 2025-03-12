@@ -32,9 +32,11 @@ const ContactUs = () => {
         {/* Navbar */}
         <nav>
           <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
-            <button className="cursor-pointer">
-              <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
-            </button>
+            <Link to="/">
+              <button className="cursor-pointer">
+                <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
+              </button>
+            </Link>
             <button
               className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
               onClick={toggleDrawer}

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Video, Brush, Code, BrainCircuit, PenTool, Wrench } from "lucide-react"; // Importing icons
-import WebMultiStepForm from "./servicePage/popUpPages/webPopUp";
-import VideoMultiStepForm from "./servicePage/popUpPages/videoEditPopup";
-import GraphicDesignPopup from "./servicePage/popUpPages/graphicPopUp";
-import ContentCreationPopup from "./servicePage/popUpPages/contentCreationPopUp";
-import AiAutomationPopup from "./servicePage/popUpPages/aiPopUp";
-import SoftwareMaintenancePopup from "./servicePage/popUpPages/swPopUp";
+import WebMultiStepForm from "../servicePage/popUpPages/webPopUp";
+import VideoMultiStepForm from "../servicePage/popUpPages/videoEditPopup";
+import GraphicDesignPopup from "../servicePage/popUpPages/graphicPopUp";
+import ContentCreationPopup from "../servicePage/popUpPages/contentCreationPopUp";
+import AiAutomationPopup from "../servicePage/popUpPages/aiPopUp";
+import SoftwareMaintenancePopup from "../servicePage/popUpPages/swPopUp";
 
 const services = [
   { id: 1, title: "Video Editing", icon: <Video size={30} />, form: VideoMultiStepForm },

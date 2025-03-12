@@ -1,33 +1,26 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from "react";
+import GetServiceCard from "./getServiceCard";
+import StatCard from "./stat_card";
+// import { HeroScroll } from "./HeroScroll";
+import Faq from "./faq";
+import Footer from "./footer";
+import { Link } from "react-router-dom";
+import Bentobox from "./portfolioBentoBox";
+// import { SignupFormDemo } from "./signup/clientsignup";
+import BarAnimation from "../customBar";
+import { TypewriterEffectSmoothDemo } from "./typeWrittingDemo";
+import FeatureCard from "./featureCard";
 
-const services = [
-  { id: 1, title: "Landing Page", img: "/krip png/1.png" },
-  { id: 2, title: "Ecommerce Site", img: "/krip png/2.png" },
-  { id: 3, title: "Portfolio Site", img: "/krip png/3.png" },
-];
-
-export default function GraphicDesignTemplate() {
-  const [selected, setSelected] = useState(null);
-  const navigate = useNavigate();
-  const serviceName = "Graphic Design";
-  localStorage.setItem("serviceName", serviceName);
-  const handleSelect = (service) => {
-    setSelected(service);
-    localStorage.setItem("selectedTemplateTitle", service.title);
-  };
-
-  const handleNext = () => {
-    if (selected) {
-      localStorage.setItem("selectedTemplateTitle", selected.title);
-      navigate("/adddescription");
-    }
-  };
-
+const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isLoginOptionsOpen, setIsLoginOptionsOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const toggleLoginOptions = () => {
+    setIsLoginOptionsOpen(!isLoginOptionsOpen);
   };
 
   const closeDrawer = () => {
@@ -35,12 +28,15 @@ export default function GraphicDesignTemplate() {
   };
 
   return (
-    <div className="min-h-screen bg-[#060E0E]  text-white relative">
+    <div className="bg-[#060E0E] text-white">
       <nav>
         <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
+          <Link to = '/'>
           <button className="cursor-pointer">
             <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
           </button>
+          </Link>
+          
           <button
             className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
             onClick={toggleDrawer}
@@ -123,10 +119,10 @@ export default function GraphicDesignTemplate() {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/signup">
+                      <Link to="#">
                         <button
                           className="w-full px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center"
-                          onClick={closeDrawer}
+                          onClick={toggleLoginOptions}
                         >
                           Login
                         </button>
@@ -154,11 +150,33 @@ export default function GraphicDesignTemplate() {
                 Contact Us
               </button>
             </Link>
-            <Link to="/signup">
-              <button className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer">
-                Login
-              </button>
-            </Link>
+            <div className="relative">
+              <Link to="#">
+                <button
+                  className="mx-2 md:mx-6 px-8 py-2 rounded-lg text-black font-bold bg-[#37f9a2] text-center hidden md:block cursor-pointer"
+                  onClick={toggleLoginOptions}
+                >
+                  Login
+                </button>
+              </Link>
+              {/* Dropdown Menu */}
+              {isLoginOptionsOpen && (
+                <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                  <ul className="py-2">
+                    <li>
+                      <Link to="/freelancer-signup" className="block px-4 py-2 border-b-1 border-[#37f9a277]" onClick={toggleLoginOptions}>
+                        Login as Freelancer
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/client-signup" className="block px-4 py-2" onClick={toggleLoginOptions}>
+                        Login as Client
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
           </span>
         </div>
         <div className="flex flex-row justify-around gap-2 lg:h-12 h-8 border-b-1 border-t-1 lg:text-sm text-[10px] border-[#13e78820]">
@@ -170,77 +188,59 @@ export default function GraphicDesignTemplate() {
         </div>
       </nav>
 
-      <div
-        className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
-        style={{
-          filter: "blur(100px)",
-          zIndex: 10,
-        }}
-      />
+      <main>
+        <div className="flex flex-col justify-center lg:my-15 my-5 mb-8 text-center">
+          {/* <span className="lg:text-5xl text-2xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:block hidden ">
+            "AI That Plans Your Project, Estimates Costs, <br /> and Assigns the
+            Best Talent"
+          </span> */}
+          <div className="my-10 mb-5 lg:block hidden">
+            <TypewriterEffectSmoothDemo />
+          </div>
+          <span className="lg:text-5xl text-xl font-semibold lg:leading-15 leading-10 lg:p-10 p-4 lg:hidden block ">
+            Find the best talent for your project
+          </span>
+          <span className="lg:leading-7 lg:text-lg text-sm lg:tracking-wider tracking-wide lg:px-0 px-4">
+            Our Ai will help you generate a detailed Spec-sheet and find
+            freelancer who meet your needs with live <br /> project tracking
+            through the process
+          </span>
+          <div className="flex flex-row lg:p-16 p-6 justify-center lg:gap-5 gap-2  lg:text-sm text-[10px]  font-medium">
+            <Link to="/selectservice">
+              <button className="lg:mx-2 mx-1 text-black cursor-pointer bg-[#37f9a2] lg:px-7 px-6 py-3 rounded-lg">
+                Get a Service
+              </button>
+            </Link>
+            <button className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-4 py-3 rounded-lg">
+              Get a Freelancer
+            </button>
+          </div>
+        </div>
 
-      <div className="text-center lg:px-0 px-5 lg:mt-15 mt-5">
-        <h2 className="lg:text-4xl text-2xl font-semibold  text-green-300 mb-4">
-          Choose a Template
-        </h2>
-        <p className="lg:text-lg text-sm text-gray-400 mt-2">
-          Select a template that matches your project's requirements to <br />{" "}
-          customize and start building.
-        </p>
-      </div>
+        <GetServiceCard />
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:py-20 py-5 lg:px-20 lg:mx-40 mx-7 z-20 relative">
-        {services.map((service) => (
-          <Link
-            key={service.id}
-            to="/adddescription"
-            onClick={() => handleSelect(service)}
-          >
-            <div className="bg-white text-black font-bold p-4 rounded-lg cursor-pointer hover:scale-105 transition-all">
-              <img
-                src={service.img}
-                alt={service.title}
-                className="w-full lg:h-50 h-20 object-contain shadow-xl rounded-lg"
-              />
-              <h3 className="text-center lg:text-base text-sm mt-2">
-                {service.title}
-              </h3>
-            </div>
-          </Link>
-        ))}
-      </div>
+        {/* <BarAnimation/> */}
 
-      <div className="flex flex-col md:flex-row justify-center gap-7 text-sm font-medium mt-5 pb-10 lg:px-0 px-5">
-        <button
-          onClick={() => navigate(-1)}
-          className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-10 py-2 rounded-lg"
-        >
-          Go Back
-        </button>
-        <button
-          onClick={handleNext}
-          className="mx-2 text-black cursor-pointer bg-[#37f9a2] px-12 py-2 rounded-lg"
-        >
-          Next
-        </button>
-      </div>
+        <StatCard />
 
-      {/* {selected && (
-        // <div
-        //   className="fixed inset-0 bg-[#00000077] flex justify-center items-center z-20"
-        //   onClick={() => setSelected(null)}
-        // >
-        //   <div className="p-4 bg-white rounded-lg max-w-lg">
-        //     <img
-        //       src={selected.img}
-        //       alt={selected.title}
-        //       className="w-full h-auto"
-        //     />
-        //     <h2 className="text-center text-xl font-bold mt-2">
-        //       {selected.title}
-        //     </h2>
-        //   </div>
-        // </div>
-      )} */}
+        <div className="relative">
+          {/* <div
+            className="absolute w-screen lg:h-70 h-120 bg-[#83ff9883] bg-blend-lighten opacity-25 pointer-events-none top-30"
+            style={{
+              filter: "blur(100px)",
+              zIndex: 50,
+            }}
+          /> */}
+          <div className="relative z-60">
+            <FeatureCard />
+          </div>
+        </div>
+      </main>
+      <Bentobox />
+      <Faq />
+      <Footer />
     </div>
   );
-}
+};
+
+export default Header;

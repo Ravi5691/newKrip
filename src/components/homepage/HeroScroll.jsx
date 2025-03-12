@@ -1,6 +1,6 @@
 import React from "react";
-import { ContainerScroll } from "../ui/containerScroll";
-import { cn } from "../../libs/utiles";
+import { ContainerScroll } from "../../ui/containerScroll";
+import { cn } from "../../../libs/utiles";
 
 export function HeroScroll() {
   return (

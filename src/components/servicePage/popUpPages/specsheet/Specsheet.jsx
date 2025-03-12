@@ -16,6 +16,26 @@ export default function Specsheet() {
     setIsDrawerOpen(false);
   };
 
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const options = [
+    {
+      id: 1,
+      text: "10% (Upfront Pay) : 40% (Pay Mid-way) : 50% (Pay by Delivery)",
+      delivery: "5 Days Delivery",
+    },
+    {
+      id: 2,
+      text: "50% (Upfront Pay) : 50% (Pay by Delivery)",
+      delivery: "3 Days Delivery",
+    },
+    {
+      id: 3,
+      text: "100% (Pay by Delivery)",
+      delivery: "1 Days Delivery",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#060E0E]  text-white relative">
       <nav>
@@ -152,27 +172,78 @@ export default function Specsheet() {
         </div>
       </nav>
       <div
-        className="absolute w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
+        className="fixed w-screen h-70 bg-[#83ff9884] bg-blend-lighten top-90 opacity-25 pointer-events-none"
         style={{
           filter: "blur(100px)",
           zIndex: 10,
         }}
       />
       <div className="mt-5 flex items-center justify-center p-4">
-        <div className="grid md:grid-cols-2 gap-10 lg:max-w-5xl max-w-2xl w-full">
+        <div className="grid md:grid-cols-2 lg:gap-30 gap-10 lg:max-w-6xl max-w-2xl w-full">
           {/* Checklist Section */}
-          <div className="lg:mt-10">
-            <span className="lg:text-4xl text-2xl font-serif font-semibold lg:leading-11 tracking-wider bg-gradient-to-r from-[#9AE7DF] via-[#83FF97] to-[#9AE7DF] bg-clip-text text-transparent">
-              Take a Overview <br /> of your Specsheet
-            </span>
-            <div className="flex lg:gap-10 gap-5 lg:mt-10 mt-5">
+          <div className="lg:mt-5">
+            <div className="border-b-2 border-gray-500 border-dashed py-4">
+              <h2 className="lg:text-xl text-lg font-semibold bg-gradient-to-r from-[#9AE7DF] via-[#83FF97] to-[#9AE7DF] bg-clip-text text-transparent">
+                Payment Details
+              </h2>
+              <div className="w-full rounded-xl border-2 border-[#265b5bf1] px-4 py-3 flex justify-between mt-4">
+                <span className="text-lg">Total Price</span>
+                <span className="text-lg">
+                  Rs. <span>1000</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="border-b-2 border-gray-500 border-dashed py-4">
+              <h2 className="lg:text-xl text-lg font-semibold lg:leading-11 bg-gradient-to-r from-[#9AE7DF] via-[#83FF97] to-[#9AE7DF] bg-clip-text text-transparent">
+                Delivery Details
+              </h2>
+              <div className="w-full rounded-xl  flex justify-between mt-2">
+                <span className="">Estimated Time of Delivery</span>
+                <span className="">2-5 Days</span>
+              </div>
+            </div>
+
+            <div className="py-4">
+              <h2 className="font-semibold">
+                Select Your Preferred Payment Options
+              </h2>
+              <div className="w-full rounded-lg border-2 border-[#265b5bf1] px-4 py-3 flex flex-col justify-between mt-4">
+                {options.map((option) => (
+                  <label
+                    key={option.id}
+                    className={`flex items-center gap-2 py-2 px-2 rounded-lg cursor-pointer w-full`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentOption"
+                      value={option.id}
+                      checked={selectedOption === option.id}
+                      onChange={() => setSelectedOption(option.id)}
+                      className="hidden"
+                    />
+                    <div className="w-[14px] h-[14px] border-2 border-gray-400 rounded-full flex items-center justify-center">
+                      {selectedOption === option.id && (
+                        <div className="w-[6px] h-[6px] bg-[#83ff988e] rounded-full"></div>
+                      )}
+                    </div>
+                    <div className="w-full flex justify-between">
+                      <p className="text-[12px]">{option.text}</p>
+                      <span className="text-[12px]">{option.delivery}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex lg:gap-10 gap-5 lg:mt-4 mt-2 justify-center">
               <button
                 onClick={() => alert("Form Submitted!")}
                 className="text-black lg:text-sm text-[10px] cursor-pointer bg-[#2cef80] lg:px-7 px-6 lg:py-2 py-1 rounded-lg font-semibold"
               >
-                Confirm
+                Place Order
               </button>
-              <button
+              {/* <button
                 onClick={() =>
                   navigate(-1, {
                     state: { formData, selectedTemplate },
@@ -181,20 +252,20 @@ export default function Specsheet() {
                 className="text-white lg:text-sm text-[10px] border-1 cursor-pointer border-[#37f9a270] lg:px-10 px-7 lg:py-2 py-1 rounded-lg font-semibold"
               >
                 Edit
-              </button>
+              </button> */}
             </div>
           </div>
 
           {/* Spec Sheet Section */}
-          <div className="bg-[#102525] lg:p-10 p-5 rounded-lg shadow-lg text-white">
-            <h2 className="lg:text-xl text-base text-center font-serif tracking-widest font-semibold lg:mb-4 mb-2">
+          <div className="bg-[#1d4444a7] lg:p-8 p-5 rounded-lg shadow-lg text-white border-2 border-[#265b5bf1]">
+            <h2 className="lg:text-xl text-base text-center tracking-widest font-semibold lg:mb-4 mb-2">
               SPECSHEET
             </h2>
-            <p className="text-sm text-center lg:mb-7 mb-3">
+            <p className="text-[13px] text-center lg:mb-7 mb-3">
               This sheet has all the scope of work listed below based on the
               questions you answered previously.{" "}
             </p>
-            <div className="text-sm lg:mb-7 mb-4">
+            <div className="text-[12px] lg:mb-7 mb-4">
               {Object.entries(formData).map(
                 ([key, value]) =>
                   value && (

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const cards = [
-  { id: 1, text: "Card 1",},
-  { id: 2, text: "Card 2",},
-  { id: 3, text: "Card 3",},
-  { id: 4, text: "Card 4",},
-  { id: 5, text: "Card 5",},
+  { id: 1, text: "Card 1" },
+  { id: 2, text: "Card 2" },
+  { id: 3, text: "Card 3" },
+  { id: 4, text: "Card 4" },
+  { id: 5, text: "Card 5" },
 ];
 
 export default function AboutUs() {
@@ -42,9 +42,11 @@ export default function AboutUs() {
     <div className="min-h-screen bg-[#060E0E] text-white">
       <nav>
         <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
-          <button className="cursor-pointer">
-            <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
-          </button>
+          <Link to="/">
+            <button className="cursor-pointer">
+              <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
+            </button>
+          </Link>
           <button
             className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
             onClick={toggleDrawer}
@@ -172,12 +174,20 @@ export default function AboutUs() {
                 <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#112929a3] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
                   <ul className="py-2">
                     <li>
-                      <Link to="/freelancer-signup" className="block px-4 py-2 border-b-1 border-[#37f9a277]" onClick={toggleLoginOptions}>
+                      <Link
+                        to="/freelancer-signup"
+                        className="block px-4 py-2 border-b-1 border-[#37f9a277]"
+                        onClick={toggleLoginOptions}
+                      >
                         Login as Freelancer
                       </Link>
                     </li>
                     <li>
-                      <Link to="/client-signup" className="block px-4 py-2" onClick={toggleLoginOptions}>
+                      <Link
+                        to="/client-signup"
+                        className="block px-4 py-2"
+                        onClick={toggleLoginOptions}
+                      >
                         Login as Client
                       </Link>
                     </li>
@@ -235,10 +245,15 @@ export default function AboutUs() {
       </div>
 
       <div className="text-white flex flex-col gap-20 py-20 min-h-screen ">
-       <div className="flex flex-col gap-3">
-         <h1 className="text-center text-4xl font-semibold rounded-3xl">Features</h1>
-        <p className="text-sm text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet consequuntur sint vitae cumque</p>
-       </div>
+        <div className="flex flex-col gap-3">
+          <h1 className="text-center text-4xl font-semibold rounded-3xl">
+            Features
+          </h1>
+          <p className="text-sm text-center">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
+            consequuntur sint vitae cumque
+          </p>
+        </div>
         <div className="flex flex-col items-center justify-center text-white relative">
           {/* Card Container */}
           <div
