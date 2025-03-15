@@ -385,7 +385,7 @@ const Faq = () => {
                   className="flex items-center justify-between w-full py-4 text-left"
                   onClick={() => toggleFaq(index)}
                 >
-                  <span className="text-lg font-medium">
+                  <span className="lg:text-lg text-base font-medium">
                     {item.question}
                   </span>
                   <span className="ml-6 flex-shrink-0">

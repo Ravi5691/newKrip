@@ -35,9 +35,9 @@ const Footer = () => {
       </div>
 
       {/* Footer Section */}
-      <div className="w-full mt-20">
+      <div className="w-full lg:mt-20 mt-15">
         <div className="container mx-auto px-5 lg:px-20">
-          <div className="flex flex-col lg:flex-row justify-between items-center pb-16">
+          <div className="flex flex-col lg:flex-row justify-between items-center lg:pb-16 pb-5">
             <div className="mb-10 lg:mb-0 lg:w-1/4">
               <a href="#">
                 <img src="./Group 82.png" alt="KRIP Logo" className="h-10" />
@@ -45,11 +45,11 @@ const Footer = () => {
             </div>
 
             <div className="lg:w-2/4 flex justify-center">
-              <ul className="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-16">
+              <ul className="flex flex-col lg:flex-row text-center space-y-2 lg:space-y-0 lg:space-x-16">
                 <li>
                   <Link
                     to="/services"
-                    className="text-white text-lg font-medium hover:text-[#2cef80]"
+                    className="text-white text-lg  font-medium hover:text-[#2cef80]"
                   >
                     Services
                   </Link>

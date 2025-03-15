@@ -70,10 +70,10 @@ export default function ContentCreationPopup({ onBack }) {
   );
 
   return (
-    <div className="flex flex-col w-100 mt-5">
+    <div className="flex flex-col lg:w-100 w-65 lg:mt-5">
       {step === 1 && (
-        <div className="p-4">
-          <h2 className="text-base">
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What type of content do you need?{" "}
             <span className="text-[10px] text-gray-500">
               (Pick one or more)
@@ -99,7 +99,7 @@ export default function ContentCreationPopup({ onBack }) {
             <button
               disabled={formData.option1.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -108,8 +108,8 @@ export default function ContentCreationPopup({ onBack }) {
       )}
 
       {step === 2 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What’s the purpose of the content?
             {/* <span className="text-[10px] text-gray-500">
               (choose one or more option)
@@ -130,14 +130,14 @@ export default function ContentCreationPopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={formData.option2.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -147,8 +147,8 @@ export default function ContentCreationPopup({ onBack }) {
 
       {/* Add remaining steps (3-10) similarly */}
       {step === 3 && (
-        <div className="p-4">
-          <h2 className="text-base">
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What’s your preferred tone and writing style?
           </h2>
           {renderScrollableOptions(
@@ -165,14 +165,14 @@ export default function ContentCreationPopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option3}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -181,9 +181,9 @@ export default function ContentCreationPopup({ onBack }) {
       )}
 
       {step === 4 && (
-        <div className="p-4">
-          <h2 className="text-base">
-            What’s your preferred tone and writing style?
+      <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
+          Do you have any existing content guidelines or references?
           </h2>
           {renderScrollableOptions(
             [
@@ -197,14 +197,14 @@ export default function ContentCreationPopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option4}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -213,8 +213,8 @@ export default function ContentCreationPopup({ onBack }) {
       )}
 
       {step === 5 && (
-        <div className="p-4">
-          <h2 className="text-base">Preferred Length</h2>
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">Preferred Length</h2>
           {renderScrollableOptions(
             [
               " Short-form (<500 words)",
@@ -226,14 +226,14 @@ export default function ContentCreationPopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4  text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option5}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -242,8 +242,8 @@ export default function ContentCreationPopup({ onBack }) {
       )}
 
       {step === 6 && (
-        <div className="p-4">
-          <h2 className="text-base">SEO Requirements</h2>
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">SEO Requirements</h2>
           {renderScrollableOptions(
             [
               " Yes, include SEO keywords (Client inputs keywords)",
@@ -254,14 +254,14 @@ export default function ContentCreationPopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option6}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -269,29 +269,7 @@ export default function ContentCreationPopup({ onBack }) {
         </div>
       )}
 
-      {step === 7 && (
-        <div className="p-4">
-          <h2 className="text-base">Show templates</h2>
-          <div className="flex flex-col mt-2">
-            <p>Here are some templates based on your selections:</p>
-            {/* Add template display logic here */}
-          </div>
-          <div className="mt-4">
-            <button
-              onClick={handleBack}
-              className="m-2 p-2 bg-gray-500 text-white"
-            >
-              Back
-            </button>
-            <button
-              onClick={() => setStep(1)}
-              className="m-2 p-2 bg-red-500 text-white"
-            >
-              Restart
-            </button>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }

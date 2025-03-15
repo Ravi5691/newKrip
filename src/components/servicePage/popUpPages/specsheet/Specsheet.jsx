@@ -208,7 +208,7 @@ export default function Specsheet() {
               <h2 className="font-semibold">
                 Select Your Preferred Payment Options
               </h2>
-              <div className="w-full rounded-lg border-2 border-[#265b5bf1] px-4 py-3 flex flex-col justify-between mt-4">
+              <div className="w-full rounded-lg border-2 border-[#265b5bf1] lg:px-4 px-2 py-3 flex flex-col justify-between mt-4">
                 {options.map((option) => (
                   <label
                     key={option.id}
@@ -228,8 +228,8 @@ export default function Specsheet() {
                       )}
                     </div>
                     <div className="w-full flex justify-between">
-                      <p className="text-[12px]">{option.text}</p>
-                      <span className="text-[12px]">{option.delivery}</span>
+                      <p className="lg:text-[12px] text-[10px]">{option.text}</p>
+                      <span className="lg:text-[12px] text-[10px]">{option.delivery}</span>
                     </div>
                   </label>
                 ))}
@@ -239,7 +239,7 @@ export default function Specsheet() {
             <div className="flex lg:gap-10 gap-5 lg:mt-4 mt-2 justify-center">
               <button
                 onClick={() => alert("Form Submitted!")}
-                className="text-black lg:text-sm text-[10px] cursor-pointer bg-[#2cef80] lg:px-7 px-6 lg:py-2 py-1 rounded-lg font-semibold"
+                className="text-black lg:text-sm text-[12px] cursor-pointer bg-[#2cef80] lg:px-7 px-6 lg:py-2 py-1 rounded-lg font-semibold"
               >
                 Place Order
               </button>

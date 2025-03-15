@@ -70,10 +70,10 @@ export default function SoftwareMaintenancePopup({ onBack }) {
   );
 
   return (
-    <div className="flex flex-col w-100 mt-5">
+    <div className="flex flex-col lg:w-100 w-65 lg:mt-5">
       {step === 1 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             {" "}
             What type of software do you need maintenance for?
             <span className="text-[10px] text-gray-500">
@@ -96,7 +96,7 @@ export default function SoftwareMaintenancePopup({ onBack }) {
             <button
               disabled={formData.option1.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -105,8 +105,8 @@ export default function SoftwareMaintenancePopup({ onBack }) {
       )}
 
       {step === 2 && (
-        <div className="p-4">
-          <h2 className="text-base">
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What kind of maintenance do you need?
             <span className="text-[10px] text-gray-500">
               (choose one or more option)
@@ -128,14 +128,14 @@ export default function SoftwareMaintenancePopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={formData.option2.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -145,8 +145,8 @@ export default function SoftwareMaintenancePopup({ onBack }) {
 
       {/* Add remaining steps (3-10) similarly */}
       {step === 3 && (
-        <div className="p-4">
-          <h2 className="text-base">How often do you need maintenance?</h2>
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">How often do you need maintenance?</h2>
           {renderScrollableOptions(
             [
               "One-Time Fix (Immediate issue resolution, bug fixes, performance boost)",
@@ -158,14 +158,14 @@ export default function SoftwareMaintenancePopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4  text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option3}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -174,8 +174,8 @@ export default function SoftwareMaintenancePopup({ onBack }) {
       )}
 
       {step === 4 && (
-        <div className="p-4">
-          <h2 className="text-base">How often do you need maintenance?</h2>
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">How often do you need maintenance?</h2>
           {renderScrollableOptions(
             [
               " Yes, I have full access (Source code, server, database, admin panel, etc.)",
@@ -188,14 +188,14 @@ export default function SoftwareMaintenancePopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option4}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -204,8 +204,8 @@ export default function SoftwareMaintenancePopup({ onBack }) {
       )}
 
       {step === 5 && (
-        <div className="p-4">
-          <h2 className="text-base">
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What platform or technology is your software built on?
           </h2>
           {renderScrollableOptions(
@@ -222,14 +222,14 @@ export default function SoftwareMaintenancePopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option5}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -238,8 +238,8 @@ export default function SoftwareMaintenancePopup({ onBack }) {
       )}
 
       {step === 6 && (
-        <div className="p-4">
-          <h2 className="text-base">
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             Do you have any specific issues or challenges?
           </h2>
           {renderScrollableOptions(
@@ -256,14 +256,14 @@ export default function SoftwareMaintenancePopup({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option6}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>

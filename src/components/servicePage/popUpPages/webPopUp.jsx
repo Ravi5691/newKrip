@@ -73,10 +73,10 @@ export default function WebMultiStepForm({ onBack }) {
   );
 
   return (
-    <div className="flex flex-col w-100 mt-5">
+    <div className="flex flex-col lg:w-100 w-65 lg:mt-5">
       {step === 1 && (
-        <div className="p-4">
-          <h2 className="text-base"> Which service do you need?</h2>
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]"> Which service do you need?</h2>
           {renderScrollableOptions(
             [
               " Web Development (Website, Web App, SaaS, etc.)",
@@ -89,7 +89,7 @@ export default function WebMultiStepForm({ onBack }) {
             <button
               disabled={!formData.option1}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -98,8 +98,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 2 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What do you need developed?{" "}
             <span className="text-[10px] text-gray-500">
               (choose one or more option)
@@ -150,14 +150,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={formData.option2.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -166,8 +166,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 3 && (
-        <div className="p-4">
-          <h2 className="text-base">What's the purpose of your project?</h2>
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">What's the purpose of your project?</h2>
           {renderScrollableOptions(
             [
               "Business / Brand Presence (Showcase company, services, or products)",
@@ -194,14 +194,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option3}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -210,8 +210,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 4 && (
-        <div className="p-4">
-          <h2 className="text-base">What key features do you need?</h2>
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">What key features do you need?</h2>
           {formData.option1 ===
             " Web Development (Website, Web App, SaaS, etc.)" && (
             <div>
@@ -264,14 +264,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={formData.option4.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -280,8 +280,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 5 && (
-        <div className="p-4">
-          <h2 className="text-base">Do you have a design preference?</h2>
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">Do you have a design preference?</h2>
           {renderScrollableOptions(
             [
               " I have a ready UI/UX design (Figma, Adobe XD, Sketch, etc.)",
@@ -293,14 +293,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option5}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -309,8 +309,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 6 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             Which Backend & Performance Optimization you want?
           </h2>
           {renderScrollableOptions(
@@ -324,14 +324,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option6}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -340,8 +340,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 7 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             Do you want any Ongoing Maintenance & Support?
           </h2>
           {renderScrollableOptions(
@@ -355,14 +355,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option7}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -371,8 +371,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 8 && (
-        <div className="p-4">
-          <h2 className="text-base">AI-Based Price Estimation</h2>
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">AI-Based Price Estimation</h2>
           {renderScrollableOptions(
             [
               "Base Price for Selected Service (Web, App, Full-Stack)",
@@ -386,14 +386,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option8}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -402,8 +402,8 @@ export default function WebMultiStepForm({ onBack }) {
       )}
 
       {step === 9 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             Why This Flow Works for AI-Based Pricing?
           </h2>
           {renderScrollableOptions(
@@ -418,14 +418,14 @@ export default function WebMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option9}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>

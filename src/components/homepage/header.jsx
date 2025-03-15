@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-[#060E0E] text-white">
+    <div className="bg-[#060E0E] text-white overflow-x-hidden">
       <nav>
         <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
           <Link to = '/'>

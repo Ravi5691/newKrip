@@ -26,8 +26,8 @@ const FeatureCard = () => {
   return (
     <div className="lg:min-h-screen py-20 lg:p-30 px-5 lg:px-45 overflow-x-hidden lg:mb-0 mb-25">
       <p className="lg:text-4xl text-2xl text-[#ffffff] font-bold my-10">
-        Save Time and effort with <br />
-        AI-driven, user-friendly features.
+        Save <span className="text-green-400">Time</span> and <span className="text-green-400">Effort</span> with <br />
+        AI-driven, user-friendly <span className="text-green-400">features</span>.
       </p>
       <div className="flex flex-col items-center justify-center text-white relative">
         {/* Card Container */}

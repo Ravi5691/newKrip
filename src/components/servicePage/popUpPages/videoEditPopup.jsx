@@ -71,10 +71,10 @@ export default function VideoMultiStepForm({ onBack }) {
   );
 
   return (
-    <div className="flex flex-col w-100 mt-5">
+    <div className="flex flex-col lg:w-100 w-65 lg:mt-5">
       {step === 1 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What type of video do you need edited?
             <span className="text-[10px] text-gray-500">
               (choose one or more option)
@@ -100,7 +100,7 @@ export default function VideoMultiStepForm({ onBack }) {
             <button
               disabled={formData.option1.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -109,8 +109,8 @@ export default function VideoMultiStepForm({ onBack }) {
       )}
 
       {step === 2 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What’s the purpose of this video?
             <span className="text-[10px] text-gray-500">
               (Helps determine pacing, style, and tone)
@@ -130,14 +130,14 @@ export default function VideoMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option2}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -147,8 +147,8 @@ export default function VideoMultiStepForm({ onBack }) {
 
       {/* Add remaining steps (3-10) similarly */}
       {step === 3 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What kind of editing style do you prefer?
             <span className="text-[10px] text-gray-500">
               (Choose one or more)
@@ -169,14 +169,14 @@ export default function VideoMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={formData.option3.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -185,8 +185,8 @@ export default function VideoMultiStepForm({ onBack }) {
       )}
 
       {step === 4 && (
-        <div className="p-4">
-          <h2 className="text-base">
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             What elements do you need in the edit?
             <span className="text-[10px] text-gray-500">
               (Select all that apply – Helps AI customize the project)
@@ -208,14 +208,14 @@ export default function VideoMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={formData.option4.length === 0}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -223,8 +223,8 @@ export default function VideoMultiStepForm({ onBack }) {
         </div>
       )}
       {step === 5 && (
-        <div className="p-4">
-          <h2 className="text-sm">Duration:</h2>
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">Duration:</h2>
           {renderScrollableOptions(
             [
               "Under 30 sec (Reels, TikTok, Shorts, Ads)",
@@ -247,14 +247,14 @@ export default function VideoMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option5}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -262,8 +262,8 @@ export default function VideoMultiStepForm({ onBack }) {
         </div>
       )}
       {step === 6 && (
-        <div className="p-4">
-          <h2 className="text-base">Do you have raw footage & references?</h2>
+        <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">Do you have raw footage & references?</h2>
           {renderScrollableOptions(
             [
               "Yes, I have raw footage & will upload it (Dropbox/Drive/Wetransfer link: _______ )",
@@ -276,14 +276,14 @@ export default function VideoMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2  text-white text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-white text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               disabled={!formData.option6}
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>
@@ -292,8 +292,8 @@ export default function VideoMultiStepForm({ onBack }) {
       )}
 
       {step === 7 && (
-        <div className="p-4">
-          <h2 className="text-base mb-3">
+       <div className="lg:p-4">
+          <h2 className="lg:text-base text-[12px]">
             Please provide a brief description of your project:
           </h2>
           <textarea
@@ -310,13 +310,13 @@ export default function VideoMultiStepForm({ onBack }) {
           <div className="mt-4 flex justify-between">
             <button
               onClick={handleBack}
-              className="m-2 p-2 text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 text-lg font-mono font-semibold"
             >
               &lt; <span className="font-sans text-sm">Back</span>
             </button>
             <button
               onClick={handleNext}
-              className="m-2 p-2 px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
+              className="m-2 lg:p-2 p-1 px-2 lg:px-4 bg-[#37f9a2] rounded-lg text-black text-lg font-mono font-semibold"
             >
               <span className="font-sans text-sm">Next</span> &gt;
             </button>

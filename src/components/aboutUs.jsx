@@ -244,20 +244,21 @@ export default function AboutUs() {
         </div>
       </div>
 
-      <div className="text-white flex flex-col gap-20 py-20 min-h-screen ">
+      {/*Features*/}
+      <div className="text-white flex flex-col lg:gap-20 gap-10 lg:pt-20 lg:pb-20 pt-15 pb-25 lg:min-h-screen ">
         <div className="flex flex-col gap-3">
-          <h1 className="text-center text-4xl font-semibold rounded-3xl">
+          <h1 className="text-center lg:text-4xl text-2xl font-semibold rounded-3xl">
             Features
           </h1>
-          <p className="text-sm text-center">
+          <p className="lg:text-sm text-[12px] text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
             consequuntur sint vitae cumque
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center text-white relative">
+        <div className="flex flex-col items-center justify-center lg:px-0 px-5 text-white relative">
           {/* Card Container */}
           <div
-            className="relative w-full max-w-6xl overflow-hidden"
+            className="relative w-full lg:max-w-6xl max-w-4xl  overflow-hidden"
             ref={containerRef}
           >
             <motion.div
@@ -278,7 +279,7 @@ export default function AboutUs() {
               {cards.map((card) => (
                 <div
                   key={card.id}
-                  className={`w-1/3 min-w-[33.33%] h-100 bg-[#66bb853f] flex items-center justify-center text-2xl font-bold rounded-lg shadow-lg ${card.color}`}
+                  className={`w-1/3 min-w-[33.33%] lg:h-100 h-50 bg-[#66bb853f] flex items-center justify-center text-2xl font-bold rounded-lg shadow-lg ${card.color}`}
                 >
                   {card.text}
                 </div>
@@ -287,16 +288,16 @@ export default function AboutUs() {
           </div>
 
           {/* Buttons */}
-          <div className="mt-6 flex gap-4 absolute -bottom-20 right-45">
+          <div className="mt-6 flex gap-4 absolute lg:-bottom-20 -bottom-13 lg:right-45 right-5">
             <button
               onClick={prevCard}
-              className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition"
+              className="px-4 py-2 text-[12px] lg:text-base bg-gray-700 rounded-lg hover:bg-gray-600 transition"
             >
               Prev
             </button>
             <button
               onClick={nextCard}
-              className="px-4 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition"
+              className="px-4 py-2 text-[12px] lg:text-base bg-gray-700 rounded-lg hover:bg-gray-600 transition"
             >
               Next
             </button>
