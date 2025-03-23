@@ -37,6 +37,7 @@ const ContactUs = () => {
                 <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
               </button>
             </Link>
+
             <button
               className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
               onClick={toggleDrawer}
@@ -128,6 +129,31 @@ const ContactUs = () => {
                           </button>
                         </Link>
                       </li>
+                      {/* Dropdown Menu */}
+                      {isLoginOptionsOpen && (
+                        <div className="absolute left-0 lg:mt-2 w-full lg:px-2 px-5 text-center lg:bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                          <ul className="lg:py-2">
+                            <li>
+                              <Link
+                                to="/freelancer-signup"
+                                className="block lg:px-4 py-2 lg:border-b-1 border-1 border-[#37f9a277] lg:rounded-none rounded"
+                                onClick={toggleLoginOptions}
+                              >
+                                Login as Freelancer
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to="/client-signup"
+                                className="block px-4 py-2 lg:border-b-0 mt-1 lg:mt-0 border-1 border-[#37f9a277] lg:rounded-none rounded"
+                                onClick={toggleLoginOptions}
+                              >
+                                Login as Client
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      )}
                     </ul>
                   </nav>
                 </div>
@@ -161,7 +187,7 @@ const ContactUs = () => {
                 </Link>
                 {/* Dropdown Menu */}
                 {isLoginOptionsOpen && (
-                  <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                  <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out lg:block hidden">
                     <ul className="py-2">
                       <li>
                         <Link

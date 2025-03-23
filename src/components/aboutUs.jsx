@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import AnimatedTestimonialsDemo from "./animatedTestimonial";
 
 const cards = [
   { id: 1, text: "Card 1" },
@@ -47,6 +48,7 @@ export default function AboutUs() {
               <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
             </button>
           </Link>
+
           <button
             className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
             onClick={toggleDrawer}
@@ -138,6 +140,31 @@ export default function AboutUs() {
                         </button>
                       </Link>
                     </li>
+                    {/* Dropdown Menu */}
+                    {isLoginOptionsOpen && (
+                      <div className="absolute left-0 lg:mt-2 w-full lg:px-2 px-5 text-center lg:bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                        <ul className="lg:py-2">
+                          <li>
+                            <Link
+                              to="/freelancer-signup"
+                              className="block lg:px-4 py-2 lg:border-b-1 border-1 border-[#37f9a277] lg:rounded-none rounded"
+                              onClick={toggleLoginOptions}
+                            >
+                              Login as Freelancer
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/client-signup"
+                              className="block px-4 py-2 lg:border-b-0 mt-1 lg:mt-0 border-1 border-[#37f9a277] lg:rounded-none rounded"
+                              onClick={toggleLoginOptions}
+                            >
+                              Login as Client
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </ul>
                 </nav>
               </div>
@@ -171,7 +198,7 @@ export default function AboutUs() {
               </Link>
               {/* Dropdown Menu */}
               {isLoginOptionsOpen && (
-                <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#112929a3] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out lg:block hidden">
                   <ul className="py-2">
                     <li>
                       <Link
@@ -245,7 +272,7 @@ export default function AboutUs() {
       </div>
 
       {/*Features*/}
-      <div className="text-white flex flex-col lg:gap-20 gap-10 lg:pt-20 lg:pb-20 pt-15 pb-25 lg:min-h-screen ">
+      {/* <div className="text-white flex flex-col lg:gap-20 gap-10 lg:pt-20 lg:pb-20 pt-15 pb-25 lg:min-h-screen ">
         <div className="flex flex-col gap-3">
           <h1 className="text-center lg:text-4xl text-2xl font-semibold rounded-3xl">
             Features
@@ -256,7 +283,6 @@ export default function AboutUs() {
           </p>
         </div>
         <div className="flex flex-col items-center justify-center lg:px-0 px-5 text-white relative">
-          {/* Card Container */}
           <div
             className="relative w-full lg:max-w-6xl max-w-4xl  overflow-hidden"
             ref={containerRef}
@@ -287,7 +313,6 @@ export default function AboutUs() {
             </motion.div>
           </div>
 
-          {/* Buttons */}
           <div className="mt-6 flex gap-4 absolute lg:-bottom-20 -bottom-13 lg:right-45 right-5">
             <button
               onClick={prevCard}
@@ -303,7 +328,9 @@ export default function AboutUs() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <AnimatedTestimonialsDemo/>
     </div>
   );
 }

@@ -31,12 +31,12 @@ const Header = () => {
     <div className="bg-[#060E0E] text-white overflow-x-hidden">
       <nav>
         <div className="flex flex-col md:flex-row lg:justify-between lg:items-center items-start px-5 lg:pt-0 pt-5 md:pr-18 md:px-24 lg:h-20 h-15 relative">
-          <Link to = '/'>
-          <button className="cursor-pointer">
-            <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
-          </button>
+          <Link to="/">
+            <button className="cursor-pointer">
+              <img src="logo.png" alt="" className="lg:h-8 h-6 w-auto" />
+            </button>
           </Link>
-          
+
           <button
             className="md:hidden ml-auto p-2 text-slate-200 right-4 top-3 absolute"
             onClick={toggleDrawer}
@@ -128,6 +128,31 @@ const Header = () => {
                         </button>
                       </Link>
                     </li>
+                    {/* Dropdown Menu */}
+                    {isLoginOptionsOpen && (
+                      <div className="absolute left-0 lg:mt-2 w-full lg:px-2 px-5 text-center lg:bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                        <ul className="lg:py-2">
+                          <li>
+                            <Link
+                              to="/freelancer-signup"
+                              className="block lg:px-4 py-2 lg:border-b-1 border-1 border-[#37f9a277] lg:rounded-none rounded"
+                              onClick={toggleLoginOptions}
+                            >
+                              Login as Freelancer
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/client-signup"
+                              className="block px-4 py-2 lg:border-b-0 mt-1 lg:mt-0 border-1 border-[#37f9a277] lg:rounded-none rounded"
+                              onClick={toggleLoginOptions}
+                            >
+                              Login as Client
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </ul>
                 </nav>
               </div>
@@ -161,15 +186,23 @@ const Header = () => {
               </Link>
               {/* Dropdown Menu */}
               {isLoginOptionsOpen && (
-                <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out">
+                <div className="absolute -right-5 mt-4 w-48 px-2 text-center bg-[#11292956] backdrop-blur-lg rounded shadow-lg z-50 transition-all duration-300 ease-in-out lg:block hidden">
                   <ul className="py-2">
                     <li>
-                      <Link to="/freelancer-signup" className="block px-4 py-2 border-b-1 border-[#37f9a277]" onClick={toggleLoginOptions}>
+                      <Link
+                        to="/freelancer-signup"
+                        className="block px-4 py-2 border-b-1 border-[#37f9a277]"
+                        onClick={toggleLoginOptions}
+                      >
                         Login as Freelancer
                       </Link>
                     </li>
                     <li>
-                      <Link to="/client-signup" className="block px-4 py-2" onClick={toggleLoginOptions}>
+                      <Link
+                        to="/client-signup"
+                        className="block px-4 py-2"
+                        onClick={toggleLoginOptions}
+                      >
                         Login as Client
                       </Link>
                     </li>
@@ -205,7 +238,7 @@ const Header = () => {
             freelancer who meet your needs with live <br /> project tracking
             through the process
           </span>
-          <div className="flex flex-row lg:p-16 p-6 justify-center lg:gap-5 gap-2  lg:text-sm text-[10px]  font-medium">
+          {/* <div className="flex flex-row lg:p-16 p-6 justify-center lg:gap-5 gap-2  lg:text-sm text-[10px]  font-medium">
             <Link to="/selectservice">
               <button className="lg:mx-2 mx-1 text-black cursor-pointer bg-[#37f9a2] lg:px-7 px-6 py-3 rounded-lg">
                 Get a Service
@@ -214,7 +247,7 @@ const Header = () => {
             <button className="mx-2 text-white border-1 cursor-pointer border-[#37f9a270] px-4 py-3 rounded-lg">
               Get a Freelancer
             </button>
-          </div>
+          </div> */}
         </div>
 
         <GetServiceCard />
