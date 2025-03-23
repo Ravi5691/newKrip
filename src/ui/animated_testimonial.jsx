@@ -41,10 +41,10 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
   }
 
   return (
-    <div className="mx-auto max-w-sm px-4 py-20  font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 gap-30 md:grid-cols-2">
+    <div className="mx-auto max-w-sm px-4 py-20  font-sans antialiased md:max-w-4xl md:px-8 lg:px-12 overflow-x-hidden">
+      <div className="relative grid grid-cols-1 lg:gap-30 gap-20 md:grid-cols-2">
         <div>
-          <div className="relative h-90 w-full">
+          <div className="relative h-90 lg:scale-100 scale-75 w-full">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
